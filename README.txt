@@ -1,5 +1,5 @@
-hai demi
-hai nanfang
-hai brian is testing
-testing1233
-test test
+how to run in your vsc!
+1. open terminal 
+2. cd foodManager
+3. npm install
+4. npm run dev
