@@ -1,5 +1,6 @@
 
 <script>
+import LoginPage from './components/Pages/LoginPage.vue'
 
 export default {
   name: 'App'
