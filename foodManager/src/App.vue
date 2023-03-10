@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 
 <script>
 import LoginPage from './components/Pages/LoginPage.vue'
@@ -28,6 +29,43 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top:30px;
+=======
+<script setup>
+import LoginInput from './components/LoginInput.vue'
+</script>
+
+<template>
+  <div>
+    <LoginInput></LoginInput>
+    <LoginSignUp>
+  </div>
+</template>
+
+<script>
+  import firebase from './firebase';
+  
+  export default {
+    name: 'App',
+    created() {
+      firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+          this.$router.push('/dashboard');
+        } else {
+          this.$router.push('/login');
+        }
+      });
+    },
+  };
+</script>
+
+<style>
+</style>
+
+
+<style scoped>
+header {
+  line-height: 1.5;
+>>>>>>> Stashed changes
 }
 #nav {
   padding: 30px
