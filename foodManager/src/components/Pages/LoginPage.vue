@@ -22,7 +22,7 @@ import LoginSignUp from '@/components/LoginSignUp.vue'
 export default { 
   name: "LoginPage",
   components:{
-          WelcomeCpp,AddCoin,ProfitDisplay
+          LoginFindOutMore,LoginInput,LoginSignUp
       },
 }
 </script>

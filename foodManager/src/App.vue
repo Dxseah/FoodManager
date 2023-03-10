@@ -13,8 +13,8 @@ export default {
   <div id="nav">
     <LoginPage/>
     <router-link to = "/"> LoginPage </router-link>|
-    <!-- <router-link to = "/about"> About </router-link>|
-    <router-link to = "/profit"> Profit </router-link> -->
+    <router-link to = "/about"> AboutPage </router-link>|
+    <!-- <router-link to = "/profit"> Profit </router-link> -->
   </div>
   <router-view/>
 </div>
