@@ -1,4 +1,5 @@
 <template>
+  <!-- not logged in -->
   <div v-if="!isLoggedIn">
     <!-- login -->
     <template v-if="showLogin">
@@ -16,6 +17,14 @@
     <h2>Welcome {{ displayName }}</h2>
     <button @click="signOut">Sign Out</button>
   </div>
+
+
+  <div>
+    <router-link :to="{ name: 'Home'  }">Home</router-link>|
+  </div>
+
+  <router-view/>
+
 </template>
 
 <script>
@@ -51,7 +60,12 @@ export default {
 </script>
 
 <style>
-p,h2{text-align:center}span{text-decoration:underline;cursor:pointer;color:blue}
+p,h2{text-align:center}
+span{text-decoration:underline;cursor:pointer;color:blue}
 form{display:flex;flex-direction:column;row-gap:16px;max-width:260px;margin:30px auto}
-input,button{height:28px}input{padding-left:10px}button{width:fit-content;margin:auto}
+input,button{height:28px}input{padding-left:10px}
+button{width:fit-content;margin:auto}
+.router-link-exact-active {
+  color: red
+}
 </style>
