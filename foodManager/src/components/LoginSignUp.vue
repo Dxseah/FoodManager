@@ -1,15 +1,13 @@
 <template>
     <div class = "signup">
-        <button id="donorsignup" type="button">Sign up as Donor</button> <br> 
-        <button id="beneficiarysignup" type="button">Sign up as Beneficiary</button> <br>
+        <router-link to = "/donorsignup"> Sign up as Donor </router-link> <br><br> 
+        <router-link to = "/signup"> Sign up as Beneficiary </router-link> <br><br>
         <button id="forgetpassword" type="button">Forget Password? </button>
     </div>
 </template>
 
 <style>
-#donorsignup, #beneficiarysignup, #forgetpassword {
-    background-color: gold;
+#forgetpassword {
+    background-color:aqua;
 }
-
-
 </style>

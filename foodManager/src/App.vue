@@ -39,8 +39,9 @@
 
     <router-link to = "/"> LoginPage </router-link>|
     <router-link to = "/profile"> ProfilePage </router-link>|
-    <router-link to = "/signup"> SignUpPage </router-link>|
     <router-link to = "/about"> AboutPage </router-link>|
+    <router-link to = "/signup"> BeneficiarySignUpPage </router-link>|
+    <router-link to = "/donorsignup"> DonorSignUpPage </router-link>|
     
   </div>
   <router-view/>

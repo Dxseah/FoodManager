@@ -1,18 +1,18 @@
 <template>
-    <h2>Beneficiary Sign Up</h2>
+    <h2>Donor Sign Up</h2>
     <div>
-      <form @submit.prevent="signUp">
-        <label for="name">Name:</label>
-        <input type="name" placeholder="Name" required v-model="name">
-        <br>
-        <label for="email">Email:</label>
-        <input type="email" placeholder="Email"    required v-model="email">
-        <br>
-        <label for="password">Password:</label>
-        <input type="password" placeholder="Password" required v-model="password">
-        <br>
-        <button id="btn">Beneficiary Sign Up</button>
-      </form>
+        <form @submit.prevent="donorSignUp">
+            <label for="name">Name:</label>
+            <input type="name" placeholder="Name" required v-model="name">
+            <br>
+            <label for="email">Email:</label>
+            <input type="email" placeholder="Email"    required v-model="email">
+            <br>
+            <label for="password">Password:</label>
+            <input type="password" placeholder="Password" required v-model="password">
+            <br>
+            <button>Donor Sign Up</button>
+        </form>
     </div>
   </template>
   
@@ -29,9 +29,9 @@ export default {
     const name = ref('')
     const store = useStore()
 
-    const signUp = async () => {
+    const donorSignUp = async () => {
       try {
-        await store.dispatch('signup', {
+        await store.dispatch('donorsignup', {
           email: email.value,
           password: password.value,
           name: name.value,
@@ -43,7 +43,7 @@ export default {
       }
     }
 
-    return {signUp, email, password, name}
+    return {donorSignUp, email, password, name}
   }
 }
 </script>

@@ -44,6 +44,16 @@ const store = createStore({
                 throw new Error('Unable to register user')
             }
         },
+
+        async donorsignup(context, { email, password, name}){
+          const response = await createUserWithEmailAndPassword(auth, email, password)
+          if (response) {
+              context.commit('SET_USER', response.user)
+              updateProfile(response.user,{displayName: name})
+          } else {
+              throw new Error('Unable to register user')
+          }
+      },
   
         async login(context, { email, password }){
           const response = await signInWithEmailAndPassword(auth, email, password)
