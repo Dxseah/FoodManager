@@ -1,7 +1,7 @@
 <template>
     <div class="findOutMoreCont">
         <h1>Find out more about FoodManager</h1>
-        <router-link to = "/about"> HERE </router-link>
+        <router-link to = "/about"><a> HERE</a></router-link>
     </div>
 </template>
 
@@ -17,6 +17,12 @@ h1 {
     font-weight: bold;
     font-size: 2em;
 }
+
+a {
+  color:chocolate;
+ text-decoration: none;
+}
+
 router-link {
     font-family: Avenir, Arial, Helvetica, sans-serif;
     font-weight: bold;
