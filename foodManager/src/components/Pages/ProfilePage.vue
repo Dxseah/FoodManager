@@ -53,3 +53,13 @@ export default {
 
 };
 </script>
+
+<style scoped>
+.container {
+    background-color: aliceblue;
+    width: 100vw;
+    height: 100vh;
+    align-content: center;
+    padding: 100px;
+  }
+</style>

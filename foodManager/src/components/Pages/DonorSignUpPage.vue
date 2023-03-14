@@ -1,20 +1,20 @@
 <template>
-    <h2>Donor Sign Up</h2>
-    <div>
+    <div class="donorCont">
+      <h2>Donor Sign Up</h2>
         <form @submit.prevent="donorSignUp">
             <label for="name">Name:</label>
-            <input type="name" placeholder="Name" required v-model="name">
-            <br>
+            <input type="name" placeholder="Enter Name" required v-model="name">
+            <br><br>
             <label for="email">Email:</label>
             <input type="email" placeholder="Email" required v-model="email">
             <br>
             <label for="password">Password:</label>
-            <input type="password" placeholder="Password" required v-model="password">
-            <br>
+            <input type="password" placeholder="Enter Password" required v-model="password">
+            <br><br>
             <button>Donor Sign Up</button>
         </form>
     </div>
-  </template>
+</template>
   
 
 <script>
@@ -49,6 +49,14 @@ export default {
 </script>
 
 <style>
+.donorCont {
+    background-color: aliceblue;
+    width: 100vw;
+    height: 100vh;
+    align-content: center;
+    padding: 100px;
+  }
+
   h2 {
     font-family: Avenir, Arial, Helvetica, sans-serif;
     font-weight: bold;

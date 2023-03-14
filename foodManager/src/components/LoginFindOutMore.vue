@@ -17,4 +17,9 @@ h1 {
     font-weight: bold;
     font-size: 2em;
 }
+router-link {
+    font-family: Avenir, Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 2em;
+}
 </style>
