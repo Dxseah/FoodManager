@@ -37,7 +37,7 @@
   <div id="nav">
     <h1>{{displayName}}</h1>
 
-    <router-link to = "/"> Login Page </router-link>|
+    |<router-link to = "/"> Login Page </router-link>|
     <router-link to = "/profile"> Profile Page </router-link>|
     <router-link to = "/about"> About Page </router-link>|
     <router-link to = "/signup"> Beneficiary Sign Up </router-link>|

@@ -15,8 +15,7 @@
 <script>
 // import { ref } from 'vue'
 // import { useStore } from 'vuex'
-// import router from '@/components/Router/index.js'
-
+import router from '@/components/Router/index.js'
 import { auth } from "@/firebase";
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 
@@ -33,6 +32,7 @@ export default {
         await sendPasswordResetEmail(auth, this.email);
         this.errorMessage = null;
         alert('Password reset email sent!');
+        router.push('/');
       } catch (error) {
         this.errorMessage = error.message;
       }
@@ -58,11 +58,6 @@ export default {
   input {
     display: inline-block;
     text-align: left;
-  }
-
-  #btn {
-    display: inline-block;
-    text-align: center;
   }
   
 </style>
