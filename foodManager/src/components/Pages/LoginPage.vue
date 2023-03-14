@@ -1,7 +1,7 @@
 <template>
   <div class='overall'>
-  <LoginInput/>
-  <LoginSignUp/>
+  <LoginInput/> <br>
+  <LoginSignUp/> <br><br>
   <LoginFindOutMore/>
   </div>
 </template>
@@ -23,5 +23,7 @@ export default {
     background-image: url(https://www.efsa.europa.eu/sites/default/files/styles/share_opengraph/public/news/food-donations.jpg?h=82f92a78&itok=3k3shqTm);
     background-size: cover;
     background-repeat: no-repeat;
+    height: 100vh;
+    width: 100vw;
   }
 </style>

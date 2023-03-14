@@ -1,7 +1,7 @@
 
 <template>
   <h1>FoodBank Repository</h1>
-  <div id="app">
+  <div class="app">
     <form @submit.prevent='login'>
       <label for="email"> Email: </label>
       <input type="email" id="email" name="email" required v-model="email">
@@ -67,6 +67,10 @@
   label {
     font-family: Avenir, Arial, Helvetica, sans-serif;
     font-weight: bold;
+  }
+
+  .app {
+    align-content: center;
   }
  
 </style>

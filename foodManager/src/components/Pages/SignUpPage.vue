@@ -1,20 +1,22 @@
 <template>
+<div class="mainDiv">
+  <div class="compSign">
     <h2>Beneficiary Sign Up</h2>
-    <div>
-      <form @submit.prevent="signUp">
-        <label for="name">Name:</label>
-        <input type="name" placeholder="Name" required v-model="name">
-        <br>
-        <label for="email">Email:</label>
-        <input type="email" placeholder="Email"    required v-model="email">
-        <br>
-        <label for="password">Password:</label>
-        <input type="password" placeholder="Password" required v-model="password">
-        <br>
-        <button id="btn">Beneficiary Sign Up</button>
-      </form>
-    </div>
-  </template>
+    <form @submit.prevent="signUp">
+      <label for="name">Name:</label>
+      <input type="name" placeholder="Name" required v-model="name">
+      <br>
+      <label for="email">Email:</label>
+      <input type="email" placeholder="Email"    required v-model="email">
+      <br>
+      <label for="password">Password:</label>
+      <input type="password" placeholder="Password" required v-model="password">
+      <br>
+      <button id="btn">Beneficiary Sign Up</button>
+    </form>
+  </div>
+</div>
+</template>
   
 
 <script>
@@ -49,6 +51,14 @@ export default {
 </script>
 
 <style>
+  .mainDiv {
+    background-color: aliceblue;
+    width: 100vw;
+    height: 100vh;
+    align-content: center;
+    padding: 100px;
+  }
+
   h2 {
     font-family: Avenir, Arial, Helvetica, sans-serif;
     font-weight: bold;

@@ -57,9 +57,10 @@ export default {
 
 <style scoped>
 .about {
-  width: 100vw;
   background-color: aliceblue;
-  margin: 0px 0px 0px 0px;
+  padding: 100px;
+  width: 100vw;
+  height: 100vh;
 }
 
 h1 {
