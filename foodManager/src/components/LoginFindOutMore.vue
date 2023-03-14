@@ -1,7 +1,7 @@
 <template>
     <div class="findOutMoreCont">
         <h1>Find out more about the FoodManager</h1>
-        <router-link to = "/about"> Here </router-link>
+        <router-link to = "/about"> HERE </router-link>
     </div>
 </template>
 

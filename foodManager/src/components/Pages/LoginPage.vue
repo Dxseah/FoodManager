@@ -1,20 +1,9 @@
 <template>
   <div class='overall'>
-
-  <div class='container'>
   <LoginInput/>
   <LoginSignUp/>
-  </div>
-
-  <div class='container2'>
   <LoginFindOutMore/>
   </div>
-
-  </div>
-
-  <div class="bg-container">
-  </div>
-
 </template>
 <script>
 import LoginFindOutMore from '@/components/LoginFindOutMore.vue'
@@ -30,9 +19,9 @@ export default {
 </script>
 
 <style>
-  .bg-container {
+  .overall {
     background-image: url(https://www.efsa.europa.eu/sites/default/files/styles/share_opengraph/public/news/food-donations.jpg?h=82f92a78&itok=3k3shqTm);
-    width:100vw;
-    height:100vh; 
+    background-size: contain;
+    background-repeat: no-repeat;
   }
 </style>

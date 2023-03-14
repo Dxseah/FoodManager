@@ -55,10 +55,12 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top:30px;
+  width: 100vw;
+  height: 100vh;
 }
 #nav {
-  padding: 30px
+  padding: 30px; 
+  background-color: antiquewhite;
 }
 #nav a {
   font-weight: bold;
