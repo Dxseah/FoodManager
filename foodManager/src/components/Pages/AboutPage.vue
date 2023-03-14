@@ -57,20 +57,22 @@ export default {
 
 <style scoped>
 .about {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
+  width: 100vw;
+  background-color: aliceblue;
+  margin: 0px 0px 0px 0px;
 }
 
 h1 {
   font-size: 48px;
   margin-bottom: 20px;
+  text-align: center;
 }
 
 h2 {
   font-size: 36px;
   margin-top: 40px;
   margin-bottom: 20px;
+  text-align: center;
 }
 
 h3 {
@@ -82,5 +84,9 @@ h3 {
 p {
   font-size: 18px;
   margin-bottom: 20px;
+}
+
+ul {
+  text-align: center; 
 }
 </style>

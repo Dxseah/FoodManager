@@ -21,7 +21,7 @@ export default {
 <style>
   .overall {
     background-image: url(https://www.efsa.europa.eu/sites/default/files/styles/share_opengraph/public/news/food-donations.jpg?h=82f92a78&itok=3k3shqTm);
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
   }
 </style>
