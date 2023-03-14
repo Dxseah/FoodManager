@@ -37,12 +37,12 @@
   <div id="nav">
     <h1>{{displayName}}</h1>
 
-    |<router-link to = "/"> Login Page </router-link>|
-    <router-link to = "/profile"> Profile Page </router-link>|
-    <router-link to = "/about"> About Page </router-link>|
-    <router-link to = "/signup"> Beneficiary Sign Up </router-link>|
-    <router-link to = "/donorsignup"> Donor Sign Up </router-link>|
-    
+    |<router-link to = "/"> Login </router-link>|
+    <router-link to = "/home"> Home </router-link>|
+    <router-link to = "/profile"> Profile </router-link>|
+    <router-link to = "/about"> About Us </router-link>|
+    <!-- <router-link to = "/signup"> Beneficiary Sign Up </router-link>|
+    <router-link to = "/donorsignup"> Donor Sign Up </router-link>| -->
   </div>
   <router-view/>
 </nav>
@@ -57,6 +57,7 @@
   color: #2c3e50;
   width: 100vw;
 }
+
 #nav {
   padding: 30px; 
   background-color: antiquewhite;
