@@ -1,4 +1,5 @@
 <template>
+<div class="forgetCont">
     <h2>Forgot Password?</h2>
     <div v-if="errorMessage"> {{  errorMessage }}</div>
     <div v-else>
@@ -9,7 +10,8 @@
         <button type="submit" id="btn">Forget Password</button>
       </form>
     </div>
-  </template>
+</div>
+</template>
   
 
 <script>
@@ -42,6 +44,14 @@ export default {
 </script>
 
 <style scoped>
+.forgetCont {
+    background-color: aliceblue;
+    width: 100vw;
+    height: 100vh;
+    align-content: center;
+    padding: 100px;
+  }
+
   h2 {
     font-family: Avenir, Arial, Helvetica, sans-serif;
     font-weight: bold;

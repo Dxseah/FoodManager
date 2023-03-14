@@ -60,7 +60,6 @@ export default {
   background-color: aliceblue;
   padding: 100px;
   width: 100vw;
-  height: 100vh;
 }
 
 h1 {
