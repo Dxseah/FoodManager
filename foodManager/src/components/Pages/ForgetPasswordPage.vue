@@ -41,7 +41,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
   h2 {
     font-family: Avenir, Arial, Helvetica, sans-serif;
     font-weight: bold;

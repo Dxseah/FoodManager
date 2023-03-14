@@ -4,9 +4,9 @@
         <form @submit.prevent="donorSignUp">
             <label for="name">Name:</label>
             <input type="name" placeholder="Enter Name" required v-model="name">
-            <br><br>
+            <br>
             <label for="email">Email:</label>
-            <input type="email" placeholder="Email" required v-model="email">
+            <input type="email" placeholder="Enter Email" required v-model="email">
             <br>
             <label for="password">Password:</label>
             <input type="password" placeholder="Enter Password" required v-model="password">
@@ -48,8 +48,8 @@ export default {
 }
 </script>
 
-<style>
-.donorCont {
+<style scoped>
+  .donorCont {
     background-color: aliceblue;
     width: 100vw;
     height: 100vh;
@@ -61,10 +61,13 @@ export default {
     font-family: Avenir, Arial, Helvetica, sans-serif;
     font-weight: bold;
     font-size: 2em;
+    margin-bottom: 20px;
   }
 
-  label {
+  label{
     display: inline-block;
+    clear: left;
+    width: 80px;
     text-align: right;
     font-family: Avenir, Arial, Helvetica, sans-serif;
     font-weight: bold;
@@ -72,12 +75,13 @@ export default {
 
   input {
     display: inline-block;
-    text-align: left;
+    margin-left: 5px;
   }
 
   #btn {
     display: inline-block;
     text-align: center;
+    margin-top: 20px;
   }
   
 </style>

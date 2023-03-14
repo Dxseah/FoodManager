@@ -1,6 +1,6 @@
 
 <template>
-  <h1>FoodBank Repository</h1>
+  <h1>FoodBank Repository</h1><br>
   <div class="app">
     <form @submit.prevent='login'>
       <label for="email"> Email: </label>
@@ -8,7 +8,7 @@
       <br>
       <label for="password"> Password: </label>
       <input type="password" id="password"  name="password" required v-model="password">
-      <br>
+      <br><br>
       <button id="btn" type="submit" >Login</button>
     </form>
   </div>
@@ -57,16 +57,28 @@
   }
   </script>
 
-<style>
+<style scoped>
   h1 {
-      font-family: Avenir, Arial, Helvetica, sans-serif;
+      font-family: Marker Felt, Avenir, Arial, Helvetica, sans-serif;
       font-weight: bold;
-      font-size: 2em;
+      font-size: 4em;
   }
 
-  label {
+  /* label {
     font-family: Avenir, Arial, Helvetica, sans-serif;
     font-weight: bold;
+  } */
+  
+  label{
+    display: inline-block;
+    clear: left;
+    width: 80px;
+    text-align: right;
+  }
+
+  input {
+    display: inline-block;
+    margin-left: 5px;
   }
 
   .app {
