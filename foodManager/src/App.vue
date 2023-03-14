@@ -37,11 +37,11 @@
   <div id="nav">
     <h1>{{displayName}}</h1>
 
-    <router-link to = "/"> LoginPage </router-link>|
-    <router-link to = "/profile"> ProfilePage </router-link>|
-    <router-link to = "/about"> AboutPage </router-link>|
-    <router-link to = "/signup"> BeneficiarySignUpPage </router-link>|
-    <router-link to = "/donorsignup"> DonorSignUpPage </router-link>|
+    <router-link to = "/"> Login Page </router-link>|
+    <router-link to = "/profile"> Profile Page </router-link>|
+    <router-link to = "/about"> About Page </router-link>|
+    <router-link to = "/signup"> Beneficiary Sign Up </router-link>|
+    <router-link to = "/donorsignup"> Donor Sign Up </router-link>|
     
   </div>
   <router-view/>

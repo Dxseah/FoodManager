@@ -6,7 +6,7 @@
             <input type="name" placeholder="Name" required v-model="name">
             <br>
             <label for="email">Email:</label>
-            <input type="email" placeholder="Email"    required v-model="email">
+            <input type="email" placeholder="Email" required v-model="email">
             <br>
             <label for="password">Password:</label>
             <input type="password" placeholder="Password" required v-model="password">

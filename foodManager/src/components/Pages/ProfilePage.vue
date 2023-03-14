@@ -51,7 +51,5 @@ export default {
     return {user,signOut}
  }
 
-
-
 };
 </script>

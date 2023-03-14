@@ -6,14 +6,14 @@
   </div>
 </template>
 <script>
-import LoginFindOutMore from '@/components/LoginFindOutMore.vue'
 import LoginInput from '@/components/LoginInput.vue'
 import LoginSignUp from '@/components/LoginSignUp.vue'
+import LoginFindOutMore from '@/components/LoginFindOutMore.vue'
 
 export default { 
   name: "LoginPage",
   components:{
-          LoginFindOutMore,LoginInput,LoginSignUp
+          LoginInput,LoginSignUp,LoginFindOutMore
       },
 }
 </script>
