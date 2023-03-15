@@ -9,7 +9,7 @@
       <label for="password"> Password: </label>
       <input type="password" id="password"  name="password" required v-model="password">
       <br><br>
-      <button id="btn" type="submit" >Login</button>
+      <button id="btn" type="submit">Login</button>
     </form>
   </div>
 </template>
@@ -37,6 +37,7 @@
       }
       catch (err) {
         alert(err.message)
+        // alert(this.error)
       }
     }
     return { login, email, password }
@@ -50,7 +51,6 @@
         } else {
           // Display error message
           this.error = 'Wrong email or password! Please try again!';
-          alert(this.error)
         }
       }
     }
