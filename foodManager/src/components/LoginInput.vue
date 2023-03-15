@@ -41,19 +41,19 @@
       }
     }
     return { login, email, password }
-  }, 
-    methods: {
-      login() {
-        // Check if email and password are valid
-        if (this.email === 'user@example.com' && this.password === 'password') {
-          // Successful login
-          console.log('Successful login');
-        } else {
-          // Display error message
-          this.error = 'Wrong email or password! Please try again!';
-        }
-      }
-    }
+  } 
+    // methods: {
+    //   login() {
+    //     // Check if email and password are valid
+    //     if (this.email === 'user@example.com' && this.password === 'password') {
+    //       // Successful login
+    //       console.log('Successful login');
+    //     } else {
+    //       // Display error message
+    //       this.error = 'Wrong email or password! Please try again!';
+    //     }
+    //   }
+    // }
   }
   </script>
 
