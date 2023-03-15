@@ -86,6 +86,8 @@ export default {
     text-align: right;
     font-family: Avenir, Arial, Helvetica, sans-serif;
     font-weight: bold;
+    padding-right: 5px;
+    padding-bottom: 5px;
   }
 
   input {

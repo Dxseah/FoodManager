@@ -7,11 +7,11 @@
     <p>{{ orgMission }}</p>
     <h2>Our Team</h2>
     <ul>
-      <li v-for="(member, index) in team" :key="index">
+      <p v-for="(member, index) in team" :key="index">
         <h3>{{ member.name }}</h3>
         <p>{{ member.position }}</p>
         <p>{{ member.bio }}</p>
-      </li>
+      </p>
     </ul>
   </div>
 </template>

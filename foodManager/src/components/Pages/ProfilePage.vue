@@ -8,7 +8,7 @@
             <div class="alert alert-success" role="alert">
             You are logged in!
             <div class="my-4">
-                  <button  @click.prevent="signOut" class="btn btn-primary">Log Out</button>
+                  <button @click.prevent="signOut" class="btn btn-primary">Log Out</button>
             </div>
              </div>
           </div>
@@ -61,5 +61,7 @@ export default {
     height: 100vh;
     align-content: center;
     padding: 100px;
+    font-family: Avenir, Arial, Helvetica, sans-serif;
+    font-size: 20px;
   }
 </style>
