@@ -19,8 +19,11 @@ h1 {
 }
 
 a {
-  color:chocolate;
- text-decoration: none;
+    color:chocolate;
+    text-decoration: none;
+    font-size: 1.5em;
+    font-style: italic;
+    text-decoration-line: underline;
 }
 
 router-link {

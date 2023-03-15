@@ -9,6 +9,7 @@
     </div>
   </div>
 </template>
+
 <script>
 import LoginInput from '@/components/LoginInput.vue'
 import LoginSignUp from '@/components/LoginSignUp.vue'

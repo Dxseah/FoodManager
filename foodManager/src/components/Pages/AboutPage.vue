@@ -63,12 +63,15 @@ export default {
 }
 
 h1 {
+  font-family: Marker Felt, Avenir, Arial, Helvetica, sans-serif;
   font-size: 48px;
   margin-bottom: 20px;
   text-align: center;
+  font-weight: bold;
 }
 
 h2 {
+  font-family: Marker Felt, Avenir, Arial, Helvetica, sans-serif;
   font-size: 36px;
   margin-top: 40px;
   margin-bottom: 20px;
@@ -76,17 +79,17 @@ h2 {
 }
 
 h3 {
+  font-family: Avenir, Arial, Helvetica, sans-serif;
+  font-weight: bold;
   font-size: 24px;
   margin-top: 40px;
   margin-bottom: 20px;
 }
 
 p {
+  font-family: Avenir, Arial, Helvetica, sans-serif;
   font-size: 18px;
   margin-bottom: 20px;
-}
-
-ul {
-  text-align: center; 
+  text-align: center;
 }
 </style>

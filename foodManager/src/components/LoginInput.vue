@@ -40,20 +40,20 @@
       }
     }
     return { login, email, password }
-  }
-    // methods: {
-    //   async login() {
-    //     // login user
-    //       const store = useStore()
-
-    //       await store.dispatch('login', {
-    //       email: this.email,
-    //       password: this.password
-    //     })
-    //     router.push('/')
-    //     console.log('Successfully logged in!');
-    //   }
-    // }
+  }, 
+    methods: {
+      login() {
+        // Check if email and password are valid
+        if (this.email === 'user@example.com' && this.password === 'password') {
+          // Successful login
+          console.log('Successful login');
+        } else {
+          // Display error message
+          this.error = 'Wrong email or password! Please try again!';
+          alert(this.error)
+        }
+      }
+    }
   }
   </script>
 
@@ -74,6 +74,7 @@
     clear: left;
     width: 80px;
     text-align: right;
+    font-size: 15px;
   }
 
   input {

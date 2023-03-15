@@ -10,7 +10,7 @@
         </div>
       </div>
     </div>
-  </template>
+</template>
   
   <script>
   import ProgressBar from '../ProgressBar.vue'
