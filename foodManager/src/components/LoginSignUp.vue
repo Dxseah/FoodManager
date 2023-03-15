@@ -2,7 +2,7 @@
     <div class = "signup">
         <router-link to = "/donorsignup"><a> Sign up as Donor </a></router-link> <br>
         <router-link to = "/signup"><b>  Sign up as Beneficiary </b></router-link> <br>
-        <button id="forgetpassword" type="button"><router-link to = "/forgetpassword"><c> Forget Password? </c></router-link></button>
+        <button id="forgetpassword" type="button"><router-link to = "/forgetpassword"><p> Forget Password? </p></router-link></button>
     </div>
 </template>
 
