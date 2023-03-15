@@ -21,7 +21,7 @@
             <label for="password">Password:</label>
             <input type="password" placeholder="Enter Password" required v-model="password">
             <br><br>
-            <button>Donor Sign Up</button>
+            <button id="btn">Donor Sign Up</button>
         </form>
     </div>
 </template>
@@ -30,12 +30,16 @@
 import { ref } from 'vue'
 import { useStore } from 'vuex'
 import router from '@/components/Router/index.js'
+import { db } from '@/firebase'
+import {getDoc, doc, updateDoc, setDoc} from "firebase/firestore"
+
 
 export default {
   setup() {
     const email = ref('')
     const password = ref('')
     const name = ref('')
+    const userid = ref('')
     const store = useStore()
 
     const donorSignUp = async () => {
@@ -46,15 +50,41 @@ export default {
           name: name.value,
         })
         router.push('/profile')
+
+        /*await db.collection('donor').doc(userid.value).set({
+          userid: userid.value,
+          email: email.value,
+          password: password.value,
+          name: name.value,
+        }) */
+        const docRef = doc(db,"donor",userid.value);
+        await setDoc(docRef, {
+          userid: userid.value,
+          email: email.value,
+          password: password.value,
+          name: name.value,
+        }
+        )
+
+        console.log("Document written by ID: " + userid.value)
+        window.location.reload()
       }
       catch (err) {
         alert(err.message)
       }
     }
-    return {donorSignUp, email, password, name}
+    return {
+      donorSignUp,
+      email,
+      password,
+      name,
+      userid
+    }
   }
 }
+
 </script>
+
 
 <style scoped>
   .donorCont {

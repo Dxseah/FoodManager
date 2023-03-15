@@ -19,6 +19,9 @@
       <label for="userid">User ID:</label>
       <input type="userid" placeholder="Enter User ID" required v-model="userid">
       <br>
+      <label for="organisation">Organisation Name:</label>
+      <input type="organisation" placeholder="Enter Organisation Name" required v-model="organisation">
+      <br>
       <label for="password">Password:</label>
       <input type="password" placeholder="Enter Password" required v-model="password">
       <br>

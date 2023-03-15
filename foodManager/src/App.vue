@@ -69,7 +69,7 @@
   font-size: 20px;
 }
 #nav a.router-link-exact-active{
-  color:#20be77;
+  color:chocolate;
   font-weight: bold;
 }
 
