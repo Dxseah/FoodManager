@@ -33,7 +33,7 @@ export default {
       try {
         await sendPasswordResetEmail(auth, this.email);
         this.errorMessage = null;
-        alert('Password reset email sent!');
+        alert('Please check your email for password reset link!');
         router.push('/');
       } catch (error) {
         this.errorMessage = error.message;
@@ -56,6 +56,7 @@ export default {
     font-family: Avenir, Arial, Helvetica, sans-serif;
     font-weight: bold;
     font-size: 2em;
+    margin-bottom: 25px;
   }
 
   label {
@@ -63,6 +64,8 @@ export default {
     text-align: right;
     font-family: Avenir, Arial, Helvetica, sans-serif;
     font-weight: bold;
+    margin-bottom: 20px;
+    margin-right: 10px;
   }
 
   input {
