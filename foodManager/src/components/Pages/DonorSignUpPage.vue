@@ -40,6 +40,8 @@ export default {
     const password = ref('')
     const name = ref('')
     const userid = ref('')
+    const contact = ref('')
+
     const store = useStore()
 
     const donorSignUp = async () => {
@@ -51,18 +53,13 @@ export default {
         })
         router.push('/profile')
 
-        /*await db.collection('donor').doc(userid.value).set({
-          userid: userid.value,
-          email: email.value,
-          password: password.value,
-          name: name.value,
-        }) */
         const docRef = doc(db,"donor",userid.value);
         await setDoc(docRef, {
           userid: userid.value,
           email: email.value,
           password: password.value,
           name: name.value,
+          contact: contact.value,
         }
         )
 
@@ -78,7 +75,8 @@ export default {
       email,
       password,
       name,
-      userid
+      userid,
+      contact
     }
   }
 }

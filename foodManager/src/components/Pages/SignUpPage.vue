@@ -36,12 +36,18 @@
 import { ref } from 'vue'
 import { useStore } from 'vuex'
 import router from '@/components/Router/index.js'
+import { db } from '@/firebase'
+import {getDoc, doc, updateDoc, setDoc} from "firebase/firestore"
 
 export default {
   setup() {
     const email = ref('')
     const password = ref('')
     const name = ref('')
+    const userid = ref('')
+    const contact = ref('')
+    const organisation = ref('')
+
     const store = useStore()
 
     const signUp = async () => {
@@ -52,13 +58,35 @@ export default {
           name: name.value,
         })
         router.push('/profile')
+
+        const docRef = doc(db,"beneficiary",userid.value);
+        await setDoc(docRef, {
+          userid: userid.value,
+          email: email.value,
+          password: password.value,
+          name: name.value,
+          contact: contact.value,
+          organisation: organisation.value,
+        }
+        )
+
+        console.log("Document written by ID: " + userid.value)
+        window.location.reload()
       }
+      
       catch (err) {
         alert(err.message)
       }
     }
 
-    return {signUp, email, password, name}
+    return {signUp, 
+      email, 
+      password, 
+      name,
+      userid,
+      contact, 
+      organisation
+    }
   }
 }
 </script>
