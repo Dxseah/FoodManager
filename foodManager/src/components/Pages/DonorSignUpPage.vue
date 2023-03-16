@@ -57,7 +57,6 @@ export default {
         await setDoc(docRef, {
           userid: userid.value,
           email: email.value,
-          password: password.value,
           name: name.value,
           contact: contact.value,
         }
