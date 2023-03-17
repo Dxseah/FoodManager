@@ -40,10 +40,8 @@
     <router-link to = "/profile"> Profile </router-link>|
     <router-link to = "/about"> About Us </router-link>|
     <!-- isLoggedIn is buggy, sometimes displayName doesn't load after refreshing page -->
-    <h1 v-if=isLoggedIn id="displayName">Welcome, {{displayName}}!</h1>
+    <h1 v-if=isLoggedIn id="displayName">Welcome, {{auth.currentUser.displayName}}!</h1>
     <h1 v-else id="displayName">Welcome, user!</h1>
-    <!-- <router-link to = "/signup"> Beneficiary Sign Up </router-link>|
-    <router-link to = "/donorsignup"> Donor Sign Up </router-link>| -->
   </div>
   <router-view/>
 </nav>
