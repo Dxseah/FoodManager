@@ -1,7 +1,7 @@
 import { createRouter,createWebHistory } from 'vue-router'
 import LoginPage from '../Pages/LoginPage.vue'
 import AboutPage from '../Pages/AboutPage.vue'
-import SignUpPage from '../Pages/SignUpPage.vue'
+import BeneficiarySignUpPage from '../Pages/BeneficiarySignUpPage.vue'
 import ProfilePage from '../Pages/ProfilePage.vue'
 import DonorSignUpPage from '../Pages/DonorSignUpPage.vue'
 import ForgetPasswordPage from '../Pages/ForgetPasswordPage.vue'
@@ -20,9 +20,9 @@ const routes = [
     },
 
     {
-        path: '/signup',
-        name: 'SignUpPage',
-        component: SignUpPage
+        path: '/beneficiarysignup',
+        name: 'BeneficiarySignUpPage',
+        component: BeneficiarySignUpPage
     },
     {
         path: '/profile',
