@@ -1,76 +1,126 @@
 <template>
-    <div class='background'>
-      <div class="transbox">
-        <div class="content">
-            <h1 class="header"> DONOR FORM PAGE EDIT IN PROGRESS </h1>
-            <h3 class="food">{{  food }}</h3>
-            <!-- To Do: Pass in value to next 2 lines -->
-            <ProgressBar :percentComplete="40"/>
-            <h3 class="percent"> 40% Completed </h3>
-        </div>
+  <div class="background">
+    <div class="transbox">
+      <div class="content">
+        <h1 class="header">Donor Form</h1>
+        <form class="form">
+          <div class="form-group">
+            <label for="rice">Rice</label>
+            <input type="number" id="rice" v-model.number="riceQuantity" min="0" />
+          </div>
+          <div class="form-group">
+            <label for="canned-food">Canned Food</label>
+            <input type="number" id="canned-food" v-model.number="cannedFoodQuantity" min="0" />
+          </div>
+          <div class="form-group">
+            <label for="instant-noodles">Instant Noodles</label>
+            <input type="number" id="instant-noodles" v-model.number="instantNoodlesQuantity" min="0" />
+          </div>
+          <div class="form-group">
+            <label for="image-upload">Upload Image</label>
+            <input type="file" id="image-upload" @change="handleImageUpload" />
+          </div>
+          <button class="submit-button" @click.prevent="submitForm">Submit Donation</button>
+        </form>
       </div>
     </div>
+  </div>
 </template>
-  
-  <script>
-  import ProgressBar from '../ProgressBar.vue'
-  
-  export default { 
-    name: "DonorFormPage",
-    components:{
-            ProgressBar,
-        },
 
-    data() {
-        return {
-            food: "Rice",
-        };
-    }
-  }
-  </script>
-  
-  <style scoped>
-    div.background {
-      background: url(https://www.efsa.europa.eu/sites/default/files/styles/share_opengraph/public/news/food-donations.jpg?h=82f92a78&itok=3k3shqTm);
-      border: 2px solid black;
-      background-size: cover;
-      -webkit-background-size: cover;
-      -moz-background-size: cover;
-      -o-background-size: cover;
-      background-repeat: no-repeat;
-      height: 100vh;
-      width: 100vw;
-    }
-  
-    div.transbox {
-      margin: 30px;
-      background-color: #ffffff;
-      border: 1px solid black;
-      opacity: 0.8;
-    }
-  
-    div.content {
-    margin: 5%;
-    font-weight: bold;
-    color: #000000;
-  }
+<script>
+export default {
+  name: "DonorFormPage",
+  data() {
+    return {
+      riceQuantity: 0,
+      cannedFoodQuantity: 0,
+      instantNoodlesQuantity: 0,
+      imageFile: null,
+    };
+  },
+  methods: {
+    submitForm() {
+      // Implement submitForm method here to submit the form data and uploaded image
+      console.log("Form submitted with data:", {
+        rice: this.riceQuantity,
+        cannedFood: this.cannedFoodQuantity,
+        instantNoodles: this.instantNoodlesQuantity,
+        image: this.imageFile,
+      });
+    },
+    handleImageUpload(event) {
+      this.imageFile = event.target.files[0];
+    },
+  },
+};
+</script>
 
-  .header {
-      font-family: Marker Felt, Avenir, Arial, Helvetica, sans-serif;
-      font-weight: bold;
-      font-size: 3em;
-  }
-    .food {
-        text-align: left;
-        margin-bottom: 8px;
-        font-weight: bolder;
-        font-size: 30px;
-    }
+<style scoped>
+.background {
+  background: url(https://images.unsplash.com/photo-1588772351739-cd328260e2b2);
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5f5f5; 
+}
 
-    .percent {
-        text-align: right;
-        margin-top: 8px;
-        font-weight: bolder;
-        font-size: 30px;
-    }
-  </style>
+.transbox {
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.header {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 400px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+label {
+  font-weight: bold;
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+input[type="number"] {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 1.2em;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+input[type="file"] {
+  margin-top: 5px;
+}
+
+.submit-button {
+  background-color: silver;
+}
+
+</style>

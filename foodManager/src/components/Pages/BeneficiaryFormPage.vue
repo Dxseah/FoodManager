@@ -16,11 +16,7 @@
             <label for="instant-noodles">Instant Noodles</label>
             <input type="number" id="instant-noodles" v-model.number="instantNoodlesQuantity" min="0" />
           </div>
-          <div class="form-group">
-            <label for="image-upload">Upload Image</label>
-            <input type="file" id="image-upload" @change="handleImageUpload" />
-          </div>
-          <button class="submit-button" @click.prevent="submitForm">Submit</button>
+          <button class="submit-button" @click.prevent="submitForm">Submit Request</button>
         </form>
       </div>
     </div>
@@ -45,11 +41,7 @@ export default {
         rice: this.riceQuantity,
         cannedFood: this.cannedFoodQuantity,
         instantNoodles: this.instantNoodlesQuantity,
-        image: this.imageFile,
       });
-    },
-    handleImageUpload(event) {
-      this.imageFile = event.target.files[0];
     },
   },
 };
@@ -115,9 +107,6 @@ input[type="number"] {
   width: 100%;
 }
 
-input[type="file"] {
-  margin-top: 5px;
-}
 
 .submit-button {
   background-color: silver;
