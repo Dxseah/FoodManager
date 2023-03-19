@@ -8,17 +8,6 @@
       <label for="password"> Password: </label>
       <input type="password" id="password"  name="password" required v-model="password">
       <br><br>
-      <!-- Using Vuetify
-      <v-responsive class="mx-auto" max-width="344">
-        <v-text-field
-        label="Email"
-        type="input"
-        hint="Enter your email to access this website"></v-text-field>
-        <v-text-field
-        label="Password"
-        type="input"
-        hint="Enter your password to access this website"></v-text-field>
-      </v-responsive> -->
       <button id="btn" type="submit">Login</button>
     </form>
   </div>

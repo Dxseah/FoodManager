@@ -52,6 +52,13 @@ export default {
 
     const signUp = async () => {
       try {
+
+        const contactNumber = parseInt(contact.value)
+        if (isNaN(contactNumber) || contact.value.length != 8) {
+          alert('Please enter a valid 8 digit Singapore contact number.')
+          return
+        }
+
         await store.dispatch('signup', {
           email: email.value,
           password: password.value,
