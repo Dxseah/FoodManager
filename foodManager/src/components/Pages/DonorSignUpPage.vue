@@ -53,6 +53,12 @@ export default {
           return
         }
 
+            // Validate the password
+            if (!/^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]{6,}$/.test(password.value)) {
+          alert('Please enter a password that is alphanumeric and at least 6 characters long.')
+        return
+    }
+
         await store.dispatch('signup', {
           email: email.value,
           password: password.value,
