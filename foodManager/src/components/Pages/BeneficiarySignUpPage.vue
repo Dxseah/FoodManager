@@ -59,7 +59,7 @@ export default {
         })
         router.push('/profile')
 
-        const docRef = doc(db,"beneficiary",userid.value);
+        const docRef = doc(db,"User",userid.value);
         await setDoc(docRef, {
           userid: userid.value,
           email: email.value,
