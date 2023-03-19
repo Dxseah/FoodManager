@@ -7,6 +7,8 @@ import DonorSignUpPage from '../Pages/DonorSignUpPage.vue'
 import ForgetPasswordPage from '../Pages/ForgetPasswordPage.vue'
 import DonorHomePage from '../Pages/DonorHomePage.vue'
 import BeneficiaryHomePage from '../Pages/BeneficiaryHomePage.vue'
+import BeneficiaryFormPage from '../Pages/BeneficiaryFormPage.vue'
+import DonorFormPage from '../Pages/DonorFormPage.vue'
 
 const routes = [
     {
@@ -46,9 +48,19 @@ const routes = [
         component: DonorHomePage
     },
     {
-    path: '/beneficiaryhome',
-    name: 'BeneficiaryHomePage',
-    component: BeneficiaryHomePage
+        path: '/beneficiaryhome',
+        name: 'BeneficiaryHomePage',
+        component: BeneficiaryHomePage
+    },
+    {
+        path: '/beneficiaryform',
+        name: 'BeneficiaryFormPage',
+        component: BeneficiaryFormPage
+    },
+    {
+        path: '/donorform',
+        name: 'DonorFormPage',
+        component: DonorFormPage
     }
 ]
 

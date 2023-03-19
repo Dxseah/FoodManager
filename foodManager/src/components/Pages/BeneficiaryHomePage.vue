@@ -2,6 +2,10 @@
     <div class='background'>
       <div class="transbox">
         <div class="content">
+          <div class="button-container">
+              <router-link to="/beneficiaryform" class="button">Go to Beneficiary Form</router-link>
+            </div>
+            <br>
             <h1 class="header"> Track Food Item Progress </h1>
             <h3 class="food">{{  food }}</h3>
             <!-- To Do: Pass in value to next 2 lines -->
@@ -73,4 +77,35 @@
         font-weight: bolder;
         font-size: 30px;
     }
+    .button-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px; /* Add some margin to separate the button from the progress bar */
+}
+
+.button {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #00bfff;
+  color: #fff;
+  font-size: 24px; /* Increase the font size */
+  font-weight: bold;
+  text-decoration: none;
+  border: none; /* Remove the border */
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Add hover styles */
+.button:hover {
+  background-color: #0080ff;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+}
+
+/* Add active styles */
+.button:active {
+  transform: translateY(2px);
+  box-shadow: none;
+}
   </style>
