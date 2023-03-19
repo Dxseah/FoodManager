@@ -25,6 +25,9 @@
       <label for="password">Password:</label>
       <input type="password" placeholder="Enter Password" required v-model="password">
       <br>
+      <label for="confirmPassword">Confirm Password:</label>
+      <input type="password" placeholder="Confirm Password" required v-model="confirmPassword">
+      <br><br>
       <button id="btn">Beneficiary Sign Up</button>
     </form>
   </div>
@@ -43,6 +46,7 @@ export default {
   setup() {
     const email = ref('')
     const password = ref('')
+    const confirmPassword = ref('')
     const name = ref('')
     const userid = ref('')
     const contact = ref('')
@@ -64,8 +68,10 @@ export default {
           alert('Please enter a password that is alphanumeric and at least 6 characters long.')
           return
     }
-
-
+        if (password.value !== confirmPassword.value) {
+            alert('Please make sure your password and confirmation match.')
+          return
+        }
 
         await store.dispatch('signup', {
           email: email.value,
@@ -97,6 +103,7 @@ export default {
     return {signUp, 
       email, 
       password, 
+      confirmPassword,
       name,
       userid,
       contact, 
