@@ -66,6 +66,7 @@ export default {
           name: name.value,
           contact: contact.value,
           organisation: organisation.value,
+          accountType: 1, //1 for beneficiary, 2 for donor
         }
         )
 

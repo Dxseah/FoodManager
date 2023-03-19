@@ -59,6 +59,8 @@ export default {
           email: email.value,
           name: name.value,
           contact: contact.value,
+          organisation: '',
+          accountType: 2, //1 for beneficiary, 2 for donor
         }
         )
 
