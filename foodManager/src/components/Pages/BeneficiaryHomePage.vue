@@ -16,7 +16,7 @@
   import ProgressBar from '../ProgressBar.vue'
   
   export default { 
-    name: "HomePage",
+    name: "BeneficiaryHomePage",
     components:{
             ProgressBar,
         },
