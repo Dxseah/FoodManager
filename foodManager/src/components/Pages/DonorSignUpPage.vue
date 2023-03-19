@@ -51,7 +51,7 @@ export default {
           password: password.value,
           name: name.value,
         })
-        router.push('/profile')
+        router.push('/donorhome')
 
         const docRef = doc(db,"User",userid.value);
         await setDoc(docRef, {
