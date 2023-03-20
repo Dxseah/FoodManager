@@ -35,7 +35,7 @@
     <router-link to = "/profile"> Profile </router-link>|
     <router-link to = "/about"> About Us </router-link>|
     <!-- isLoggedIn is buggy, sometimes displayName doesn't load after refreshing page -->
-    <h1 id="displayName">Welcome, {{user.data}}!</h1>
+    <h1 id="displayName">Welcome, {{user.data.displayName}}!</h1>
   </div>
   <div v-else id="nav">
     |<router-link to = "/"> Login </router-link>|
