@@ -1,9 +1,8 @@
 <template>
   <div class="container">
 
-          <div v-if="user.loggedIn">
-
-            <div class="card-header">Welcome, {{user.data.displayName}}!</div>
+        <div v-if="user.loggedIn">
+          
             <div class="card-body">
               <div class="alert alert-success" role="alert">
                 You are logged in!
@@ -15,28 +14,33 @@
 
             <table id="currTable">
                 <tr>
-                    <th>First Name</th>
-                    <td> sample name </td>
-                </tr>
-                <tr>
-                    <th>Last Name</th>
-                    <td> sample last name </td>
-                </tr>
-                <tr>
-                    <th>Email</th>
-                    <td> sample email </td>
+                    <th>Name</th>
+                    <td> {{user.data.displayName}} </td>
                 </tr>
                 <tr>
                     <th>User ID</th>
-                    <td> sample user id </td>
+                    <td> {{user.data.userID}} </td>
                 </tr>
+                <tr>
+                    <th>Email</th>
+                    <td> {{user.data.email}} </td>
+                </tr>
+                <tr>
+                    <th>Contact</th>
+                    <td> {{user.data.contact}} </td>   
+                </tr>
+                <tr>
+                    <th>Account Type</th>
+                    <td v-if="user.data.account==2"> Donor </td>
+                    <td v-else-if="user.data.account==1"> Beneficiary </td>
+                </tr>
+
             </table>
-
-          </div>
-
-            <div v-else class="alert alert-danger" role="alert">
-              You are not logged in! 
-            </div>
+          
+        </div>
+        <div v-else class="alert alert-danger" role="alert">
+          You are not logged in! 
+        </div>
   </div>
 </template>
 
@@ -45,8 +49,7 @@ import { useStore } from 'vuex';
 import { useRouter } from 'vue-router';
 import { ref , computed } from 'vue';
 import { auth } from '@/firebase.js'
-import { db } from '@/firebase'
-import {getDoc, doc } from "firebase/firestore"
+
 
 
 export default {
@@ -56,12 +59,11 @@ export default {
 
     const store = useStore()
     const router = useRouter()
-
     auth.onAuthStateChanged(user => {
       store.dispatch("fetchUser", user);
     });
-
     const user = computed(() => {
+      store.dispatch("fetchUser", auth.currentUser)
       return store.getters.user;
     });
 
@@ -71,22 +73,15 @@ export default {
     }
 
     return { user, signOut }
- }, 
-  
+ },
   data() {
     return {
-      firstName: ' ',
-      lastName: ' ', 
-      email: ' ', 
-      userID: ' '
-    }
-  }, 
-
-  methods: {
-    async getFirstName() {
-
-      const docView = await getDoc(doc(db, 'User', user))
-    }    
+      displayName: ''
+    };
+  },
+  beforeCreate() {
+    console.log('test')
+    
   }
 
 };

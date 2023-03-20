@@ -9,7 +9,8 @@ import {
     signOut,
     updateProfile
 } from 'firebase/auth'
-
+import { db } from './firebase.js'
+import {getDoc, doc } from "firebase/firestore"
 const store = createStore({
     state: {
         //The user state will initially be null. After login, this state will be updated
@@ -72,10 +73,22 @@ const store = createStore({
       async fetchUser(context ,user) {
         context.commit("SET_LOGGED_IN", user !== null);
         if (user) {
-          context.commit("SET_USER", {
-            displayName: user.displayName,
-            email: user.email
-          });
+            const docSnap = await getDoc(doc(db, 'User', user.displayName))
+            if (docSnap.exists()) {
+              console.log("Document data:", docSnap.data());
+              context.commit("SET_USER", {
+                displayName: user.displayName,
+                email: user.email,
+                contact: docSnap.data().contact,
+                account: docSnap.data().accountType,
+                userID: docSnap.data().userid
+
+              });
+            } else {
+              // doc.data() will be undefined in this case
+              console.log("No such document!");
+              context.commit("SET_USER", null);
+            }
         } else {
           context.commit("SET_USER", null);
         }

@@ -31,8 +31,10 @@
         await store.dispatch('login', {
           email: email.value,
           password: password.value
+          
         })
-        router.push('/profile')
+        router.push('/about')
+        
       }
       catch (err) {
         alert(err.message)
