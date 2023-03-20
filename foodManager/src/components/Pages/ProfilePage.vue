@@ -41,10 +41,12 @@
 </template>
 
 <script>
-import { useStore} from "vuex";
-import { useRouter } from "vue-router";
-import {computed} from "vue";
+import { useStore } from 'vuex';
+import { useRouter } from 'vue-router';
+import { ref , computed } from 'vue';
 import { auth } from '@/firebase.js'
+import { db } from '@/firebase'
+import {getDoc, doc } from "firebase/firestore"
 
 
 export default {
@@ -52,24 +54,40 @@ export default {
 
   setup() {
 
-  const store = useStore()
-  const router = useRouter()
+    const store = useStore()
+    const router = useRouter()
 
-  auth.onAuthStateChanged(user => {
-    store.dispatch("fetchUser", user);
-  });
+    auth.onAuthStateChanged(user => {
+      store.dispatch("fetchUser", user);
+    });
 
-  const user = computed(() => {
-    return store.getters.user;
-  });
+    const user = computed(() => {
+      return store.getters.user;
+    });
 
-  const signOut = async () => {
-        await store.dispatch('logOut')
-        router.push('/')
+    const signOut = async () => {
+          await store.dispatch('logOut')
+          router.push('/')
+    }
+
+    return { user, signOut }
+ }, 
+  
+  data() {
+    return {
+      firstName: ' ',
+      lastName: ' ', 
+      email: ' ', 
+      userID: ' '
+    }
+  }, 
+
+  methods: {
+    async getFirstName() {
+
+      const docView = await getDoc(doc(db, 'User', user))
+    }    
   }
-
-    return {user,signOut}
- }
 
 };
 </script>
