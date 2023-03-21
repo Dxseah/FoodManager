@@ -1,10 +1,29 @@
-
+<template>
+<nav>
+  <div v-if="user.loggedIn" id="nav">
+    <!-- <p> {{user.data}}</p> -->
+    <router-link to = "/donorhome"> Donor Home </router-link>|
+    <router-link to = "/beneficiaryhome"> Beneficiary Home </router-link>|
+    <router-link to = "/profile"> Profile </router-link>|
+    <router-link to = "/about"> About Us </router-link>|
+    <!-- isLoggedIn is buggy, sometimes displayName doesn't load after refreshing page -->
+    <h1 id="displayName">Welcome, {{user.data.displayName}}!</h1>
+  </div>
+  <div v-else id="nav">
+    |<router-link to = "/"> Login </router-link>|
+    <router-link to = "/about"> About Us </router-link>|
+    <h1 id="displayName">Welcome, user!</h1>
+  </div>
+  <router-view :key="$route.fullPath"/> 
+</nav>
+</template>
 
 <script>
   import router from '@/components/Router/index.js'
-  import {useStore} from "vuex"
+  import { useStore } from "vuex"
   import { auth } from './firebase.js'
-  import {computed} from "vue";
+  import { computed } from "vue";
+
   export default {
   name: 'App',
   setup() {
@@ -25,26 +44,6 @@
  },
 }
 </script>
-
-<template>
-<nav>
-  <div v-if="user.loggedIn" id="nav">
-    <!-- <p> {{user.data}}</p> -->
-    <router-link to = "/donorhome"> Donor Home </router-link>|
-    <router-link to = "/beneficiaryhome"> Beneficiary Home </router-link>|
-    <router-link to = "/profile"> Profile </router-link>|
-    <router-link to = "/about"> About Us </router-link>|
-    <!-- isLoggedIn is buggy, sometimes displayName doesn't load after refreshing page -->
-    <h1 id="displayName">Welcome, {{user.data}}!</h1>
-  </div>
-  <div v-else id="nav">
-    |<router-link to = "/"> Login </router-link>|
-    <router-link to = "/about"> About Us </router-link>|
-    <h1 id="displayName">Welcome, user!</h1>
-  </div>
-  <router-view :key="$route.fullPath"/> 
-</nav>
-</template>
 
 <style>
 #app {
