@@ -2,7 +2,8 @@
   <div class='background'>
     <div class="transbox">
       <div class="content">
-      <LoginInput/> <br>
+      <!-- <LoginInput/> <br> -->
+      <div id ="firebaseui-auth-container"></div>
       <LoginSignUp/> <br><br>
       <LoginFindOutMore/>
       </div>
@@ -11,15 +12,32 @@
 </template>
 
 <script>
-import LoginInput from '@/components/LoginInput.vue'
 import LoginSignUp from '@/components/LoginSignUp.vue'
 import LoginFindOutMore from '@/components/LoginFindOutMore.vue'
+import firebase from '@/uifire.js'
+import 'firebase/compat/auth';
+import * as firebaseui from 'firebaseui';
+import 'firebaseui/dist/firebaseui.css'
 
 export default { 
   name: "LoginPage",
   components:{
-          LoginInput,LoginSignUp,LoginFindOutMore
+          LoginSignUp,LoginFindOutMore
       },
+  mounted() {
+    var ui = firebaseui.auth.AuthUI.getInstance();
+    if (!ui) {
+      ui =new firebaseui.auth.AuthUI(firebase.auth());
+    }
+    var uiConfig = {
+      signInSuccessUrl: "/about",
+      signInOptions:[
+        firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+        firebase.auth.EmailAuthProvider.PROVIDER_ID
+      ]
+    };
+    ui.start("#firebaseui-auth-container",uiConfig);
+  }
 }
 </script>
 

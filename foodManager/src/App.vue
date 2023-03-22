@@ -21,8 +21,9 @@
 <script>
   import router from '@/components/Router/index.js'
   import { useStore } from "vuex"
-  import { auth } from './firebase.js'
+  import firebaseApp, { auth } from './firebase.js'
   import { computed } from "vue";
+import { onAuthStateChanged } from 'firebase/auth';
 
   export default {
   name: 'App',
@@ -43,6 +44,18 @@
     return {user,signOut}
  },
 }
+
+// // copy to all the pages
+// import firebaseApp from '@/firebase.js'
+// import (getAuth) from "firebase/auth";
+// mounted() {
+//   const auth = getAuth();
+//   onAuthStateChanged(auth,(user)=>{
+//     if (user) {
+//       this.user =user;
+//     }
+//   })
+// }
 </script>
 
 <style>
