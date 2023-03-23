@@ -27,7 +27,7 @@ export default {
   mounted() {
     var ui = firebaseui.auth.AuthUI.getInstance();
     if (!ui) {
-      ui =new firebaseui.auth.AuthUI(firebase.auth());
+      ui = new firebaseui.auth.AuthUI(firebase.auth());
     }
     var uiConfig = {
       signInSuccessUrl: "/about",
@@ -36,7 +36,7 @@ export default {
         firebase.auth.EmailAuthProvider.PROVIDER_ID
       ]
     };
-    ui.start("#firebaseui-auth-container",uiConfig);
+    ui.start("#firebaseui-auth-container", uiConfig);
   }
 }
 </script>

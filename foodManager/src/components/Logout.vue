@@ -1,8 +1,9 @@
 <template>
     <button id='btn' @click = "signOut()" v-if="user"> Logout </button>
 </template>
+
 <script>
-import {getAuth,onAuthStateChanged,signOut} from "firebase/auth";
+import { getAuth,onAuthStateChanged,signOut } from "firebase/auth";
 
 export default {
     name: "Logout",
@@ -30,3 +31,16 @@ export default {
 }
 
 </script>
+
+<style scoped>
+#btn {
+    text-align: center;
+    margin: auto;
+} 
+
+#btn:hover {
+    color: rgb(243,236,236);
+    background-color: rgb(255,94,0);
+    box-shadow: 3px 3px grey;
+}
+</style>

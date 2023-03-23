@@ -1,14 +1,10 @@
 <template>
-  <div class="container">
-
-    <div v-if="user">
+  <div class="container1" v-if="user">
+    <div>
       <div class="card-body">
         <div class="alert alert-success" role="alert">
           You are logged in!
-            <div class="my-4">
-                  <!-- <button @click.prevent="signOut" class="btn btn-primary">Log Out</button> -->
-              <button id="btn" @click="signOut()" v-if="user"> Log Out </button>
-            </div>
+          <!-- <Logout/> -->
         </div>
       </div>
 
@@ -37,13 +33,18 @@
 
       </table>
     </div>
-    <div v-else class="alert alert-danger" role="alert">
-      You are not logged in!
+    <button id="btn" @click="signOut()" v-if="user"> Logout </button> 
+  </div>
+
+  <div v-else class = "container2"> 
+    <div class="alert alert-danger" role="alert">
+        You are not logged in!
     </div>
   </div>
 </template>
 
 <script>
+import Logout from '@/components/Logout.vue';
 import firebaseApp from '@/firebase.js';
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 export default {
@@ -68,7 +69,7 @@ export default {
       const auth = getAuth(); 
       const user = auth.currentUser; 
       signOut(auth, user);
-      this$router.push({name:'Login'})
+      this$router.push({name:'Login'}); 
     }
   }
 }
@@ -116,7 +117,16 @@ export default {
 </script>
 
 <style scoped>
-.container {
+.container1 {
+    background-color: aliceblue;
+    width: 100vw;
+    height: 100vh;
+    align-content: center;
+    padding: 100px;
+    font-family: Avenir, Arial, Helvetica, sans-serif;
+    font-size: 20px;
+  }
+.container2 {
     background-color: aliceblue;
     width: 100vw;
     height: 100vh;
@@ -131,6 +141,17 @@ export default {
   width: 100%;
   border-collapse: collapse;
   border: 1px solid;
+}
+
+#btn {
+    text-align: center;
+    margin: auto;
+} 
+
+#btn:hover {
+    color: rgb(243,236,236);
+    background-color: rgb(255,94,0);
+    box-shadow: 3px 3px grey;
 }
 
 tr, td {
