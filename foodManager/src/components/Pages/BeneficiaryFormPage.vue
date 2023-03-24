@@ -3,7 +3,7 @@
     <div class="transbox">
       <div class="content">
         <h1 class="header">Beneficiary Form</h1>
-        <form class="form">
+        <form class="form"  @submit.prevent="submitForm">
           <div class="form-group">
             <label for="rice">Rice</label>
             <input type="number" id="rice" v-model.number="riceQuantity" min="0" />
@@ -16,7 +16,7 @@
             <label for="instant-noodles">Instant Noodles</label>
             <input type="number" id="instant-noodles" v-model.number="instantNoodlesQuantity" min="0" />
           </div>
-          <button class="submit-button" @click.prevent="submitForm">Submit Request</button>
+          <button class="submit-button">Submit Request</button>
         </form>
       </div>
     </div>
@@ -24,6 +24,12 @@
 </template>
 
 <script>
+import { ref } from 'vue'
+import { useStore } from 'vuex'
+import router from '@/components/Router/index.js'
+import { db } from '@/firebase'
+import { getDoc, doc, updateDoc, setDoc, collection } from "firebase/firestore"
+
 export default {
   name: "BeneficiaryFormPage",
   data() {
@@ -31,20 +37,37 @@ export default {
       riceQuantity: 0,
       cannedFoodQuantity: 0,
       instantNoodlesQuantity: 0,
-      imageFile: null,
     };
   },
+
   methods: {
-    submitForm() {
-      // Implement submitForm method here to submit the form data and uploaded image
-      console.log("Form submitted with data:", {
+    async submitForm() {
+      try {
+      // Save data to Firestore
+      // const userId = store.getters['auth/user'].id;
+      const foodItemRef = collection(db, 'RequestedFood');
+      const docRef = doc(foodItemRef);
+      const docSnap = await getDoc(docRef);
+      const requestedData = {
         rice: this.riceQuantity,
         cannedFood: this.cannedFoodQuantity,
         instantNoodles: this.instantNoodlesQuantity,
-      });
-    },
-  },
-};
+        // timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+        // userId: userId
+      };
+      if (docSnap.exists()) {
+        await setDoc(docRef, requestedData, { merge: true });
+      } else {
+        await setDoc(docRef, requestedData);
+      }
+      console.log("Form submitted")
+    }
+    catch (err) {
+        alert(err.message)
+    }
+  }
+}
+}
 </script>
 
 <style scoped>

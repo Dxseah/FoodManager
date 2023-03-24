@@ -3,7 +3,7 @@
     <div class="transbox">
       <div class="content">
         <h1 class="header">Donor Form</h1>
-        <form class="form">
+        <form class="form"  @submit.prevent="submitForm">
           <div class="form-group">
             <label for="rice">Rice</label>
             <input type="number" id="rice" v-model.number="riceQuantity" min="0" />
@@ -20,7 +20,7 @@
             <label for="image-upload">Upload Image</label>
             <input type="file" id="image-upload" @change="handleImageUpload" />
           </div>
-          <button class="submit-button" @click.prevent="submitForm">Submit Donation</button>
+          <button class="submit-button">Submit Donation</button>
         </form>
       </div>
     </div>
@@ -28,6 +28,12 @@
 </template>
 
 <script>
+import { ref } from 'vue'
+import { useStore } from 'vuex'
+import router from '@/components/Router/index.js'
+import { db } from '@/firebase'
+import { getDoc, doc, updateDoc, setDoc, collection } from "firebase/firestore"
+
 export default {
   name: "DonorFormPage",
   data() {
@@ -36,23 +42,42 @@ export default {
       cannedFoodQuantity: 0,
       instantNoodlesQuantity: 0,
       imageFile: null,
+      user: null
     };
   },
+
   methods: {
-    submitForm() {
-      // Implement submitForm method here to submit the form data and uploaded image
-      console.log("Form submitted with data:", {
+    async submitForm() {
+      try {
+      // Save data to Firestore
+      // const userId = store.getters['auth/user'].id;
+      const foodItemRef = collection(db, 'DonatedFood');
+      const docRef = doc(foodItemRef);
+      const docSnap = await getDoc(docRef);
+      const donationData = {
         rice: this.riceQuantity,
         cannedFood: this.cannedFoodQuantity,
         instantNoodles: this.instantNoodlesQuantity,
-        image: this.imageFile,
-      });
-    },
-    handleImageUpload(event) {
-      this.imageFile = event.target.files[0];
-    },
-  },
-};
+        // timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+        // userId: userId
+      };
+      if (docSnap.exists()) {
+        await setDoc(docRef, donationData, { merge: true });
+      } else {
+        await setDoc(docRef, donationData);
+      }
+      console.log("Form submitted")
+    }
+
+    // handleImageUpload(event) {
+    //     this.imageFile = event.target.files[0];
+    // } 
+    catch (err) {
+        alert(err.message)
+    }
+  }
+}
+}
 </script>
 
 <style scoped>
