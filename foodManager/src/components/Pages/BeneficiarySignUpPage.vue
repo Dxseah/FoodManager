@@ -69,7 +69,7 @@ export default {
           return
     }
         if (password.value !== confirmPassword.value) {
-            alert('Please make sure your password and confirmation match.')
+            alert('Please make sure your passwords match.')
           return
         }
 
@@ -87,7 +87,7 @@ export default {
           name: name.value,
           contact: contact.value,
           organisation: organisation.value,
-          accountType: 1, //1 for beneficiary, 2 for donor
+          accountType: 1, // 1 for beneficiary, 2 for donor
         }
         )
 

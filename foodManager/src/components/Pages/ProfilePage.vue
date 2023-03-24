@@ -38,7 +38,7 @@
 
   <div v-else class = "container2"> 
     <div class="alert alert-danger" role="alert">
-        You are not logged in!
+        You are logged out!
     </div>
   </div>
 </template>
@@ -47,6 +47,8 @@
 import Logout from '@/components/Logout.vue';
 import firebaseApp from '@/firebase.js';
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import router from '@/components/Router/index.js'
+
 export default {
   name: "ProfilePage", 
   data() {
@@ -69,7 +71,9 @@ export default {
       const auth = getAuth(); 
       const user = auth.currentUser; 
       signOut(auth, user);
-      this$router.push({name:'Login'}); 
+      // this$router.push({name:'Login'});   
+      router.push('/');
+      window.location.reload();
     }
   }
 }

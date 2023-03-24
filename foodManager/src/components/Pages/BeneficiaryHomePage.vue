@@ -7,7 +7,7 @@
             </div>
             <br>
             <h1 class="header"> Track Food Item Progress </h1>
-            <h3 class="food">{{  food }}</h3>
+            <h3 class="food">{{ food }}</h3>
             <!-- To Do: Pass in value to next 2 lines -->
             <ProgressBar :percentComplete="40"/>
             <h3 class="percent"> 40% Completed </h3>
