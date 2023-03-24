@@ -29,6 +29,7 @@ import { useStore } from 'vuex'
 import router from '@/components/Router/index.js'
 import { db } from '@/firebase'
 import { getDoc, doc, updateDoc, setDoc, collection } from "firebase/firestore"
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 export default {
   name: "BeneficiaryFormPage",
@@ -40,9 +41,20 @@ export default {
     };
   },
 
+  mounted() {
+    const auth = getAuth();
+    onAuthStateChanged(auth,(user)=>{
+      if (user) {
+        this.user = user;
+      }
+    })
+  }, 
+
   methods: {
     async submitForm() {
       try {
+      const auth = getAuth(); 
+      const user = auth.currentUser;
       // Save data to Firestore
       // const userId = store.getters['auth/user'].id;
       const foodItemRef = collection(db, 'RequestedFood');
@@ -53,7 +65,7 @@ export default {
         cannedFood: this.cannedFoodQuantity,
         instantNoodles: this.instantNoodlesQuantity,
         // timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-        // userId: userId
+        userEmail: user.email
       };
       if (docSnap.exists()) {
         await setDoc(docRef, requestedData, { merge: true });
