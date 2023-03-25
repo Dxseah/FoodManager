@@ -106,11 +106,16 @@ export default {
 .background {
   background: url(https://images.unsplash.com/photo-1588772351739-cd328260e2b2);
   background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-repeat: no-repeat;
   height: 100vh;
+  width: 100vw;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #f5f5f5; 
+  background-color: aliceblue;
 }
 
 .transbox {
