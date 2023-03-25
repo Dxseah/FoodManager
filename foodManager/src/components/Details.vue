@@ -7,9 +7,6 @@
       <label for="type">Account Type:</label>
       <input type="type" placeholder="Enter Donor/Beneficiary" required v-model="type">
       <br>
-      <label for="name">Name:</label>
-      <input type="name" placeholder="Enter Name" required v-model="name">
-      <br>
       <label for="contact">Contact Number:</label>
       <input type="contact" placeholder="Enter Contact Number" required v-model="contact">
       <br>
@@ -30,7 +27,6 @@ export default {
   data() {
     return {
       user: false,
-      name: "",
       type: "",
       contact: ""
     }
@@ -52,12 +48,12 @@ export default {
           const docRef = doc(db, "User", this.user.displayName);
           const docSnap = await setDoc(docRef,
           {
-            name: this.name,
+            name: this.user.displayName,
             type: this.type,
             contact: this.contact,
             email: this.user.email
           });
-          router.push("/profile")
+          window.location.reload()
     }
   }
 }
