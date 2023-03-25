@@ -28,9 +28,9 @@
 </template>
 
 <script>
-import { ref } from 'vue'
-import { useStore } from 'vuex'
-import router from '@/components/Router/index.js'
+// import { ref } from 'vue'
+// import { useStore } from 'vuex'
+// import router from '@/components/Router/index.js'
 import { db } from '@/firebase'
 import { getDoc, doc, updateDoc, setDoc, collection } from "firebase/firestore"
 import { getAuth, onAuthStateChanged } from "firebase/auth";
