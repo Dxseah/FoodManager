@@ -25,7 +25,8 @@ export default {
             const auth = getAuth();
             const user = auth.currentUser;
             signOut(auth,user)
-            this.$router.push({name:'Login'})
+            router.push('/');
+            window.location.reload();
         }
     }
 }
