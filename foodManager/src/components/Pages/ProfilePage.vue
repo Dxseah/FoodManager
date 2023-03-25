@@ -35,7 +35,8 @@
     </div>
     <br>
     <button id="btn" @click="update()">Update Profile Details </button><br>
-    <button id="btn" @click="signOut()" v-if="user"> Logout </button> 
+    <!-- <button id="btn" @click="signOut()" v-if="user"> Logout </button>  -->
+    <Logout/>
   </div>
 
   <div v-else class = "container2"> 
@@ -53,6 +54,10 @@ import router from '@/components/Router/index.js'
 
 export default {
   name: "ProfilePage", 
+  components: {
+    Logout
+  }, 
+
   data() {
     return {
       user: false,
