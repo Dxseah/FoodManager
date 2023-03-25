@@ -1,5 +1,6 @@
 <template>
   <h1>FoodBank Repository</h1><br>
+  <div idd="firebaseui-auth-container"></div>
   <div class="app">
     <form @submit.prevent='login'>
       <label for="email"> Email: </label>
@@ -42,7 +43,8 @@
       }
     }
     return { login, email, password }
-  } 
+  }
+  }
     // methods: {
     //   login() {
     //     // Check if email and password are valid
@@ -55,7 +57,7 @@
     //     }
     //   }
     // }
-  }
+  //}
   </script>
 
 <style scoped>

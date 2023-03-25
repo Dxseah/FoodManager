@@ -16,7 +16,7 @@
             <label for="instant-noodles">Instant Noodles</label>
             <input type="number" id="instant-noodles" v-model.number="instantNoodlesQuantity" min="0" />
           </div>
-          <button class="submit-button">Submit Request</button>
+          <button class="submit-button" v-on:click="submitAlert">Submit Request</button>
         </form>
       </div>
     </div>
@@ -77,8 +77,11 @@ export default {
     catch (err) {
         alert(err.message)
     }
+  },
+  async submitAlert() {
+    alert("Request Form is submitted!")
   }
-}
+  }
 }
 </script>
 

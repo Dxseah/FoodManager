@@ -9,6 +9,7 @@ import DonorHomePage from '../Pages/DonorHomePage.vue'
 import BeneficiaryHomePage from '../Pages/BeneficiaryHomePage.vue'
 import BeneficiaryFormPage from '../Pages/BeneficiaryFormPage.vue'
 import DonorFormPage from '../Pages/DonorFormPage.vue'
+import UpdateProfilePage from '../Pages/UpdateProfilePage.vue'
 
 const routes = [
     {
@@ -61,6 +62,11 @@ const routes = [
         path: '/donorform',
         name: 'DonorFormPage',
         component: DonorFormPage
+    },
+    {
+        path: '/updateprofile',
+        name: 'UpdateProfilePage',
+        component: UpdateProfilePage
     }
 ]
 

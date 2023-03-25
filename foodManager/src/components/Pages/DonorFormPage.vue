@@ -20,7 +20,7 @@
             <label for="image-upload">Upload Image</label>
             <input type="file" id="image-upload" @change="handleImageUpload" />
           </div>
-          <button class="submit-button">Submit Donation</button>
+          <button class="submit-button" v-on:click="submitAlert">Submit Donation</button>
         </form>
       </div>
     </div>
@@ -60,6 +60,7 @@ export default {
       try {
       const auth = getAuth(); 
       const user = auth.currentUser;
+
       // Save data to Firestore
       // const userId = store.getters['auth/user'].id;
       const foodItemRef = collection(db, 'DonatedFood');
@@ -78,10 +79,20 @@ export default {
         await setDoc(docRef, donationData);
       }
       console.log("Form submitted")
+
     }
     catch (err) {
         alert(err.message)
     }
+  },
+
+  async submitAlert() {
+    // image = this.imageFile
+    // if (image === null) {
+    //   alert("Image is not submitted! Please submit a photo of the donation.")
+    //   return
+    // }
+    alert("Donation Form is submitted!")
   }
 
     // handleImageUpload(event) {

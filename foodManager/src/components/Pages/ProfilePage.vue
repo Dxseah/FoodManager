@@ -23,7 +23,7 @@
         </tr>
         <tr>
           <th>Contact</th>
-          <td> sample contact </td>   
+          <td> Sample Contact </td>   
         </tr>
         <!-- <tr>
           <th>Account Type</th>
@@ -33,6 +33,8 @@
 
       </table>
     </div>
+    <br>
+    <button id="btn" @click="update()">Update Profile Details </button><br>
     <button id="btn" @click="signOut()" v-if="user"> Logout </button> 
   </div>
 
@@ -67,6 +69,11 @@ export default {
   }, 
 
   methods: {
+    update() {
+      const auth = getAuth(); 
+      const user = auth.currentUser; 
+      router.push('/updateprofile')
+    },
     signOut() {
       const auth = getAuth(); 
       const user = auth.currentUser; 

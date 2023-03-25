@@ -16,22 +16,22 @@
     </div>
 </template>
   
-  <script>
-  import ProgressBar from '../ProgressBar.vue'
+<script>
+import ProgressBar from '../ProgressBar.vue'
   
-  export default { 
-    name: "DonorHomePage",
-    components:{
-            ProgressBar,
-        },
+export default { 
+  name: "DonorHomePage",
+  components:{
+          ProgressBar,
+      },
 
-    data() {
-        return {
-            food: "Rice",
-        };
-    }
+  data() {
+      return {
+           food: "Rice",
+      };
   }
-  </script>
+}
+</script>
   
   <style scoped>
     div.background {
