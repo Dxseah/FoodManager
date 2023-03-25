@@ -1,6 +1,6 @@
 <template>
   <div class="container1" v-if="user">
-    <div>
+    <div v-if="exists">
       <div class="card-body">
         <div class="alert alert-success" role="alert">
           You are logged in!
@@ -32,11 +32,15 @@
         </tr> -->
 
       </table>
+      <br>
+      <button id="btn" @click="update()">Update Profile Details </button><br>
+      <!-- <button id="btn" @click="signOut()" v-if="user"> Logout </button>  -->
+      <Logout/>
     </div>
-    <br>
-    <button id="btn" @click="update()">Update Profile Details </button><br>
-    <!-- <button id="btn" @click="signOut()" v-if="user"> Logout </button>  -->
-    <Logout/>
+    <div v-else>
+      <Details/>
+    </div>
+
   </div>
 
   <div v-else class = "container2"> 
@@ -47,20 +51,24 @@
 </template>
 
 <script>
+import Details from '@/components/Details.vue'
 import Logout from '@/components/Logout.vue';
 import firebaseApp from '@/firebase.js';
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import router from '@/components/Router/index.js'
+import { getDoc, doc, updateDoc, setDoc, collection } from "firebase/firestore"
+import { db } from '@/firebase'
 
 export default {
   name: "ProfilePage", 
   components: {
-    Logout
+    Logout, Details
   }, 
 
   data() {
     return {
       user: false,
+      exists: false
     }
   }, 
 
@@ -68,7 +76,17 @@ export default {
     const auth = getAuth();
     onAuthStateChanged(auth,(user)=>{
       if (user) {
-        this.user = user;
+        this.user = user;        
+          const docRef = doc(db, "User", this.user.displayName);
+          const docSnap = getDoc(docRef).then((doc)=>{
+            if (doc.exists()) {
+                console.log("Document data:", doc.data());
+                this.exists = true
+            } else {
+                        // doc.data() will be undefined in this case
+                console.log("No such document!");
+            }
+          });
       }
     })
   }, 
