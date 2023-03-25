@@ -3,6 +3,7 @@
 </template>
 
 <script>
+import router from '@/components/Router/index.js'
 import { getAuth,onAuthStateChanged,signOut } from "firebase/auth";
 
 export default {
@@ -25,7 +26,8 @@ export default {
             const auth = getAuth();
             const user = auth.currentUser;
             signOut(auth,user)
-            this.$router.push({name:'Login'})
+            router.push('/');
+            window.location.reload();
         }
     }
 }
