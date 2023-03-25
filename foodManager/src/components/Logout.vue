@@ -3,6 +3,7 @@
 </template>
 
 <script>
+import router from '@/components/Router/index.js'
 import { getAuth,onAuthStateChanged,signOut } from "firebase/auth";
 
 export default {
