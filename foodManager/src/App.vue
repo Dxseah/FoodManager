@@ -4,6 +4,7 @@
     <!-- <p> {{user.data}}</p> -->
     <router-link to = "/donorhome"> Donor Home </router-link>|
     <router-link to = "/beneficiaryhome"> Beneficiary Home </router-link>|
+    <router-link to = "/adminhome"> Admin Home </router-link> |
     <router-link to = "/profile"> Profile </router-link>|
     <router-link to = "/about"> About Us </router-link>|
     <!-- isLoggedIn is buggy, sometimes displayName doesn't load after refreshing page -->
