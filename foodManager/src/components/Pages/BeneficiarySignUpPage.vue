@@ -1,7 +1,7 @@
 <template>
 <div class="mainDiv">
   <div class="compSign">
-    <h2>Beneficiary Sign Up</h2>
+    <h2>Sign Up as a Beneficiary!</h2>
     <form @submit.prevent="signUp">
       <h3> Personal Details </h3>
       <br>

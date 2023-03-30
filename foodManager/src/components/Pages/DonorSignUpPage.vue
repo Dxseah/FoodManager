@@ -1,6 +1,6 @@
 <template>
   <div class="donorCont">
-    <h2>Donor Sign Up</h2>
+    <h2>Sign Up as a Donor!</h2>
     <form @submit.prevent="donorSignUp">
       <h3>Personal Details</h3>
       <br>
