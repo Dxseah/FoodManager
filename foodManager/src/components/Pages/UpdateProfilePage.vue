@@ -9,10 +9,10 @@
             <input type="string" id="name" v-model.lazy="userName"/>
           </div>
 
-          <div class="formbox">
+          <!-- <div class="formbox">
             <label for="email">Email Address</label>
             <input type="string" id="email" v-model.lazy="userEmail"/>
-          </div>
+          </div> -->
 
           <div class="formbox">
             <label for="contact">Contact</label>
@@ -64,12 +64,15 @@
 <script>
 import router from '@/components/Router/index.js'
 import { getAuth, onAuthStateChanged } from "firebase/auth"; 
+import { getDoc, doc, updateDoc, setDoc, collection } from "firebase/firestore"; 
 
 export default { 
   name: "UpdateProfilePage",
   data() {
     return {
       user: false,
+      name: "", 
+      contact:""
     }
   },
 
@@ -83,6 +86,19 @@ export default {
   }, 
 
   methods: {
+    methods:{
+    async submitForm() {
+
+          const docRef = doc(db, "User", this.user.displayName);
+          const docSnap = await updateDoc(docRef,
+          {
+            name: this.name,
+            contact: this.contact,
+          });
+          window.location.reload()
+    }
+  },
+
     back() {
       router.push('/profile')
     }
