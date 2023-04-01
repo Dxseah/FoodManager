@@ -65,7 +65,7 @@ export default {
         cannedFood: this.cannedFoodQuantity,
         instantNoodles: this.instantNoodlesQuantity,
         // timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-        // userEmail: user.email
+        userEmail: user.email
       };
       if (docSnap.exists()) {
         await setDoc(docRef, requestedData, { merge: true });
