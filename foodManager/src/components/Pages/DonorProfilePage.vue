@@ -33,12 +33,23 @@
 
       </table>
       <br>
+      <div>
+        <h1 class="header">Donated Food List</h1>
+        <div v-if="donations.length === 0">No donations yet</div>
+          <ul v-else>
+          <li v-for="(donation, index) in donations" :key="index">
+          <span>{{ donation.rice }} bags of rice</span>
+          <span>{{ donation.cannedFood }} cans of food</span>
+          <span>{{ donation.instantNoodles }} packs of instant noodles</span>
+          </li>
+          </ul>
+      </div>
+      <br>
       <button id="btn" @click="update()">Update Profile Details </button><br>
       <!-- <button id="btn" @click="signOut()" v-if="user"> Logout </button>  -->
       <Logout/>
     </div>
     <div v-else>
-      <Details/>
     </div>
 
   </div>
@@ -68,7 +79,8 @@ export default {
   data() {
     return {
       user: false,
-      exists: false
+      exists: false,
+      donations: [],
     }
   }, 
 
