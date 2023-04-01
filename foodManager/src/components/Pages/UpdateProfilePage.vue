@@ -2,7 +2,7 @@
     <div class="donorCont">
       <h2>Update Profile Details</h2>
       <h3>Personal Details</h3>
-      <div id="forms"> 
+      <div id="forms" @submit.prevent="submitForm"> 
         <form class="form">
           <div class="formbox">
             <label for="name">Name</label>
@@ -43,6 +43,8 @@
             <label for="userID">User ID</label>
             <input type="string" id="userID" v-model.lazy="userID"/>
           </div>
+          <br>
+          <button id="btn"> Update Profile Details </button><br>
         </form>
       </div>
       <!-- <table id="currTable2">
@@ -55,8 +57,6 @@
           <td>Password</td>
         </tr>
       </table> -->
-      <br>
-      <button id="btn"> Update Profile Details </button><br>
     <button id="btn" @click="back()"> Back to Profile </button> 
     </div>
 </template>
@@ -86,7 +86,6 @@ export default {
   }, 
 
   methods: {
-    methods:{
     async submitForm() {
 
           const docRef = doc(db, "User", this.user.displayName);
@@ -96,8 +95,7 @@ export default {
             contact: this.contact,
           });
           window.location.reload()
-    }
-  },
+    },
 
     back() {
       router.push('/profile')
