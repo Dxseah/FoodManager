@@ -33,18 +33,20 @@
 
       </table>
       <br>
+
       <div>
         <h1 class="header">Donated Food List</h1>
         <div v-if="donations.length === 0">No donations yet</div>
           <ul v-else>
-          <li v-for="(donation, index) in donations" :key="index">
-          <span>{{ donation.rice }} bags of rice</span>
-          <span>{{ donation.cannedFood }} cans of food</span>
-          <span>{{ donation.instantNoodles }} packs of instant noodles</span>
-          </li>
+            <li v-for="(donation, index) in donations" :key="index">
+            <span>{{ donation.rice }} bags of rice</span>
+            <span>{{ donation.cannedFood }} cans of food</span>
+            <span>{{ donation.instantNoodles }} packs of instant noodles</span>
+            </li>
           </ul>
-      </div>
+        </div>
       <br>
+
       <button id="btn" @click="update()">Update Profile Details </button><br>
       <!-- <button id="btn" @click="signOut()" v-if="user"> Logout </button>  -->
       <Logout/>
@@ -80,28 +82,46 @@ export default {
     return {
       user: false,
       exists: false,
-      donations: [],
+      donations: []
     }
   }, 
 
   mounted() {
-    const auth = getAuth();
-    onAuthStateChanged(auth,(user)=>{
-      if (user) {
-        this.user = user;        
-          const docRef = doc(db, "User", this.user.displayName);
-          const docSnap = getDoc(docRef).then((doc)=>{
-            if (doc.exists()) {
-                console.log("Document data:", doc.data());
-                this.exists = true
-            } else {
-                        // doc.data() will be undefined in this case
-                console.log("No such document!");
-            }
+  const auth = getAuth();
+  onAuthStateChanged(auth,(user)=>{
+    if (user) {
+      this.user = user;
+      const docRef = doc(db, "User", this.user.displayName);
+      const docSnap = getDoc(docRef)
+      .then((doc) => {
+        if (doc.exists()) {
+          console.log("Document data:", doc.data());
+          this.exists = true;
+
+          // retrieve all instances from DonatedFood where userEmail matches current user's email
+          const donatedFoodRef = collection(db, "DonatedFood");
+          const query = query(donatedFoodRef, where("userEmail", "==", this.user.email));
+          const donatedFoodSnapshot = getDocs(query).then((querySnapshot) => {
+            const data = [];
+            querySnapshot.forEach((doc) => {
+              console.log(doc.id, " => ", doc.data());
+              data.push(doc.data());
+            });
+            this.donations = data;
+          }).catch((error) => {
+            console.log("Error getting donated food documents: ", error);
           });
-      }
-    })
-  }, 
+
+        } else {
+          console.log("No such document!");
+        }
+      })
+      .catch((error) => {
+        console.error("Error getting document:", error);
+      });
+    }
+  })
+},
 
   methods: {
     update() {
