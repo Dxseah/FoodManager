@@ -67,7 +67,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { getDoc, doc, updateDoc, setDoc, collection } from "firebase/firestore"; 
 
 export default { 
-  name: "UpdateProfilePage",
+  name: "UpdateBeneficiaryProfilePage",
   data() {
     return {
       user: false,
@@ -98,7 +98,7 @@ export default {
     },
 
     back() {
-      router.push('/profile')
+      router.push('/beneficiaryprofile')
     }
   }
 }

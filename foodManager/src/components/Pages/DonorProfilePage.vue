@@ -60,7 +60,7 @@ import { getDoc, doc, updateDoc, setDoc, collection } from "firebase/firestore"
 import { db } from '@/firebase'
 
 export default {
-  name: "ProfilePage", 
+  name: "DonorProfilePage", 
   components: {
     Logout, Details
   }, 
@@ -95,7 +95,7 @@ export default {
     update() {
       const auth = getAuth(); 
       const user = auth.currentUser; 
-      router.push('/updateprofile')
+      router.push('/updatedonorprofile')
     },
     signOut() {
       const auth = getAuth(); 
@@ -109,45 +109,6 @@ export default {
 }
 
 
-
-// import { useStore } from 'vuex';
-// import { useRouter } from 'vue-router';
-// import { ref , computed } from 'vue';
-// import { auth } from '@/firebase.js'
-
-// export default {
-//   name: "ProfilePage",
-
-//   setup() {
-
-//     const store = useStore()
-//     const router = useRouter()
-//     auth.onAuthStateChanged(user => {
-//       store.dispatch("fetchUser", user);
-//     });
-//     const user = computed(() => {
-//       store.dispatch("fetchUser", auth.currentUser)
-//       return store.getters.user;
-//     });
-
-//     const signOut = async () => {
-//           await store.dispatch('logOut')
-//           router.push('/')
-//     }
-
-//     return { user, signOut }
-//  },
-//   data() {
-//     return {
-//       displayName: ''
-//     };
-//   },
-//   beforeCreate() {
-//     console.log('test')
-    
-//   }
-
-// };
 </script>
 
 <style scoped>

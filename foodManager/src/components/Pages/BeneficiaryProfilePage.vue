@@ -1,0 +1,159 @@
+<template>
+    <div class="container1" v-if="user">
+      <div v-if="exists">
+        <div class="card-body">
+          <div class="alert alert-success" role="alert">
+            You are logged in!
+            <!-- <Logout/> -->
+          </div>
+        </div>
+  
+        <table id="currTable">
+          <tr>
+            <th>Name</th>
+            <td> {{user.displayName}} </td>
+          </tr>
+          <tr>
+            <th>User ID</th>
+            <td> {{user.uid}} </td>
+          </tr>
+          <tr>
+            <th>Email</th>
+            <td> {{user.email}} </td>
+          </tr>
+          <tr>
+            <th>Contact</th>
+            <td> Sample Contact </td>   
+          </tr>
+          <!-- <tr>
+            <th>Account Type</th>
+            <td v-if="user.data.account==2"> Donor </td>
+            <td v-else-if="user.data.account==1"> Beneficiary </td>
+          </tr> -->
+  
+        </table>
+        <br>
+        <button id="btn" @click="update()">Update Profile Details </button><br>
+        <!-- <button id="btn" @click="signOut()" v-if="user"> Logout </button>  -->
+        <Logout/>
+      </div>
+      <div v-else>
+        <Details/>
+      </div>
+  
+    </div>
+  
+    <div v-else class = "container2"> 
+      <div class="alert alert-danger" role="alert">
+          You are logged out!
+      </div>
+    </div>
+  </template>
+  
+  <script>
+  import Details from '@/components/Details.vue'
+  import Logout from '@/components/Logout.vue';
+  import firebaseApp from '@/firebase.js';
+  import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+  import router from '@/components/Router/index.js'
+  import { getDoc, doc, updateDoc, setDoc, collection } from "firebase/firestore"
+  import { db } from '@/firebase'
+  
+  export default {
+    name: "BeneficiaryProfilePage", 
+    components: {
+      Logout, Details
+    }, 
+  
+    data() {
+      return {
+        user: false,
+        exists: false
+      }
+    }, 
+  
+    mounted() {
+      const auth = getAuth();
+      onAuthStateChanged(auth,(user)=>{
+        if (user) {
+          this.user = user;        
+            const docRef = doc(db, "User", this.user.displayName);
+            const docSnap = getDoc(docRef).then((doc)=>{
+              if (doc.exists()) {
+                  console.log("Document data:", doc.data());
+                  this.exists = true
+              } else {
+                          // doc.data() will be undefined in this case
+                  console.log("No such document!");
+              }
+            });
+        }
+      })
+    }, 
+  
+    methods: {
+      update() {
+        const auth = getAuth(); 
+        const user = auth.currentUser; 
+        router.push('/updatebeneficiaryprofile')
+      },
+      signOut() {
+        const auth = getAuth(); 
+        const user = auth.currentUser; 
+        signOut(auth, user);
+        // this$router.push({name:'LoginPage'});   
+        router.push('/');
+        window.location.reload();
+      }
+    }
+  }
+  
+  
+  </script>
+  
+  <style scoped>
+  .container1 {
+      background-color: aliceblue;
+      width: 100vw;
+      height: 100vh;
+      align-content: center;
+      padding: 100px;
+      font-family: Avenir, Arial, Helvetica, sans-serif;
+      font-size: 20px;
+    }
+  .container2 {
+      background-color: aliceblue;
+      width: 100vw;
+      height: 100vh;
+      align-content: center;
+      padding: 100px;
+      font-family: Avenir, Arial, Helvetica, sans-serif;
+      font-size: 20px;
+    }
+  
+  #currTable {
+    text-align: left;
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid;
+  }
+  
+  #btn {
+      text-align: center;
+      margin: auto;
+  } 
+  
+  #btn:hover {
+      color: rgb(243,236,236);
+      background-color: rgb(255,94,0);
+      box-shadow: 3px 3px grey;
+  }
+  
+  tr, td {
+    border: 1px solid;
+  }
+  
+  th {
+    font-weight: bold;
+  }
+  </style>
