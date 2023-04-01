@@ -18,12 +18,34 @@
             </div>
             <button class="submit-button" v-on:click="submitAlert">Add Food Item</button>
           </form>
+          <br>
+          <h1 class="header2">Add New Food Item </h1>
+          <form class="form2">
+            <div class="form-group">
+              <label for="name">New Food Item</label>
+              <input type="string" id="name" v-model.number="name"/>
+            </div>
+            <div class="form-group">
+              <label for="target-quantity">Target Quantity </label>
+              <input type="number" id="target-quantity" v-model.number="targetQuantity" min="0" />
+            </div>
+            <div class="form-group">
+              <label for="measure">Measuring Unit</label>
+              <input type="string" id="measure" v-model.number="measure"/>
+            </div>
+            <button class="add-button" v-on:click="addAlert">Add New Food Item</button>
+            <br>
+            <router-link to="/adminhome" class="button">Back to Home Page</router-link>
+          </form>
         </div>
       </div>
     </div>
   </template>
 
 <script>
+import { db } from "@/firebase";
+import { getDoc, doc, setDoc, collection } from "firebase/firestore";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 export default {
   name: "AdminFormPage",
@@ -32,10 +54,54 @@ export default {
       riceQuantity: 0,
       cannedFoodQuantity: 0,
       instantNoodlesQuantity: 0,
+      targetQuantity: 0
     };
-    }
-}   
+    },
 
+  mounted() {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        this.user = user;
+      }
+    });
+  },
+  methods: {
+    async submitForm() {
+      try {
+        const auth = getAuth();
+        const user = auth.currentUser;
+
+        // Save data to Firestore
+        const foodItemRef = collection(db, 'RequestedFood');
+        const docRef = doc(foodItemRef);
+        const docSnap = await getDoc(docRef);
+        const requestedData = {
+          rice: this.riceQuantity,
+          cannedFood: this.cannedFoodQuantity,
+          instantNoodles: this.instantNoodlesQuantity,
+          // timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+          userEmail: user.email
+        };
+        if (docSnap.exists()) {
+          await setDoc(docRef, requestedData, { merge: true });
+        } else {
+          await setDoc(docRef, requestedData);
+        }
+        console.log("Form submitted")
+    }
+    catch (err) {
+        alert(err.message)
+    }
+  },
+  async submitAlert() {
+    alert("Food item is added!")
+  },
+  async addAlert() {
+    alert("New food item is")
+  }
+  }
+}
 </script>
 
 
@@ -47,7 +113,7 @@ export default {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-repeat: no-repeat;
-  height: 100vh;
+  height: 150vh;
   width: 100vw;
   align-items: center;
   justify-content: center;
@@ -68,12 +134,19 @@ export default {
   margin-top: 50px;
 }
 
-.header {
+.header, .header2 {
   font-size: 2rem;
   margin-bottom: 20px;
 }
 
 .form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 400px;
+}
+
+.form2 {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -103,8 +176,17 @@ input[type="number"] {
   width: 100%;
 }
 
+input[type="string"] {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 1.2em;
+  margin-bottom: 20px;
+  width: 100%;
+}
 
-.submit-button {
+
+.submit-button, .add-button {
   background-color: silver;
 }
 
