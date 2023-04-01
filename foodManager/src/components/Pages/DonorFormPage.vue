@@ -18,7 +18,7 @@
           </div>
           <div class="form-group">
             <label for="image-upload">Upload Image</label>
-            <input type="file" id="image-upload" @change="handleImageUpload" />
+            <input type="file" id="image-upload" @change="handleImageUpload" required/>
           </div>
           <button class="submit-button" v-on:click="submitAlert">Submit Donation</button>
         </form>
@@ -64,14 +64,14 @@ export default {
       // Save data to Firestore
       // const userId = store.getters['auth/user'].id;
       const foodItemRef = collection(db, 'DonatedFood');
-      const docRef = doc(foodItemRef);
+      const docRef = doc(foodItemRef, user.email); //changed this
       const docSnap = await getDoc(docRef);
       const donationData = {
         rice: this.riceQuantity,
         cannedFood: this.cannedFoodQuantity,
         instantNoodles: this.instantNoodlesQuantity,
         // timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-        userEmail: user.email
+        // userEmail: user.email
       };
       if (docSnap.exists()) {
         await setDoc(docRef, donationData, { merge: true });
@@ -87,11 +87,10 @@ export default {
   },
 
   async submitAlert() {
-    // image = this.imageFile
-    // if (image === null) {
-    //   alert("Image is not submitted! Please submit a photo of the donation.")
-    //   return
-    // }
+    if (!this.imageFile) {
+    alert("Please upload an image of your donation.");
+    return;
+    }
     alert("Donation Form is submitted!")
   }
 
