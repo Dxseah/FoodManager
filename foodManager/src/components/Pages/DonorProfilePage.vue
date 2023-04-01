@@ -35,16 +35,25 @@
       <br>
 
       <div>
-        <h1 class="header">Donated Food List</h1>
-        <div v-if="donations.length === 0">No donations yet</div>
-          <ul v-else>
-            <li v-for="(donation, index) in donations" :key="index">
-            <span>{{ donation.rice }} bags of rice</span>
-            <span>{{ donation.cannedFood }} cans of food</span>
-            <span>{{ donation.instantNoodles }} packs of instant noodles</span>
-            </li>
-          </ul>
-        </div>
+  <h1 class="header">Donated Food List</h1>
+  <div v-if="donations.length === 0">No donations yet</div>
+  <table v-else>
+    <thead>
+      <tr>
+        <th>Bags of Rice</th>
+        <th>Cans of Food</th>
+        <th>Packs of Instant Noodles</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="(donation, index) in donations" :key="index">
+        <td>{{ donation.rice }}</td>
+        <td>{{ donation.cannedFood }}</td>
+        <td>{{ donation.instantNoodles }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
       <br>
 
       <button id="btn" @click="update()">Update Profile Details </button><br>
@@ -181,11 +190,26 @@ export default {
     box-shadow: 3px 3px grey;
 }
 
-tr, td {
-  border: 1px solid;
+.header {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+
+th, td {
+  padding: 0.5rem;
+  text-align: center;
+  border: 1px solid #ccc;
 }
 
 th {
-  font-weight: bold;
+  background-color: #f2f2f2;
 }
+
 </style>
