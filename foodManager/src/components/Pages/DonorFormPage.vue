@@ -60,14 +60,14 @@ export default {
 
         // Save data to Firestore
         const foodItemRef = collection(db, "DonatedFood");
-        const docRef = doc(foodItemRef, user.email);
+        const docRef = doc(foodItemRef);
         const docSnap = await getDoc(docRef);
         const donationData = {
           rice: this.riceQuantity,
           cannedFood: this.cannedFoodQuantity,
           instantNoodles: this.instantNoodlesQuantity,
           // timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-          // userEmail: user.email
+          userEmail: user.email
         };
         if (docSnap.exists()) {
           await setDoc(docRef, donationData, { merge: true });

@@ -58,7 +58,7 @@ export default {
       // Save data to Firestore
       // const userId = store.getters['auth/user'].id;
       const foodItemRef = collection(db, 'RequestedFood');
-      const docRef = doc(foodItemRef, user.email); //changed this
+      const docRef = doc(foodItemRef); 
       const docSnap = await getDoc(docRef);
       const requestedData = {
         rice: this.riceQuantity,
