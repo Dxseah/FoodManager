@@ -71,6 +71,7 @@ import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import router from '@/components/Router/index.js'
 import { getDoc, doc, updateDoc, setDoc, collection } from "firebase/firestore"
 import { db } from '@/firebase'
+import { query, where, getDocs } from 'firebase/firestore';
 
 export default {
   name: "DonorProfilePage", 
@@ -87,41 +88,43 @@ export default {
   }, 
 
   mounted() {
-  const auth = getAuth();
-  onAuthStateChanged(auth,(user)=>{
-    if (user) {
-      this.user = user;
-      const docRef = doc(db, "User", this.user.displayName);
-      const docSnap = getDoc(docRef)
-      .then((doc) => {
-        if (doc.exists()) {
-          console.log("Document data:", doc.data());
-          this.exists = true;
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        this.user = user;
+        const docRef = doc(db, "User", this.user.displayName);
+        const docSnap = getDoc(docRef)
+          .then((doc) => {
+            if (doc.exists()) {
+              console.log("Document data:", doc.data());
+              this.exists = true;
 
-          // retrieve all instances from DonatedFood where userEmail matches current user's email
-          const donatedFoodRef = collection(db, "DonatedFood");
-          const query = query(donatedFoodRef, where("userEmail", "==", this.user.email));
-          const donatedFoodSnapshot = getDocs(query).then((querySnapshot) => {
-            const data = [];
-            querySnapshot.forEach((doc) => {
-              console.log(doc.id, " => ", doc.data());
-              data.push(doc.data());
-            });
-            this.donations = data;
-          }).catch((error) => {
-            console.log("Error getting donated food documents: ", error);
+              // retrieve all instances from DonatedFood where userEmail matches current user's email
+              const donatedFoodRef = collection(db, "DonatedFood");
+              const q = query(donatedFoodRef, where("userEmail", "==", this.user.email));
+              const donatedFoodSnapshot = getDocs(q)
+                .then((querySnapshot) => {
+                  const data = [];
+                  querySnapshot.forEach((doc) => {
+                    console.log(doc.id, " => ", doc.data());
+                    data.push(doc.data());
+                  });
+                  this.donations = data;
+                })
+                .catch((error) => {
+                  console.log("Error getting donated food documents: ", error);
+                });
+
+            } else {
+              console.log("No such document!");
+            }
+          })
+          .catch((error) => {
+            console.error("Error getting document:", error);
           });
-
-        } else {
-          console.log("No such document!");
-        }
-      })
-      .catch((error) => {
-        console.error("Error getting document:", error);
-      });
-    }
-  })
-},
+      }
+    })
+  },
 
   methods: {
     update() {
@@ -133,14 +136,11 @@ export default {
       const auth = getAuth(); 
       const user = auth.currentUser; 
       signOut(auth, user);
-      // this$router.push({name:'LoginPage'});   
       router.push('/');
       window.location.reload();
     }
   }
 }
-
-
 </script>
 
 <style scoped>
