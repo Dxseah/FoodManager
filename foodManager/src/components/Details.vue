@@ -26,7 +26,7 @@ export default {
   name: "Details", 
   data() {
     return {
-      // user: false,
+      user: false,
       type: "",
       contact: ""
     }
