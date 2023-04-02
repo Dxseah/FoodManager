@@ -31,6 +31,7 @@
 import { db } from "@/firebase";
 import { getDoc, doc, setDoc, collection } from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+// import { firestore } from 'firebase-admin';
 
 export default {
   name: "DonorFormPage",
@@ -66,7 +67,7 @@ export default {
           rice: this.riceQuantity,
           cannedFood: this.cannedFoodQuantity,
           instantNoodles: this.instantNoodlesQuantity,
-          // timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+          // timestamp: firestore.Timestamp.now();
           userEmail: user.email
         };
         if (docSnap.exists()) {

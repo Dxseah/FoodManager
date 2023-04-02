@@ -35,13 +35,13 @@
       <br>
 
       <div>
-  <h1 class="header">Donated Food List</h1>
-  <div v-if="donations.length === 0">No donations yet</div>
+  <h1 class="header">Donation History</h1>
+  <div v-if="donations.length === 0">You have not made any donations yet!</div>
   <table v-else>
     <thead>
       <tr>
         <th>Bags of Rice</th>
-        <th>Cans of Food</th>
+        <th>Canned Food</th>
         <th>Packs of Instant Noodles</th>
       </tr>
     </thead>
