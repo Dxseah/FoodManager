@@ -78,7 +78,7 @@ export default {
         if (!this.imageFile) {
         alert("Please upload an image of your donation.");
         return;
-      }
+      };
       console.log("Form submitted");
     } catch (err) {
       alert(err.message);

@@ -156,7 +156,7 @@ export default {
 .container1 {
     background-color: aliceblue;
     width: 100vw;
-    height: 100vh;
+    height: 105vh;
     align-content: center;
     padding: 100px;
     font-family: Avenir, Arial, Helvetica, sans-serif;
