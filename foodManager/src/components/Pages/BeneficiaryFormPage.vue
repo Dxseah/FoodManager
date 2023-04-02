@@ -64,7 +64,7 @@ export default {
         rice: this.riceQuantity,
         cannedFood: this.cannedFoodQuantity,
         instantNoodles: this.instantNoodlesQuantity,
-        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+        // timestamp: firebase.firestore.FieldValue.serverTimestamp(),
         userEmail: user.email
       };
       if (docSnap.exists()) {

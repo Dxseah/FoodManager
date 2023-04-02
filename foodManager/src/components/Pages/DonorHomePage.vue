@@ -9,15 +9,20 @@
             <h1 class="header"> Track Food Item Progress </h1>
             <h3 class="food">{{  food }}</h3>
             <!-- To Do: Pass in value to next 2 lines -->
-            <ProgressBar :percentComplete="40"/>
-            <h3 class="percent"> 40% Completed </h3>
+            <ProgressBar :percentComplete="percent"/>
+            <h3 class="percent">{{ donatedRice }} / {{ requestedRice }} raised</h3>
+            <h3 class="percent"> {{ percent }}% completed</h3>
         </div>
       </div>
     </div>
 </template>
   
 <script>
+import { getDefaultEmulatorHostnameAndPort } from '@firebase/util';
 import ProgressBar from '../ProgressBar.vue'
+import { getDoc, doc, updateDoc, setDoc, collection } from "firebase/firestore"
+import { db } from '@/firebase'
+import { query, where, getDocs } from 'firebase/firestore';
   
 export default { 
   name: "DonorHomePage",
@@ -28,7 +33,24 @@ export default {
   data() {
       return {
            food: "Rice",
+           donatedRice: null,
+           requestedRice: null,
+           percent: null
       };
+  },
+
+  async created() {
+    const queryDonated = query(collection(db, 'DonatedFood'))
+    const queryDonatedSnapshot = await getDocs(queryDonated);
+    const sumDonated = queryDonatedSnapshot.docs.map(doc => doc.data().rice);
+    this.donatedRice = sumDonated.reduce((acc, val) => acc + val, 0);
+
+    const queryRequested = query(collection(db, 'RequestedFood'));
+    const queryRequestedSnapshot = await getDocs(queryRequested);
+    const sumRequested = queryRequestedSnapshot.docs.map(doc => doc.data().rice);
+    this.requestedRice = sumRequested.reduce((acc, val) => acc + val, 0);
+
+    this.percent = parseFloat(this.donatedRice / this.requestedRice * 100).toFixed(1);
   }
 }
 </script>
@@ -74,8 +96,8 @@ export default {
     .percent {
         text-align: right;
         margin-top: 8px;
-        font-weight: bolder;
-        font-size: 30px;
+        font-weight: bold;
+        font-size: 25px;
     }
 
     .button-container {
