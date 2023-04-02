@@ -89,47 +89,47 @@ export default {
           await setDoc(docRef, requestedData);
         };
 
-        //save to rice collection  
-        const riceRef = collection(db, 'Rice');
-        const ricedocRef = doc(riceRef);
-        const riceSnap = await getDoc(ricedocRef);
-        const riceData = {
-          rice: this.riceQuantity,
-          userEmail: user.email
-        };  
-        if (riceSnap.exists()) {
-          await setDoc(ricedocRef, riceData, { merge: true });
-        } else {
-          await setDoc(ricedocRef, riceData);
-        };
+        // //save to rice collection  
+        // const riceRef = collection(db, 'Rice');
+        // const ricedocRef = doc(riceRef);
+        // const riceSnap = await getDoc(ricedocRef);
+        // const riceData = {
+        //   rice: this.riceQuantity,
+        //   userEmail: user.email
+        // };  
+        // if (riceSnap.exists()) {
+        //   await setDoc(ricedocRef, riceData, { merge: true });
+        // } else {
+        //   await setDoc(ricedocRef, riceData);
+        // };
 
-        //save to cannedfood collection  
-        const cfRef = collection(db, 'CannedFood');
-        const cfdocRef = doc(cfRef);
-        const cfSnap = await getDoc(cfdocRef);
-        const cfData = {
-          cannedFood: this.cannedFoodQuantity,
-          userEmail: user.email
-        };  
-        if (cfSnap.exists()) {
-          await setDoc(cfdocRef, cfData, { merge: true });
-        } else {
-          await setDoc(cfdocRef, cfData);
-        };
+        // //save to cannedfood collection  
+        // const cfRef = collection(db, 'CannedFood');
+        // const cfdocRef = doc(cfRef);
+        // const cfSnap = await getDoc(cfdocRef);
+        // const cfData = {
+        //   cannedFood: this.cannedFoodQuantity,
+        //   userEmail: user.email
+        // };  
+        // if (cfSnap.exists()) {
+        //   await setDoc(cfdocRef, cfData, { merge: true });
+        // } else {
+        //   await setDoc(cfdocRef, cfData);
+        // };
 
-        //save to instantnoodles collection  
-        const inRef = collection(db, 'InstantNoodles');
-        const indocRef = doc(inRef);
-        const inSnap = await getDoc(indocRef);
-        const inData = {
-          instantNoodles: this.instantNoodlesQuantity,
-          userEmail: user.email
-        };  
-        if (inSnap.exists()) {
-          await setDoc(indocRef, inData, { merge: true });
-        } else {
-          await setDoc(indocRef, inData);
-        };
+        // //save to instantnoodles collection  
+        // const inRef = collection(db, 'InstantNoodles');
+        // const indocRef = doc(inRef);
+        // const inSnap = await getDoc(indocRef);
+        // const inData = {
+        //   instantNoodles: this.instantNoodlesQuantity,
+        //   userEmail: user.email
+        // };  
+        // if (inSnap.exists()) {
+        //   await setDoc(indocRef, inData, { merge: true });
+        // } else {
+        //   await setDoc(indocRef, inData);
+        // };
         console.log("Form submitted")
     }
     catch (err) {
