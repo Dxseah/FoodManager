@@ -35,13 +35,13 @@
       <br>
 
       <div>
-  <h1 class="header">Requested Food List</h1>
-  <div v-if="requests.length === 0">No requests yet</div>
+  <h1 class="header">Food Request History</h1>
+  <div v-if="requests.length === 0">You have not made any requests yet!</div>
   <table v-else>
     <thead>
       <tr>
         <th>Bags of Rice</th>
-        <th>Cans of Food</th>
+        <th>Canned Food</th>
         <th>Packs of Instant Noodles</th>
       </tr>
     </thead>
