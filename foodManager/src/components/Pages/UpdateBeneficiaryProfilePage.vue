@@ -1,6 +1,6 @@
 <template>
     <div class="donorCont">
-      <h2>Update Profile Details</h2>
+      <h2>Update Beneficiary Profile Details</h2>
       <h3>Personal Details</h3>
       <div id="forms" @submit.prevent="submitForm"> 
         <form class="form">

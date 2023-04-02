@@ -6,7 +6,7 @@
         <form class="form">
           <div class="formbox">
             <label for="name">Name</label>
-            <input type="string" id="name" v-model.lazy="userName"/>
+            <input type="string" id="name" required v-model="userName"/>
           </div>
 
           <!-- <div class="formbox">
@@ -16,7 +16,7 @@
 
           <div class="formbox">
             <label for="contact">Contact</label>
-            <input type="string" id="contact" v-model.lazy="userContact"/>
+            <input type="string" id="contact" required v-model="userContact"/>
           </div>
         </form>
       </div>
@@ -41,7 +41,7 @@
         <form class="form">
           <div class="formbox">
             <label for="userID">User ID</label>
-            <input type="string" id="userID" v-model.lazy="userID"/>
+            <input type="string" id="userID" v-model="userID"/>
           </div>
           <br>
           <button id="btn"> Update Profile Details </button><br>
@@ -71,8 +71,8 @@ export default {
   data() {
     return {
       user: false,
-      name: "", 
-      contact:""
+      userName: "", 
+      userContact:""
     }
   },
 
@@ -89,12 +89,24 @@ export default {
     async submitForm() {
 
           const docRef = doc(db, "User", this.user.displayName);
-          const docSnap = await updateDoc(docRef,
-          {
-            name: this.name,
-            contact: this.contact,
-          });
-          window.location.reload()
+          const docSnap = await getDoc(docRef); 
+          const requestedData = {
+            name: this.userName, 
+            contact: this.userContact
+          }
+          if (docSnap.exists()) {
+            await updateDoc(docRef, requestedData); 
+          } else {
+            await setDoc(docRef, requestedData);
+          }
+          // const docSnap = await updateDoc(docRef,
+          // {
+          //   // name: document.getElementById("name").value,
+          //   // contact: document.getElementById("contact").value,
+          //   name: this.userName, 
+          //   contact: this.userContact
+          // });
+          // window.location.reload()
     },
 
     back() {

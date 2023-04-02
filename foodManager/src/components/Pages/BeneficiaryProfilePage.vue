@@ -139,7 +139,7 @@ export default {
     update() {
       const auth = getAuth(); 
       const user = auth.currentUser; 
-      router.push('/updatedonorprofile')
+      router.push('/updatebeneficiaryprofile'); 
     },
     signOut() {
       const auth = getAuth(); 
