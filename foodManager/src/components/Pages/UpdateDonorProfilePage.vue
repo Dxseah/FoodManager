@@ -1,12 +1,12 @@
 <template>
     <div class="donorCont">
-      <h2>Update Profile Details</h2>
+      <h2>Update Donor Profile Details</h2>
       <h3>Personal Details</h3>
-      <div id="forms" @submit.prevent="submitForm"> 
-        <form class="form">
+      <div id="forms"> 
+        <form class="form" @submit.prevent="submitForm">
           <div class="formbox">
             <label for="name">Name</label>
-            <input type="string" id="name" required v-model="userName"/>
+            <input type="string" id="name" v-model="name"/>
           </div>
 
           <!-- <div class="formbox">
@@ -16,7 +16,7 @@
 
           <div class="formbox">
             <label for="contact">Contact</label>
-            <input type="string" id="contact" required v-model="userContact"/>
+            <input type="string" id="contact" v-model="contact"/>
           </div>
         </form>
       </div>
@@ -38,13 +38,13 @@
       <br><br>
       <h3>Login Details</h3>
       <div id="forms"> 
-        <form class="form">
+        <form class="form" @submit.prevent="submitForm">
           <div class="formbox">
-            <label for="userID">User ID</label>
-            <input type="string" id="userID" v-model="userID"/>
+            <label for="useriden">User ID</label>
+            <input type="string" id="useriden" v-model="useriden"/>
           </div>
           <br>
-          <button id="btn"> Update Profile Details </button><br>
+          <button id="btn" @click="submitForm()"> Update Profile Details </button><br>
         </form>
       </div>
       <!-- <table id="currTable2">
@@ -64,15 +64,17 @@
 <script>
 import router from '@/components/Router/index.js'
 import { getAuth, onAuthStateChanged } from "firebase/auth"; 
+import { db } from '@/firebase';
 import { getDoc, doc, updateDoc, setDoc, collection } from "firebase/firestore"; 
 
 export default { 
   name: "UpdateDonorProfilePage",
   data() {
     return {
-      user: false,
-      userName: "", 
-      userContact:""
+      // user: false,
+      name: " ", 
+      contact:" ", 
+      useriden:" "
     }
   },
 
@@ -87,18 +89,26 @@ export default {
 
   methods: {
     async submitForm() {
+      const auth = getAuth(); 
+      const user = auth.currentUser; 
 
-          const docRef = doc(db, "User", this.user.displayName);
-          const docSnap = await getDoc(docRef); 
+          const userRef = collection(db, "User"); 
+          const curr = user.displayName; 
+          const docRef = doc(userRef, curr);
+          // const docSnap = await getDoc(docRef); 
           const requestedData = {
-            name: this.userName, 
-            contact: this.userContact
-          }
-          if (docSnap.exists()) {
-            await updateDoc(docRef, requestedData); 
-          } else {
-            await setDoc(docRef, requestedData);
-          }
+            "name": this.name, 
+            "contact": this.contact,
+            "useriden": this.useriden
+          }; 
+          await updateDoc(docRef, requestedData);
+          window.location.reload(); 
+
+          // if (docSnap.exists()) {
+          //   await updateDoc(docRef, requestedData); 
+          // } else {
+          //   await setDoc(docRef, requestedData);
+          // }
           // const docSnap = await updateDoc(docRef,
           // {
           //   // name: document.getElementById("name").value,
