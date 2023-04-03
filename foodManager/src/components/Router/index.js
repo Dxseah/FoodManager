@@ -15,6 +15,8 @@ import UpdateBeneficiaryProfilePage from '../Pages/UpdateBeneficiaryProfilePage.
 import AdminHomePage from '../Pages/AdminHomePage.vue'
 import AdminFormPage from '../Pages/AdminFormPage.vue'
 import Details from '@/components/Details.vue'
+import AdminNewFormPage from '../Pages/AdminNewFormPage.vue'
+
 const routes = [
     {
         path: '/',
@@ -92,6 +94,11 @@ const routes = [
         name: 'AdminFormPage',
         component: AdminFormPage
     },
+    {
+        path: '/adminnewform',
+        name: 'AdminNewFormPage',
+        component: AdminNewFormPage
+    }
 ]
 
 const router = createRouter({
