@@ -37,7 +37,7 @@ export default {
     onAuthStateChanged(auth,(user)=>{
       if (user) {
         this.user = user;
-        //console.log(user.displayName)
+        console.log(user.displayName)
       }
     })
   },

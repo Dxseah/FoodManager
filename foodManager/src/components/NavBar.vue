@@ -19,7 +19,6 @@
   <router-view :key="$route.fullPath"/> 
 </nav>
 </template>
-
 <script>
   import router from '@/components/Router/index.js'
   // import { useStore } from "vuex"
@@ -47,10 +46,10 @@
           .then((doc) => {
             if (doc.exists()) {
               console.log("Document data:", doc.data());
+              // retrieve all instances from DonatedFood where userEmail matches current user's email
               this.account = doc.data().type;
             } else {
               console.log("No such document!");
-              //window.location.reload();
             }
           })
           .catch((error) => {

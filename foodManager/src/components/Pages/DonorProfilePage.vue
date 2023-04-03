@@ -71,14 +71,14 @@
         </table>
       </div>
       <br>
-
       <button id="btn" @click="update()">Update Profile Details </button><br>
       <!-- <button id="btn" @click="signOut()" v-if="user"> Logout </button>  -->
       <Logout/>
     </div>
-  </div>
-  <div v-else-if = "!exists">
-      <Details/>
+  
+    <div v-else-if = "!exists">
+        <Details/>
+    </div>
   </div>
 
   <div v-else class = "container2"> 
@@ -163,6 +163,7 @@ export default {
               }
             } else {
               console.log("No such document!");
+
             }
           })
           .catch((error) => {
@@ -183,7 +184,7 @@ export default {
       const user = auth.currentUser; 
       signOut(auth, user);
       router.push('/');
-      window.location.reload();
+      // window.location.reload();
     }
   }
 }
