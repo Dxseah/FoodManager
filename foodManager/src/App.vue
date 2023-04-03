@@ -1,20 +1,22 @@
 <template>
-<nav>
-  <div v-if="user" id="nav">
-    <!-- <p> {{user.data}}</p> -->
+<nav id='nav'>
+  <router-link to = "/about"> About Us </router-link>|
+  <div v-if="!user">
+    <h1 id="displayName">Welcome!</h1>
+    <router-link to = "/"> Login </router-link>|
+  </div>
+  <div v-else-if="user && account == 'Donor'">
     <router-link to = "/donorhome"> Donor Home </router-link>|
-    <router-link to = "/beneficiaryhome"> Beneficiary Home </router-link>|
-    <router-link to = "/adminhome"> Admin Home </router-link> |
-    <router-link to = "/donorprofile"> Donor Profile </router-link>|
-    <router-link to = "/beneficiaryprofile"> Beneficiary Profile </router-link>|
-    <router-link to = "/about"> About Us </router-link>|
-    <!-- isLoggedIn is buggy, sometimes displayName doesn't load after refreshing page -->
+    <router-link to = "/donorprofile"> Donor Profile </router-link>
     <h1 id="displayName">Welcome, {{user.displayName}}!</h1>
   </div>
-  <div v-else id="nav">
-    |<router-link to = "/"> Login </router-link>|
-    <router-link to = "/about"> About Us </router-link>|
-    <h1 id="displayName">Welcome!</h1>
+  <div v-else-if="user && account=='Admin'">
+  </div>
+  <div v-else>
+    <router-link to = "/beneficiaryhome"> Beneficiary Home </router-link>|
+    <router-link to = "/beneficiaryprofile"> Beneficiary Profile </router-link>|
+    <h1 id="displayName">Welcome, {{user.displayName}}!</h1>
+
   </div>
   <router-view :key="$route.fullPath"/> 
 </nav>
@@ -22,8 +24,6 @@
 
 <script>
   import router from '@/components/Router/index.js'
-  // import { useStore } from "vuex"
-  // import { computed } from "vue";
   import firebaseApp from '@/firebase.js';
   import { getAuth, onAuthStateChanged } from "firebase/auth";
 
@@ -32,6 +32,7 @@
     data() {
       return {
         user: false,
+        account:false
       }
     }, 
 
@@ -40,9 +41,23 @@
       onAuthStateChanged(auth,(user)=>{
         if (user) {
           this.user = user;
-        }
-      })
-    }
+          const docRef = doc(db, "User", this.user.displayName);
+          const docSnap = getDoc(docRef)
+          .then((doc) => {
+            if (doc.exists()) {
+              console.log("Document data:", doc.data());
+              // retrieve all instances from DonatedFood where userEmail matches current user's email
+              this.account = doc.data().type;
+            } else {
+              console.log("No such document!");
+            }
+          })
+          .catch((error) => {
+            console.error("Error getting document:", error);
+          });
+      }
+    })
+  }
   }
 
 </script>

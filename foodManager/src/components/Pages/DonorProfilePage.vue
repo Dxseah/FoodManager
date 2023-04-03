@@ -161,8 +161,6 @@ export default {
                   console.log("Error getting donated food documents: ", error);
                 });
               }
-
-
             } else {
               console.log("No such document!");
             }
