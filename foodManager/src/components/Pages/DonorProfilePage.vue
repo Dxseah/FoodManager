@@ -110,7 +110,8 @@ export default {
       exists: false,
       donations: [],
       userData: false,
-      account: false
+      account: false,
+      requests: []
     }
   }, 
 
