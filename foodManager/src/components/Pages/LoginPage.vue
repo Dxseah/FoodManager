@@ -4,7 +4,7 @@
       <div class="content">
       <!-- <LoginInput/> <br> -->
       <div id ="firebaseui-auth-container"></div>
-      <LoginSignUp/> <br><br>
+      <!-- <LoginSignUp/> <br><br> -->
       <LoginFindOutMore/>
       </div>
     </div>

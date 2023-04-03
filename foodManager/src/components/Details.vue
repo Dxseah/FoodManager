@@ -53,6 +53,7 @@ export default {
             contact: this.contact,
             email: this.user.email
           });
+          router.push('/donorprofile')
           window.location.reload()
     }
   }

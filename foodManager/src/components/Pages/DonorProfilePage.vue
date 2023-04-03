@@ -1,68 +1,84 @@
 <template>
   <div class="container1" v-if="user">
     <div v-if="exists">
-      <div class="card-body">
-        <div class="alert alert-success" role="alert">
-          You are logged in!
-          <!-- <Logout/> -->
+        <div class="card-body">
+          <div class="alert alert-success" role="alert">
+            You are logged in!
+            <!-- <Logout/> -->
+          </div>
         </div>
-      </div>
 
-      <table id="currTable">
-        <tr>
-          <th>Name</th>
-          <td> {{user.displayName}} </td>
-        </tr>
-        <tr>
-          <th>User ID</th>
-          <td> {{user.uid}} </td>
-        </tr>
-        <tr>
-          <th>Email</th>
-          <td> {{user.email}} </td>
-        </tr>
-        <tr>
-          <th>Contact</th>
-          <td> Sample Contact </td>   
-        </tr>
-        <!-- <tr>
-          <th>Account Type</th>
-          <td v-if="user.data.account==2"> Donor </td>
-          <td v-else-if="user.data.account==1"> Beneficiary </td>
-        </tr> -->
+        <table id="currTable">
+          <tr>
+            <th>Name</th>
+            <td> {{user.displayName}} </td>
+          </tr>
+          <tr>
+            <th>User ID</th>
+            <td> {{user.uid}} </td>
+          </tr>
+          <tr>
+            <th>Email</th>
+            <td> {{user.email}} </td>
+          </tr>
+          <tr>
+            <th>Contact</th>
+            <td> {{userData.contact}} </td>   
+          </tr>
 
       </table>
+
       <br>
 
-      <div>
-  <h1 class="header">Donation History</h1>
-  <div v-if="donations.length === 0">You have not made any donations yet!</div>
-  <table v-else>
-    <thead>
-      <tr>
-        <th>Bags of Rice</th>
-        <th>Canned Food</th>
-        <th>Packs of Instant Noodles</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr v-for="(donation, index) in donations" :key="index">
-        <td>{{ donation.rice }}</td>
-        <td>{{ donation.cannedFood }}</td>
-        <td>{{ donation.instantNoodles }}</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+      <div v-if = "account=='Donor'">
+        <h1 class="header">Donation History</h1>
+        <div v-if="donations.length === 0">You have not made any donations yet!</div>
+        <table v-else>
+          <thead>
+            <tr>
+              <th>Bags of Rice</th>
+              <th>Canned Food</th>
+              <th>Packs of Instant Noodles</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(donation, index) in donations" :key="index">
+              <td>{{ donation.rice }}</td>
+              <td>{{ donation.cannedFood }}</td>
+              <td>{{ donation.instantNoodles }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div v-else>
+        <h1 class="header">Food Request History</h1>
+        <div v-if="requests.length === 0">You have not made any requests yet!</div>
+        <table v-else>
+          <thead>
+            <tr>
+              <th>Bags of Rice</th>
+              <th>Canned Food</th>
+              <th>Packs of Instant Noodles</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(request, index) in requests" :key="index">
+              <td>{{ request.rice }}</td>
+              <td>{{ request.cannedFood }}</td>
+              <td>{{ request.instantNoodles }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
       <br>
 
       <button id="btn" @click="update()">Update Profile Details </button><br>
       <!-- <button id="btn" @click="signOut()" v-if="user"> Logout </button>  -->
       <Logout/>
     </div>
-    <div v-else>
-    </div>
-
+  </div>
+  <div v-else-if = "!exists">
+      <Details/>
   </div>
 
   <div v-else class = "container2"> 
@@ -92,7 +108,9 @@ export default {
     return {
       user: false,
       exists: false,
-      donations: []
+      donations: [],
+      userData: false,
+      account: false
     }
   }, 
 
@@ -107,8 +125,11 @@ export default {
             if (doc.exists()) {
               console.log("Document data:", doc.data());
               this.exists = true;
-
+              this.userData = doc.data();
               // retrieve all instances from DonatedFood where userEmail matches current user's email
+              
+              this.account = this.userData.type;
+              if (this.account=="Donor") {
               const donatedFoodRef = collection(db, "DonatedFood");
               const q = query(donatedFoodRef, where("userEmail", "==", this.user.email));
               const donatedFoodSnapshot = getDocs(q)
@@ -119,10 +140,27 @@ export default {
                     data.push(doc.data());
                   });
                   this.donations = data;
+                })                
+                .catch((error) => {
+                  console.log("Error getting donated food documents: ", error);
+                });
+              } else {
+                const requestedFoodRef = collection(db, "RequestedFood");
+                const q = query(requestedFoodRef, where("userEmail", "==", this.user.email));
+                const requestedFoodSnapshot = getDocs(q)
+                .then((querySnapshot) => {
+                  const data = [];
+                  querySnapshot.forEach((doc) => {
+                    console.log(doc.id, " => ", doc.data());
+                    data.push(doc.data());
+                  });
+                  this.requests = data;
                 })
                 .catch((error) => {
                   console.log("Error getting donated food documents: ", error);
                 });
+              }
+
 
             } else {
               console.log("No such document!");

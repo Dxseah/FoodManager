@@ -14,7 +14,7 @@ import UpdateDonorProfilePage from '../Pages/UpdateDonorProfilePage.vue'
 import UpdateBeneficiaryProfilePage from '../Pages/UpdateBeneficiaryProfilePage.vue'
 import AdminHomePage from '../Pages/AdminHomePage.vue'
 import AdminFormPage from '../Pages/AdminFormPage.vue'
-
+import Details from '@/components/Details.vue'
 const routes = [
     {
         path: '/',
@@ -91,7 +91,7 @@ const routes = [
         path: '/adminform',
         name: 'AdminFormPage',
         component: AdminFormPage
-    }
+    },
 ]
 
 const router = createRouter({
