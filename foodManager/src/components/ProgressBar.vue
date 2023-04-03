@@ -1,6 +1,6 @@
 <template>
     <div class="progress-bar">
-      <div class="progress-bar-fill" :style="{ width: percentComplete + '%' }"></div>
+      <div class="progress-bar-fill" :style="{ width: percentComplete + '%'}"></div>
     </div>
   </template>
   
@@ -10,7 +10,7 @@
       percentComplete: {
         type: Number,
         default: 0,
-        required: true
+        required: true,
       }
     }
   };
