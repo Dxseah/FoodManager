@@ -63,7 +63,7 @@
 
 <script>
 import router from '@/components/Router/index.js'
-import { getAuth, onAuthStateChanged } from "firebase/auth"; 
+import { getAuth, onAuthStateChanged, updateProfile } from "firebase/auth"; 
 import { db } from '@/firebase';
 import { getDoc, doc, updateDoc, setDoc, collection } from "firebase/firestore"; 
 
@@ -98,11 +98,18 @@ export default {
           // const docSnap = await getDoc(docRef); 
           const requestedData = {
             "name": this.name, 
+            // curr: this.name, 
             "contact": this.contact,
-            "useriden": this.useriden
+            // "useriden": this.useriden
           }; 
           await updateDoc(docRef, requestedData);
+
+          await updateProfile(user, {
+            displayName: this.name
+          })
           window.location.reload(); 
+
+
 
           // if (docSnap.exists()) {
           //   await updateDoc(docRef, requestedData); 

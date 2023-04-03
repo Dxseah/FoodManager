@@ -102,6 +102,9 @@ export default {
             "useriden": this.useriden
           }; 
           await updateDoc(docRef, requestedData);
+          await updateProfile(user, {
+            displayName: this.name
+          })
           window.location.reload(); 
 
           // if (docSnap.exists()) {
