@@ -26,7 +26,8 @@
   import router from '@/components/Router/index.js'
   import firebaseApp from '@/firebase.js';
   import { getAuth, onAuthStateChanged } from "firebase/auth";
-
+  import { getDoc, doc } from "firebase/firestore"
+  import { db } from '@/firebase'
   export default {
     name: "App", 
     data() {
