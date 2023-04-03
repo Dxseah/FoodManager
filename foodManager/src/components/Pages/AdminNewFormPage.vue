@@ -2,24 +2,24 @@
     <div class="background">
       <div class="transbox">
         <div class="content">
-          <h1 class="header">Add Food Item</h1>
-          <form class="form"  @submit.prevent="submitForm">
+          <h1 class="header2">Add New Food Item </h1>
+          <form class="form2" @submit.prevent="submitForm">
             <div class="form-group">
-              <label for="rice">Rice</label>
-              <input type="number" id="rice" v-model.number="riceQuantity" min="0" />
+              <label for="name">New Food Item</label>
+              <input type="string" id="name" v-model.number="name"/>
             </div>
             <div class="form-group">
-              <label for="canned-food">Canned Food</label>
-              <input type="number" id="canned-food" v-model.number="cannedFoodQuantity" min="0" />
+              <label for="target-quantity">Target Quantity </label>
+              <input type="number" id="target-quantity" v-model.number="targetQuantity" min="0" />
             </div>
             <div class="form-group">
-              <label for="instant-noodles">Instant Noodles</label>
-              <input type="number" id="instant-noodles" v-model.number="instantNoodlesQuantity" min="0" />
+              <label for="measure">Measuring Unit</label>
+              <input type="string" id="measure" v-model.number="measure"/>
             </div>
-            <button class="submit-button" v-on:click="submitAlert">Add Food Item</button>
-          </form>
+            <button class="add-button" v-on:click="addAlert">Add New Food Item</button>
             <br>
             <router-link to="/adminhome" class="button">Back to Home Page</router-link>
+          </form>
         </div>
       </div>
     </div>
@@ -31,13 +31,10 @@ import { getDoc, doc, setDoc, collection } from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 export default {
-  name: "AdminFormPage",
+  name: "AdminNewFormPage",
   data() {
     return {
-      riceQuantity: 0,
-      cannedFoodQuantity: 0,
-      instantNoodlesQuantity: 0,
-      targetQuantity: 0
+        targetQuantity: 0
     };
     },
 
@@ -54,33 +51,29 @@ export default {
       try {
         const auth = getAuth();
         const user = auth.currentUser;
-
         // Save data to Firestore
         const foodItemRef = collection(db, 'RequestedFood');
         const docRef = doc(foodItemRef);
         const docSnap = await getDoc(docRef);
         const requestedData = {
-          rice: this.riceQuantity,
-          cannedFood: this.cannedFoodQuantity,
-          instantNoodles: this.instantNoodlesQuantity,
-          // timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-          userEmail: user.email
+            [this.name]: this.targetQuantity,
+            // timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+            userEmail: user.email
         };
         if (docSnap.exists()) {
           await setDoc(docRef, requestedData, { merge: true });
         } else {
           await setDoc(docRef, requestedData);
         };
-        console.log("Form submitted");
         
-
+        console.log("Form submitted")
     }
     catch (err) {
         alert(err.message)
     }
   },
-  async submitAlert() {
-    alert("Food item is added!")
+  async addAlert() {
+    alert("New food item is added!")
   }
   }
 }
@@ -116,12 +109,12 @@ export default {
   margin-top: 50px;
 }
 
-.header {
+.header2 {
   font-size: 2rem;
   margin-bottom: 20px;
 }
 
-.form {
+.form2 {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -151,8 +144,16 @@ input[type="number"] {
   width: 100%;
 }
 
+input[type="string"] {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 1.2em;
+  margin-bottom: 20px;
+  width: 100%;
+}
 
-.submit-button {
+.add-button {
   background-color: silver;
 }
 

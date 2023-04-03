@@ -25,6 +25,8 @@
   // import { useStore } from "vuex"
   // import { computed } from "vue";
   import firebaseApp from '@/firebase.js';
+  import { getDoc, doc, updateDoc, setDoc, collection } from "firebase/firestore"
+  import { db } from '@/firebase'
   import { getAuth, onAuthStateChanged } from "firebase/auth";
 
   export default {

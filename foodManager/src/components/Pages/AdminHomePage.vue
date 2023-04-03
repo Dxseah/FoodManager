@@ -3,7 +3,8 @@
       <div class="transbox">
         <div class="content">
             <h1 class="newHeader">Food Items</h1><br>
-            <router-link to="/adminform" class="button">Add Food Item</router-link>
+            <router-link to="/adminform" class="button">Add Food Item</router-link><br><br>
+            <router-link to="/adminnewform" class="button">Add New Food Item</router-link>
             <h1 class="header"> Track Food Item Progress </h1>
             <h3 class="food">Rice</h3>
             <ProgressBar :percentComplete="displayRice"/>
