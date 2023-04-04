@@ -184,7 +184,7 @@ export default {
       const user = auth.currentUser; 
       signOut(auth, user);
       router.push('/');
-      // window.location.reload();
+      window.location.reload();
     }
   }
 }

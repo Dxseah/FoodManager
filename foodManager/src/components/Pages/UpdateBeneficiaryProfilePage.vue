@@ -99,12 +99,12 @@ export default {
           const requestedData = {
             "name": this.name, 
             "contact": this.contact,
-            "useriden": this.useriden
+            // "useriden": this.useriden
           }; 
           await updateDoc(docRef, requestedData);
-          await updateProfile(user, {
-            displayName: this.name
-          })
+          // await updateProfile(user, {
+          //   displayName: this.name
+          // })
           window.location.reload(); 
 
           // if (docSnap.exists()) {

@@ -104,9 +104,9 @@ export default {
           }; 
           await updateDoc(docRef, requestedData);
 
-          await updateProfile(user, {
-            displayName: this.name
-          })
+          // await updateProfile(user, {
+          //   displayName: this.name
+          // })
           window.location.reload(); 
 
 
