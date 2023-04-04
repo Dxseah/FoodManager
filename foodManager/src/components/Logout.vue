@@ -23,10 +23,11 @@ export default {
     },
     methods: {
         signOut() {
-            const auth = getAuth();
-            const user = auth.currentUser;
-            signOut(auth,user)
-            router.push('/');
+        const auth = getAuth(); 
+        const user = auth.currentUser; 
+        signOut(auth, user).then(()=>{console.log("signout");window.location.reload();});
+        router.push('/');
+        
         }
     }
 }

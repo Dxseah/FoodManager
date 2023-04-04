@@ -187,9 +187,9 @@ export default {
     signOut() {
       const auth = getAuth(); 
       const user = auth.currentUser; 
-      signOut(auth, user);
+      signOut(auth, user).then(()=>{console.log("signout");window.location.reload();});
       router.push('/');
-      window.location.reload();
+      
     }
   }
 }
