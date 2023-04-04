@@ -6,7 +6,7 @@
         <form class="form" @submit.prevent="submitForm">
           <div class="formbox">
             <label for="name">Name</label>
-            <input type="string" id="name" v-model="name"/>
+            <input type="string" id="name" required v-model="name"/>
           </div>
 
           <!-- <div class="formbox">
@@ -16,7 +16,7 @@
 
           <div class="formbox">
             <label for="contact">Contact</label>
-            <input type="string" id="contact" v-model="contact"/>
+            <input type="string" id="contact" required v-model="contact"/>
           </div>
         </form>
       </div>
@@ -36,7 +36,7 @@
       </table> -->
     
       <br><br>
-      <h3>Login Details</h3>
+      <!-- <h3>Login Details</h3>
       <div id="forms"> 
         <form class="form" @submit.prevent="submitForm">
           <div class="formbox">
@@ -46,7 +46,7 @@
           <br>
           <button id="btn" @click="submitForm()"> Update Profile Details </button><br>
         </form>
-      </div>
+      </div> -->
       <!-- <table id="currTable2">
         <tr>
           <th>User ID</th>
@@ -99,12 +99,12 @@ export default {
           const requestedData = {
             "name": this.name, 
             "contact": this.contact,
-            "useriden": this.useriden
+            // "useriden": this.useriden
           }; 
           await updateDoc(docRef, requestedData);
-          await updateProfile(user, {
-            displayName: this.name
-          })
+          // await updateProfile(user, {
+          //   displayName: this.name
+          // })
           window.location.reload(); 
 
           // if (docSnap.exists()) {
