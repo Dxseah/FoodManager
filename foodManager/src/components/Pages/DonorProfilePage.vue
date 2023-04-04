@@ -176,15 +176,20 @@ export default {
   methods: {
     update() {
       const auth = getAuth(); 
-      const user = auth.currentUser; 
-      router.push('/updatedonorprofile')
+      const user = auth.currentUser;
+      if (this.userData.type == "Donor") {
+        router.push('/updatedonorprofile')
+      } else {
+        router.push('/updatebeneficiaryprofile')
+      }
+      
     },
     signOut() {
       const auth = getAuth(); 
       const user = auth.currentUser; 
       signOut(auth, user);
       router.push('/');
-      // window.location.reload();
+      window.location.reload();
     }
   }
 }
