@@ -50,7 +50,7 @@
               this.account = doc.data().type;
             } else {
               console.log("No such document!");
-              //window.location.reload();
+              // window.location.reload();
             }
           })
           .catch((error) => {
