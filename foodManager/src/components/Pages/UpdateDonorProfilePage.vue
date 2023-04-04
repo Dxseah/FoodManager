@@ -18,6 +18,7 @@
             <label for="contact">Contact</label>
             <input type="string" id="contact" required v-model="contact"/>
           </div>
+          <button id="btn" @click="submitForm()"> Update Profile Details </button><br>
         </form>
       </div>
       <!-- <table id="currTable">
@@ -44,7 +45,7 @@
             <input type="string" id="useriden" v-model="useriden"/>
           </div>
           <br>
-          <button id="btn" @click="submitForm()"> Update Profile Details </button><br>
+          
         </form>
       </div> -->
       <!-- <table id="currTable2">
