@@ -1,26 +1,23 @@
 <template>
-    <div class="donorCont">
-      <h2>Update Beneficiary Profile Details</h2>
-      <h3>Personal Details</h3>
-      <div id="forms"> 
-        <form class="form" @submit.prevent="submitForm">
-          <div class="formbox">
-            <label for="name">Name</label>
-            <input type="string" id="name" required v-model="name"/>
-          </div>
+  <div class="donorCont">
+    <h2 class="title">Update Beneficiary Profile Details</h2>
+    <div class="form-container">
+      <form class="form" @submit.prevent="submitForm">
+        <div class="form-group">
+          <label for="name" class="form-label">Name</label>
+          <input type="string" id="name" required class="form-input" v-model="name" />
+        </div>
 
-          <div class="formbox">
-            <label for="contact">Contact</label>
-            <input type="string" id="contact" required v-model="contact"/>
-          </div>
-          <button id="btn" @click="submitForm()"> Update Profile Details </button><br>
-        </form>
-      </div>
-    
-      <br><br>
-
-    <button id="btn" @click="back()"> Back to Profile </button> 
+        <div class="form-group">
+          <label for="contact" class="form-label">Contact</label>
+          <input type="string" id="contact" required class="form-input" v-model="contact" />
+        </div>
+        <button class="btn" type="submit"> Update Profile Details </button>
+      </form>
     </div>
+
+    <button class="btn back-btn" @click="back()"> Back to Profile </button>
+  </div>
 </template>
 
 <script>
@@ -74,53 +71,91 @@ export default {
 </script>
 
 <style scoped>
-.donorCont {
-    background-color: aliceblue;
+  .donorCont {
+    background-color: #f9f9f9;
     width: 100vw;
     height: 100vh;
-    align-content: center;
     padding: 100px;
     font-family: Avenir, Arial, Helvetica, sans-serif;
     font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-}
+  }
 
-#forms {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  margin-top: 50px;
-}
+  .title {
+    margin-bottom: 30px;
+    font-size: 32px;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+  }
 
-.form {
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  width: 400px;
-}
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+  }
 
-.formbox {
-  display: flex;
-  align-items: flex-start;
-  margin-bottom: 20px;
-  width: 100%;
-}
+  .form {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    width: 400px;
+  }
 
-label {
-  margin-bottom: 10px;
-  margin-right: 10px;
-  font-size: 20px;
-  text-align: right;
-}
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    width: 100%;
+  }
 
-input {
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 10px;
-  margin-bottom: 20px;
-  width: 100%;
-}
+  .form-label {
+    margin-bottom: 10px;
+    margin-right: 10px;
+    font-size: 20px;
+    color: #333;
+    text-align: left;
+  }
 
+  .form-input {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+    font-size: 18px;
+  }
+
+  .btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 24px;
+    cursor: pointer;
+    font-size: 20px;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .btn:hover {
+    background-color: #3e8e41;
+  }
+
+  .back-btn {
+    margin-top: 20px;
+    font-size: 18px;
+    background-color: transparent;
+    color: #4CAF50;
+    border: 1px solid #4CAF50;
+  }
+
+  .back-btn:hover {
+    background-color: #4CAF50;
+    color: white;
+  }
 </style>
-
