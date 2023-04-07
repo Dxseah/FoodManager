@@ -33,28 +33,20 @@
 
       </table>
       <br>
+      <h1 class="header">Food Request History</h1>
+        <div v-if="requests.length === 0">You have not made any requests yet!</div>
+        <div v-else>
+      <div v-for="(request, index) in requests" :key="index">
+      <div v-for="(value, key) in request" :key="key">
+      <template v-if="key !== 'userEmail'">
+        <p>{{ key }}: {{ value }}</p>
+      </template>
+    </div>
+    <hr>
+    </div>
+  </div>
+  <br>
 
-      <div>
-  <h1 class="header">Food Request History</h1>
-  <div v-if="requests.length === 0">You have not made any requests yet!</div>
-  <table v-else>
-    <thead>
-      <tr>
-        <th>Bags of Rice</th>
-        <th>Canned Food</th>
-        <th>Packs of Instant Noodles</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr v-for="(request, index) in requests" :key="index">
-        <td>{{ request.rice }}</td>
-        <td>{{ request.cannedFood }}</td>
-        <td>{{ request.instantNoodles }}</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-      <br>
 
       <button id="btn" @click="update()">Update Profile Details </button><br>
       <!-- <button id="btn" @click="signOut()" v-if="user"> Logout </button>  -->
@@ -108,10 +100,10 @@ export default {
               console.log("Document data:", doc.data());
               this.exists = true;
 
-              // retrieve all instances from DonatedFood where userEmail matches current user's email
-              const donatedFoodRef = collection(db, "RequestedFood");
-              const q = query(donatedFoodRef, where("userEmail", "==", this.user.email));
-              const donatedFoodSnapshot = getDocs(q)
+              // retrieve all instances from RequestedFood where userEmail matches current user's email
+              const requestedFoodRef = collection(db, "RequestedFood");
+              const q = query(requestedFoodRef, where("userEmail", "==", this.user.email));
+              const requestedFoodSnapshot = getDocs(q)
                 .then((querySnapshot) => {
                   const data = [];
                   querySnapshot.forEach((doc) => {
@@ -121,7 +113,7 @@ export default {
                   this.requests = data;
                 })
                 .catch((error) => {
-                  console.log("Error getting donated food documents: ", error);
+                  console.log("Error getting requested food documents: ", error);
                 });
 
             } else {
@@ -213,3 +205,4 @@ th {
 }
 
 </style>
+
