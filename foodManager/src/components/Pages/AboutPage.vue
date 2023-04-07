@@ -53,7 +53,7 @@ export default {
           name: "Demi Tan",
           position: "Developer",
           bio: "Demi has accumulated many years of experience in developing websites and management systems with the team and is passionate in creating an impact in the society.",
-          image: "https://via.placeholder.com/150",
+          image: "../src/assets/demi.jpg",
         },
         {
           name: "Seah Ding Xuan", 
