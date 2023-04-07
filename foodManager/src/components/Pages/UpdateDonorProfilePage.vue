@@ -79,22 +79,22 @@ export default {
 
 <style scoped>
 .donorCont {
-    background-color: aliceblue;
-    width: 100vw;
-    height: 100vh;
-    align-content: center;
-    padding: 100px;
-    font-family: Avenir, Arial, Helvetica, sans-serif;
-    font-size: 20px;
-    align-items: center;
+  background-color: aliceblue;
+  width: 100vw;
+  height: 100vh;
+  padding: 100px;
+  font-family: Avenir, Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-
 
 #forms {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
   margin-top: 50px;
 }
 
@@ -107,6 +107,7 @@ export default {
 
 .formbox {
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
   margin-bottom: 20px;
   width: 100%;
@@ -114,9 +115,8 @@ export default {
 
 label {
   margin-bottom: 10px;
-  margin-right: 10px;
   font-size: 20px;
-  text-align: right;
+  text-align: left;
 }
 
 input {
@@ -126,6 +126,17 @@ input {
   margin-bottom: 20px;
   width: 100%;
 }
-
+button {
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+button:hover {
+  background-color: #4CAF50;
+}
 </style>
-
