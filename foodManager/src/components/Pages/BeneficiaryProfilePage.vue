@@ -4,7 +4,6 @@
       <div class="card-body">
         <div class="alert alert-success" role="alert">
           You are logged in!
-          <!-- <Logout/> -->
         </div>
       </div>
 
@@ -25,11 +24,6 @@
           <th>Contact</th>
           <td> Sample Contact </td>   
         </tr>
-        <!-- <tr>
-          <th>Account Type</th>
-          <td v-if="user.data.account==2"> Donor </td>
-          <td v-else-if="user.data.account==1"> Beneficiary </td>
-        </tr> -->
 
       </table>
       <br>
@@ -49,7 +43,6 @@
 
 
       <button id="btn" @click="update()">Update Profile Details </button><br>
-      <!-- <button id="btn" @click="signOut()" v-if="user"> Logout </button>  -->
       <Logout/>
     </div>
     <div v-else>
