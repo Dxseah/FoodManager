@@ -59,7 +59,7 @@ export default {
           name: "Seah Ding Xuan", 
           position: "Developer", 
           bio: "Ding Xuan has a proven track record of creating websites and developing an inventory management system for many organizations and is dedicated to supporting our mission.",
-          image: "https://via.placeholder.com/150",
+          image: "../src/assets/dingxuan.jpg",
         }, 
         {
           name: "Lim Yi Han", 
