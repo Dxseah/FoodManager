@@ -11,7 +11,7 @@
       <table id="currTable">
         <tr>
           <th>Name</th>
-          <td> {{user.displayName}} </td>
+          <td> {{docName}} </td>
         </tr>
         <tr>
           <th>User ID</th>
@@ -88,6 +88,7 @@ export default {
       if (user) {
         this.user = user;
         const docRef = doc(db, "User", this.user.displayName);
+        const docName = doc.name; 
         const docSnap = getDoc(docRef)
           .then((doc) => {
             if (doc.exists()) {
