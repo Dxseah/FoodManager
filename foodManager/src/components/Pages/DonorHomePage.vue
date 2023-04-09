@@ -3,7 +3,7 @@
       <div class="transbox">
         <div class="content">
           <div class="button-container">
-              <router-link to="/donorform" class="button">Go to Donor Form</router-link>
+              <router-link to="/donorform" class="button">Go to Donation Form</router-link>
             </div>
             <br>
             <h1 class="header"> Track Food Item Progress </h1>
