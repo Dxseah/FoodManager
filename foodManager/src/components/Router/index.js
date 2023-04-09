@@ -16,7 +16,7 @@ import AdminHomePage from '../Pages/AdminHomePage.vue'
 import AdminFormPage from '../Pages/AdminFormPage.vue'
 import Details from '@/components/Details.vue'
 import AdminNewFormPage from '../Pages/AdminNewFormPage.vue'
-
+import AdminShowDonationsPage from '../Pages/AdminShowDonationsPage.vue'
 const routes = [
     {
         path: '/',
@@ -98,7 +98,13 @@ const routes = [
         path: '/adminnewform',
         name: 'AdminNewFormPage',
         component: AdminNewFormPage
+    },
+    {
+        path: '/adminshowdonations',
+        name: 'AdminShowDonationsPage',
+        component: AdminShowDonationsPage
     }
+
 ]
 
 const router = createRouter({
