@@ -90,7 +90,7 @@ export default {
       if (user) {
         this.user = user;
         const docRef = doc(db, "User", this.user.displayName);
-        const docName = doc.name; 
+        // const docName = doc.name; 
         const docSnap = getDoc(docRef)
           .then((doc) => {
             if (doc.exists()) {
