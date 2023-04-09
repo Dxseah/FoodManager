@@ -31,6 +31,8 @@
 import { db } from "@/firebase";
 import { getDoc, doc, setDoc, collection } from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import router from '@/components/Router/index.js'
+
 // import { firestore } from 'firebase-admin';
 
 export default {
@@ -80,6 +82,7 @@ export default {
         return;
       };
       console.log("Form submitted");
+      router.push("/donorhome");
     } catch (err) {
       alert(err.message);
     }

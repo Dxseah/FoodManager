@@ -30,6 +30,7 @@
 import { db } from '@/firebase'
 import { getDoc, doc, updateDoc, setDoc, collection } from "firebase/firestore"
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import router from '@/components/Router/index.js'
 
 export default {
   name: "BeneficiaryFormPage",
@@ -115,6 +116,7 @@ export default {
       //   };
 
       console.log("Form submitted")
+      router.push("/beneficiaryhome")
     }
     catch (err) {
         alert(err.message)
