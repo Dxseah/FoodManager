@@ -12,10 +12,10 @@
               <label for="target-quantity">Target Quantity </label>
               <input type="number" id="target-quantity" v-model.number="targetQuantity" min="0" />
             </div>
-            <div class="form-group">
+            <!-- <div class="form-group">
               <label for="measure">Measuring Unit</label>
               <input type="string" id="measure" v-model.number="measure"/>
-            </div>
+            </div> -->
             <button class="add-button" v-on:click="addAlert">Add New Food Item</button>
             <br>
             <router-link to="/adminhome" class="button">Back to Home Page</router-link>
@@ -52,21 +52,20 @@ export default {
         const auth = getAuth();
         const user = auth.currentUser;
         // Save data to Firestore
-        const foodItemRef = collection(db, 'RequestedFood');
+        const foodItemRef = collection(db, 'FoodCollection');
         const docRef = doc(foodItemRef);
         const docSnap = await getDoc(docRef);
         const requestedData = {
-            [this.name]: this.targetQuantity,
-            // timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-            userEmail: user.email
+            name: this.name,
+            donated: 0,
+            requested: this.targetQuantity,
         };
         if (docSnap.exists()) {
-          await setDoc(docRef, requestedData, { merge: true });
+          await setDoc(doc(db, 'FoodCollection', this.name), requestedData, { merge: true });
         } else {
-          await setDoc(docRef, requestedData);
+          await setDoc(doc(db, 'FoodCollection', this.name), requestedData);
         };
-        
-        console.log("Form submitted")
+        console.log("Form submitted");
     }
     catch (err) {
         alert(err.message)

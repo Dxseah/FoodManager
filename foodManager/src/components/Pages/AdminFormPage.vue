@@ -4,22 +4,10 @@
         <div class="content">
           <h1 class="header">Add Food Item</h1>
           <form class="form"  @submit.prevent="submitForm">
-            <div class="form-group">
-              <label for="rice">Rice</label>
-              <input type="number" id="rice" v-model.number="riceQuantity" min="0" />
-            </div>
-            <div class="form-group">
-              <label for="canned-food">Canned Food</label>
-              <input type="number" id="canned-food" v-model.number="cannedFoodQuantity" min="0" />
-            </div>
-            <div class="form-group">
-              <label for="instant-noodles">Instant Noodles</label>
-              <input type="number" id="instant-noodles" v-model.number="instantNoodlesQuantity" min="0" />
-            </div>
             <button class="submit-button" v-on:click="submitAlert">Add Food Item</button>
           </form>
             <br>
-            <router-link to="/adminhome" class="button">Back to Home Page</router-link>
+            <router-link to="/adminhome">Back to Home Page</router-link>
         </div>
       </div>
     </div>
@@ -27,17 +15,14 @@
 
 <script>
 import { db } from "@/firebase";
-import { getDoc, doc, setDoc, collection } from "firebase/firestore";
+import { getDoc, doc, setDoc, collection, QuerySnapshot, query } from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 export default {
   name: "AdminFormPage",
   data() {
     return {
-      riceQuantity: 0,
-      cannedFoodQuantity: 0,
-      instantNoodlesQuantity: 0,
-      targetQuantity: 0
+      FoodCollection: []
     };
     },
 
@@ -48,41 +33,28 @@ export default {
         this.user = user;
       }
     });
+    this.fetchFoodCollection();
   },
+  
   methods: {
-    async submitForm() {
-      try {
-        const auth = getAuth();
-        const user = auth.currentUser;
+    async fetchFoodCollection() {
+      const foodItemRef = collection(db, "FoodCollection");
+      const docRef = doc(foodItemRef);
+      const docSnap = await getDoc(docRef)
+        .then((querySnapshot) => {
+          const data = [];
+          querySnapshot.forEach((doc) => {
+            console.log(doc.id, "=>", doc.data());
+            data.push(doc.data());
+          });
+          this.FoodCollection = data;
+        })
+    },
 
-        // Save data to Firestore
-        const foodItemRef = collection(db, 'RequestedFood');
-        const docRef = doc(foodItemRef);
-        const docSnap = await getDoc(docRef);
-        const requestedData = {
-          rice: this.riceQuantity,
-          cannedFood: this.cannedFoodQuantity,
-          instantNoodles: this.instantNoodlesQuantity,
-          // timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-          userEmail: user.email
-        };
-        if (docSnap.exists()) {
-          await setDoc(docRef, requestedData, { merge: true });
-        } else {
-          await setDoc(docRef, requestedData);
-        };
-        console.log("Form submitted");
-        
-
+    async submitAlert() {
+      alert("Food item is added!")
     }
-    catch (err) {
-        alert(err.message)
     }
-  },
-  async submitAlert() {
-    alert("Food item is added!")
-  }
-  }
 }
 </script>
 
