@@ -1,6 +1,6 @@
 <template>
 <nav>
-  <div v-if="userData!=null" id="nav">
+  <div v-if="user" id="nav">
     <!-- <p> {{user.data}}</p> -->
     <span v-if="account=='Donor'">
       <router-link to = "/donorhome"> Donor Home </router-link>|

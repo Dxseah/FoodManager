@@ -32,7 +32,7 @@ import { db } from "@/firebase";
 import { getDoc, doc, setDoc, collection } from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import router from '@/components/Router/index.js'
-import { getStorage, ref, uploadBytes } from "firebase/storage";
+import { getStorage, ref, uploadBytesResumable } from "firebase/storage";
 
 // import { firestore } from 'firebase-admin';
 
@@ -83,9 +83,9 @@ export default {
         alert("Please upload an image of your donation.");
         return;
       };
-      const storageRef = ref(storage, '/donations/${user.email}');
+      const storageRef = ref(storage, '/donations/'+user.email);
 // 'file' comes from the Blob or File API
-      uploadBytes(storageRef, this.imageFile).then(() => {
+      uploadBytesResumable(storageRef, this.imageFile).then(() => {
         console.log('Uploaded a blob or file!');
       });
       console.log("Form submitted");
