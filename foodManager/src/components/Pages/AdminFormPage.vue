@@ -4,6 +4,22 @@
         <div class="content">
           <h1 class="header">Add Food Item</h1>
           <form class="form"  @submit.prevent="submitForm">
+            <div class="food-item-list">
+              <div>
+                <table>
+                  <tr>
+                    <th>Name</th>
+                    <th>Requested</th>
+                    <th>Donated</th>
+                  </tr>
+                  <tr v-for="foodItem in foodItems" :key="foodItem.id">
+                    <td>{{ foodItem.name }}</td>
+                    <td>{{ foodItem.requested }}</td>
+                    <td>{{ foodItem.donated }}</td>
+                    </tr>
+                </table>
+              </div>
+            </div>
             <button class="submit-button" v-on:click="submitAlert">Add Food Item</button>
           </form>
             <br>
@@ -14,47 +30,27 @@
   </template>
 
 <script>
-import { db } from "@/firebase";
-import { getDoc, doc, setDoc, collection, QuerySnapshot, query } from "firebase/firestore";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getDoc, doc, updateDoc, setDoc, collection } from "firebase/firestore"
+import { db } from '@/firebase'
+import { query, where, getDocs } from 'firebase/firestore';
 
 export default {
   name: "AdminFormPage",
   data() {
     return {
-      FoodCollection: []
+      foodItems: []
     };
-    },
-
-  mounted() {
-    const auth = getAuth();
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        this.user = user;
-      }
-    });
-    this.fetchFoodCollection();
   },
-  
-  methods: {
-    async fetchFoodCollection() {
-      const foodItemRef = collection(db, "FoodCollection");
-      const docRef = doc(foodItemRef);
-      const docSnap = await getDoc(docRef)
-        .then((querySnapshot) => {
-          const data = [];
-          querySnapshot.forEach((doc) => {
-            console.log(doc.id, "=>", doc.data());
-            data.push(doc.data());
-          });
-          this.FoodCollection = data;
-        })
-    },
 
-    async submitAlert() {
-      alert("Food item is added!")
-    }
-    }
+  async mounted() {
+    const foodItemQuery = query(collection(db, 'FoodCollection'));
+    const querySnapshot = await getDocs(foodItemQuery);
+    querySnapshot.forEach((doc) => {
+      const foodItem = doc.data();
+      foodItem.id = doc.id;
+      this.foodItems.push(foodItem);
+    });
+  }
 }
 </script>
 
