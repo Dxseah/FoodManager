@@ -83,7 +83,7 @@ export default {
         alert("Please upload an image of your donation.");
         return;
       };
-      const storageRef = ref(storage, 'some-child');
+      const storageRef = ref(storage, '/donations/${user.email}');
 // 'file' comes from the Blob or File API
       uploadBytes(storageRef, this.imageFile).then(() => {
         console.log('Uploaded a blob or file!');
