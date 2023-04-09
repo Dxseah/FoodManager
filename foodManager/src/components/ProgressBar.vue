@@ -22,7 +22,12 @@
         },
 
         percentage() {
-            return parseFloat((this.value - this.min) / (this.max - this.min) * 100).toFixed(2);
+            if (this.max != 0) {
+                return parseFloat((this.value - this.min) / (this.max - this.min) * 100).toFixed(2);
+            } else {
+                return parseFloat(0).toFixed(2);
+            }
+
         }
     }
 };

@@ -33,7 +33,7 @@ export default {
   data() {
     return {
       orgName: "FoodManager",
-      orgDescription: "We aim to help non-profit organisations with their inventory system and donation management",
+      orgDescription: "We aim to help non-profit organisations with their inventory system and donation management.",
       orgMission: "Our mission is to work towards a zero wastage system for donations through non-profit organisations.",
       team: [
         {
@@ -64,7 +64,7 @@ export default {
         {
           name: "Lim Yi Han", 
           position: "Developer", 
-          bio: "Yi Han is a skilled developer and with a wealth of experience and knowledge, he dedicates his utmost effort into his work to help the community.",
+          bio: "Yi Han is a skilled developer and with a wealth of experience in web development, he dedicates his utmost effort into his work to help the community. ",
           image: "../src/assets/yihan.jpg",
         }
       ],
