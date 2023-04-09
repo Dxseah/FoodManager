@@ -10,7 +10,7 @@
       <label for="contact">Contact Number:</label>
       <input type="contact" placeholder="Enter Contact Number" required v-model="contact">
       <br>
-      <button id="btn"> Submit </button>
+      <button id="btn" type="submit"> Submit </button>
     </form>
   </div>
 </template>
