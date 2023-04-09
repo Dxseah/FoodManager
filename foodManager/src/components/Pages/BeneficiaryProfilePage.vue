@@ -10,7 +10,7 @@
       <table id="currTable">
         <tr>
           <th>Name</th>
-          <td> {{docName}} </td>
+          <td> {{userData.name}} </td>
         </tr>
         <tr>
           <th>User ID</th>
@@ -22,7 +22,7 @@
         </tr>
         <tr>
           <th>Contact</th>
-          <td> Sample Contact </td>   
+          <td> {{userData.contact}} </td>   
         </tr>
 
       </table>
@@ -77,6 +77,9 @@ export default {
     return {
       user: false,
       exists: false,
+      donations: [],
+      userData: false,
+      account: false,
       requests: []
     }
   }, 
@@ -93,6 +96,7 @@ export default {
             if (doc.exists()) {
               console.log("Document data:", doc.data());
               this.exists = true;
+              this.userData = doc.data();
 
               // retrieve all instances from RequestedFood where userEmail matches current user's email
               const requestedFoodRef = collection(db, "RequestedFood");
