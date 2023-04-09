@@ -11,7 +11,7 @@
         <table id="currTable">
           <tr>
             <th>Name</th>
-            <td> {{docName}} </td>
+            <td> {{userData.name}} </td>
           </tr>
           <tr>
             <th>User ID</th>

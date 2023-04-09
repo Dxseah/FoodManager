@@ -18,7 +18,7 @@
           </div>
           <div class="form-group">
             <label for="image-upload">Upload Image</label>
-            <input type="file" id="image-upload" @change="handleImageUpload" required />
+            <input type="file" id="image-upload" accept="image/*" @change="handleImageUpload" required />
           </div>
           <button class="submit-button" v-on:click="submitAlert">Submit Donation</button>
         </form>
@@ -32,6 +32,7 @@ import { db } from "@/firebase";
 import { getDoc, doc, setDoc, collection } from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import router from '@/components/Router/index.js'
+import { getStorage, ref, uploadBytes } from "firebase/storage";
 
 // import { firestore } from 'firebase-admin';
 
@@ -59,8 +60,9 @@ export default {
     async submitForm() {
       try {
         const auth = getAuth();
+        const storage = getStorage();
         const user = auth.currentUser;
-
+        console.log(this.imageFile)
         // Save data to Firestore
         const foodItemRef = collection(db, "DonatedFood");
         const docRef = doc(foodItemRef);
@@ -81,6 +83,11 @@ export default {
         alert("Please upload an image of your donation.");
         return;
       };
+      const storageRef = ref(storage, 'some-child');
+// 'file' comes from the Blob or File API
+      uploadBytes(storageRef, this.imageFile).then(() => {
+        console.log('Uploaded a blob or file!');
+      });
       console.log("Form submitted");
       router.push("/donorhome");
     } catch (err) {
@@ -95,6 +102,7 @@ export default {
     alert("Donation Form is submitted!")
   },
   handleImageUpload(event) {
+    console.log(event.target.files)
     this.imageFile = event.target.files[0];
   }
 }
