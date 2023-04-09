@@ -8,6 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@syncfusion/ej2-vue-dropdowns": "^21.1.38",
     "firebase": "^9.17.2",
     "firebase-admin": "^11.5.0",
     "firebaseui": "^0.600.0",

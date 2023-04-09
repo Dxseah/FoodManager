@@ -5,7 +5,11 @@
       <h3>Personal Details:</h3>
       <br>
       <label for="type">Account Type:</label>
-      <input type="type" placeholder="Enter Donor/Beneficiary" required v-model="type">
+      <select required v-model="type" >
+          <option value="don">Donor</option>
+          <option value="ben">Beneficiary</option>
+      </select>
+      <!-- <input type="type" placeholder="Enter Donor/Beneficiary" required v-model="type"> -->
       <br>
       <label for="contact">Contact Number:</label>
       <input type="contact" placeholder="Enter Contact Number" required v-model="contact">
@@ -24,11 +28,12 @@ import router from '@/components/Router/index.js'
 
 export default {
   name: "Details", 
+
   data() {
     return {
       user: false,
       type: "",
-      contact: ""
+      contact: "",
     }
   }, 
 
@@ -87,6 +92,7 @@ export default {
 </script>
 
 <style scoped>
+
   .donorCont {
     background-color: aliceblue;
     width: 100vw;
