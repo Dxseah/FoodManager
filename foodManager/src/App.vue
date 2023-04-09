@@ -1,15 +1,21 @@
 <template>
 <nav>
-  <div v-if="user" id="nav">
+  <div v-if="userData" id="nav">
     <!-- <p> {{user.data}}</p> -->
-    <router-link to = "/donorhome"> Donor Home </router-link>|
-    <router-link to = "/beneficiaryhome"> Beneficiary Home </router-link>|
-    <router-link to = "/adminhome"> Admin Home </router-link> |
-    <router-link to = "/donorprofile"> Donor Profile </router-link>|
-    <router-link to = "/beneficiaryprofile"> Beneficiary Profile </router-link>|
+    <span v-if="userData.account='Donor'">
+      <router-link to = "/donorhome"> Donor Home </router-link>|
+    </span>
+    <span v-else-if="userData.account='Beneficiary'">
+      <router-link to = "/beneficiaryhome"> Beneficiary Home </router-link>|
+    </span>
+    <span v-else-if="userData.account='Admin'">
+      <router-link to = "/adminhome"> Admin Home </router-link> |
+    </span>
+    <router-link to = "/donorprofile"> Profile </router-link>|
+    <!-- <router-link to = "/beneficiaryprofile"> Beneficiary Profile </router-link>| -->
     <router-link to = "/about"> About Us </router-link>|
     <!-- isLoggedIn is buggy, sometimes displayName doesn't load after refreshing page -->
-    <h1 id="displayName">Welcome, {{user.displayName}}!</h1>
+    <h1 id="displayName">Welcome, {{userData.name}}!</h1>
   </div>
   <div v-else id="nav">
     |<router-link to = "/"> Login </router-link>|
@@ -33,7 +39,8 @@
     data() {
       return {
         user: false,
-        account:false
+        account:false,
+        userData:false
       }
     }, 
 
@@ -48,6 +55,7 @@
             if (doc.exists()) {
               console.log("Document data:", doc.data());
               this.account = doc.data().type;
+              this.userData=doc.data();
             } else {
               console.log("No such document!");
               // window.location.reload();
@@ -58,7 +66,8 @@
           });
       }
     })
-  }
+  },
+
   }
 
 </script>
