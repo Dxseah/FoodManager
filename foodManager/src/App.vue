@@ -2,15 +2,18 @@
 <nav>
   <div v-if="userData!=null" id="nav">
     <!-- <p> {{user.data}}</p> -->
-    <span v-if="userData.account=='Donor'">
+    <span v-if="account=='Donor'">
       <router-link to = "/donorhome"> Donor Home </router-link>|
     </span>
-    <span v-else-if="userData.account=='Beneficiary'">
+    <span v-else-if="account=='Beneficiary'">
       <router-link to = "/beneficiaryhome"> Beneficiary Home </router-link>|
     </span>
-    <span v-else-if="userData.account=='Admin'">
+    <span v-else-if="account=='Admin'">
       <router-link to = "/adminhome"> Admin Home </router-link> |
     </span>
+    <!-- <span v-else>
+      {{userData}}
+    </span> -->
     <router-link to = "/donorprofile"> Profile </router-link>|
     <!-- <router-link to = "/beneficiaryprofile"> Beneficiary Profile </router-link>| -->
     <router-link to = "/about"> About Us </router-link>|
