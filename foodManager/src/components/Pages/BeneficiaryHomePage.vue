@@ -7,18 +7,16 @@
             </div>
             <br>
             <h1 class="header"> Track Food Item Progress </h1>
-            <h3 class="food">Rice</h3>
-            <ProgressBar :percentComplete="displayRice"/>
-            <h3 class="percent">{{ donatedRice }} / {{ requestedRice }} raised</h3>
-            <h3 class="percent"> {{ percentRice }}% completed</h3>
-            <h3 class="food">Canned Food</h3>
-            <ProgressBar :percentComplete="displayCannedFood"/>
-            <h3 class="percent">{{ donatedCannedFood }} / {{ requestedCannedFood }} raised</h3>
-            <h3 class="percent"> {{ percentCannedFood }}% completed</h3>
-            <h3 class="food">Instant Noodles</h3>
-            <ProgressBar :percentComplete="displayInstantNoodles"/>
-            <h3 class="percent">{{ donatedInstantNoodles }} / {{ requestedInstantNoodles }} raised</h3>
-            <h3 class="percent"> {{ percentInstantNoodles }}% completed</h3>
+            <div class="food-item-list">
+              <div v-for="foodItem in foodItems" :key="foodItem.id">
+                <ProgressBar
+                  :label="foodItem.name"
+                  :min="0"
+                  :max="foodItem.requested"
+                  :value="foodItem.donated"
+                />
+              </div>
+            </div>
         </div>
       </div>
     </div>
@@ -36,52 +34,21 @@ import { query, where, getDocs } from 'firebase/firestore';
             ProgressBar,
     },
 
-    data() {
-      return {
-          //  food: "Rice",
-           donatedRice: null,
-           requestedRice: null,
-           percentRice: null,
-           displayRice: null,
-           donatedCannedFood: null,
-           requestedCannedFood: null,
-           percentCannedFood: null,
-           displayCannedFood: null,
-           donatedInstantNoodles: null,
-           requestedInstantNoodles: null,
-           percentInstantNoodles: null,
-           displayInstantNoodles: null,
-      };
+  data() {
+    return {
+      foodItems: []
+    };
   },
 
-  async created() {
-    const queryDonated = query(collection(db, 'DonatedFood'))
-    const queryDonatedSnapshot = await getDocs(queryDonated);
-
-    const queryRequested = query(collection(db, 'RequestedFood'));
-    const queryRequestedSnapshot = await getDocs(queryRequested);
-
-    const sumDonatedRice = queryDonatedSnapshot.docs.map(doc => doc.data().rice);
-    this.donatedRice = sumDonatedRice.reduce((acc, val) => acc + val, 0);
-    const sumRequestedRice = queryRequestedSnapshot.docs.map(doc => doc.data().rice);
-    this.requestedRice = sumRequestedRice.reduce((acc, val) => acc + val, 0);
-    this.percentRice = parseFloat(this.donatedRice / this.requestedRice * 100).toFixed(1);
-    this.displayRice = Math.min(this.percentRice, 100);
-
-    const sumDonatedCannedFood = queryDonatedSnapshot.docs.map(doc => doc.data().cannedFood);
-    this.donatedCannedFood = sumDonatedCannedFood.reduce((acc, val) => acc + val, 0);
-    const sumRequestedCannedFood = queryRequestedSnapshot.docs.map(doc => doc.data().cannedFood);
-    this.requestedCannedFood = sumRequestedCannedFood.reduce((acc, val) => acc + val, 0);
-    this.percentCannedFood = parseFloat(this.donatedCannedFood / this.requestedCannedFood * 100).toFixed(1);
-    this.displayCannedFood = Math.min(this.percentCannedFood, 100);
-
-    const sumDonatedInstantNoodles = queryDonatedSnapshot.docs.map(doc => doc.data().instantNoodles);
-    this.donatedInstantNoodles = sumDonatedInstantNoodles.reduce((acc, val) => acc + val, 0);
-    const sumRequestedInstantNoodles = queryRequestedSnapshot.docs.map(doc => doc.data().instantNoodles);
-    this.requestedInstantNoodles = sumRequestedInstantNoodles.reduce((acc, val) => acc + val, 0);
-    this.percentInstantNoodles = parseFloat(this.donatedInstantNoodles / this.requestedInstantNoodles * 100).toFixed(1);
-    this.displayInstantNoodles = Math.min(this.percentInstantNoodles, 100);
-  },
+  async mounted() {
+    const foodItemQuery = query(collection(db, 'FoodCollection'));
+    const querySnapshot = await getDocs(foodItemQuery);
+    querySnapshot.forEach((doc) => {
+      const foodItem = doc.data();
+      foodItem.id = doc.id;
+      this.foodItems.push(foodItem);
+    });
+  }
 }
 </script>
   

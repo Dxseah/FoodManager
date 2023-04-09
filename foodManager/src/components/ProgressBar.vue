@@ -1,19 +1,31 @@
 <template>
+    <div id="food">{{ label }}</div>
     <div class="progress-bar">
-      <div class="progress-bar-fill" :style="{ width: percentComplete + '%'}"></div>
+        <div class="progress-bar-fill" :style="{ width: capPercentage + '%'}"></div>
     </div>
+    <div class="raised">{{ value }} / {{ max }} raised</div>
+    <div class="percent"> {{ percentage }}% completed</div>
   </template>
   
   <script>
   export default {
     props: {
-      percentComplete: {
-        type: Number,
-        default: 0,
-        required: true,
-      }
+      label: String,
+      min: Number,
+      max: Number,
+      value: Number,
+    },
+
+    computed: {
+        capPercentage() {
+            return Math.min(((this.value - this.min) / (this.max - this.min) * 100), 100);
+        },
+
+        percentage() {
+            return parseFloat((this.value - this.min) / (this.max - this.min) * 100).toFixed(2);
+        }
     }
-  };
+};
   </script>
   
   <style>
@@ -22,6 +34,7 @@
     height: 20px;
     position: relative;
     width: 100%;
+    margin-bottom: 20px;
   }
   
   .progress-bar-fill {
@@ -32,5 +45,24 @@
     top: 0;
     transition: width 0.3s ease-in-out;
   }
-  </style>
+
+  #food {
+    text-align: left;
+    font-weight: bolder;
+    font-size: 30px;
+  }
+
+  .raised {
+    text-align: right;
+    font-weight: bold;
+    font-size: 25px;
+  }
+
+  .percent {
+    text-align: right;
+    font-weight: bold;
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+</style>
   
