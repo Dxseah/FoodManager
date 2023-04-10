@@ -53,6 +53,14 @@ export default {
           const userRef = collection(db, "User"); 
           const curr = user.displayName; 
           const docRef = doc(userRef, curr);
+
+
+            // Check for empty fields
+          if (this.name == " " || this.contact == " ") {
+            alert('Please fill in all fields');
+            return;
+          }
+
           const requestedData = {
             "name": this.name, 
             "contact": this.contact,
