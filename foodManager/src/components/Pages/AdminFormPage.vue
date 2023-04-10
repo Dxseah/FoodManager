@@ -7,7 +7,8 @@
             <div class="food-item-list">
               <div v-for="foodItem in foodItems" :key="foodItem.id">
                   <label for="target-quantity">{{ foodItem.name }} </label>
-                  <input type="number" id="requested-quantity" v-model.number="requestedQuantity" min="0" />
+                  <input type="number" id="donated-quantity" v-model.number="donatedQuantity" min="0" :placeholder="[[foodItem.donated]]"/>
+                  <input type="number" id="requested-quantity" v-model.number="requestedQuantity" min="0" :placeholder="[[foodItem.requested]]"/>
               </div>
             </div>
             <button class="submit-button" v-on:click="submitAlert">Add Food Item</button>
