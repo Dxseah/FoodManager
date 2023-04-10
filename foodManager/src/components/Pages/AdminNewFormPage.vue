@@ -12,10 +12,6 @@
               <label for="target-quantity">Target Quantity </label>
               <input type="number" id="target-quantity" v-model.number="targetQuantity" min="0" />
             </div>
-            <!-- <div class="form-group">
-              <label for="measure">Measuring Unit</label>
-              <input type="string" id="measure" v-model.number="measure"/>
-            </div> -->
             <button class="add-button" v-on:click="addAlert">Add New Food Item</button>
             <br>
             <router-link to="/adminhome" class="button">Back to Home Page</router-link>
