@@ -92,13 +92,12 @@ export default {
 </script>
 
 <style scoped>
-
   .donorCont {
     background-color: aliceblue;
-    width: 100vw;
-    height: 100vh;
-    align-content: center;
-    padding: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
   h2 {
@@ -108,26 +107,48 @@ export default {
     margin-bottom: 20px;
   }
 
-  label{
-    display: inline-block;
-    clear: left;
-    width: 150px;
-    text-align: right;
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  label {
+    display: block;
+    width: 100%;
+    text-align: left;
     font-family: Avenir, Arial, Helvetica, sans-serif;
     font-weight: bold;
-    padding-right: 5px;
     padding-bottom: 5px;
   }
 
-  input {
-    display: inline-block;
-    margin-left: 5px;
+  input,
+  select {
+    display: block;
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid gray;
   }
 
   #btn {
     display: inline-block;
     text-align: center;
     margin-top: 20px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
   }
-  
+
+  #btn:hover {
+    background-color: #2e8b57;
+  }
+
 </style>
