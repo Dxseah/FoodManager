@@ -49,7 +49,7 @@ export default {
 
   methods:{
     async submitForm() {
-      if (/^\d{8}$/.test(this.contact)) {
+      if (!/^\d{8}$/.test(this.contact)|| this.contact < 80000000 || this.contact > 99999999) {
           const docRef = doc(db, "User", this.user.displayName);
           const docSnap = await setDoc(docRef,
           {
