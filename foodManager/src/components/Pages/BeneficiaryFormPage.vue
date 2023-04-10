@@ -3,88 +3,100 @@
     <div class="transbox">
       <div class="content">
         <h1 class="header">Beneficiary Form</h1>
-        <form class="form"  @submit.prevent="submitForm">
-          <div class="form-group">
-            <label for="rice">Rice</label>
-            <input type="number" id="rice" v-model.number="riceQuantity" min="0" />
-          </div>
-          <div class="form-group">
-            <label for="canned-food">Canned Food</label>
-            <input type="number" id="canned-food" v-model.number="cannedFoodQuantity" min="0" />
-          </div>
-          <div class="form-group">
-            <label for="instant-noodles">Instant Noodles</label>
-            <input type="number" id="instant-noodles" v-model.number="instantNoodlesQuantity" min="0" />
-          </div>
-          <button class="submit-button" v-on:click="submitAlert">Submit Request</button>
-        </form>
+        <form class="form" @submit.prevent="submitForm">
+          <div v-for="foodItem in foodItems" :key="foodItem.id">
+                  <h2>{{ foodItem.name }}</h2>
+                  <div class="food-form">
+                    <label>Request Quantity: </label>
+                    <input type="number" id="donated-quantity" v-model.number="foodItem.requestQuantity" min="0">
+                  </div>
+              </div>
+          <button class="submit-button" v-on:click="submitAlert">Submit Donation</button>
+        </form> 
       </div>
     </div>
   </div>
 </template>
 
 <script>
-// import { ref } from 'vue'
-// import { useStore } from 'vuex'
-// import router from '@/components/Router/index.js'
-import { db } from '@/firebase'
-import { getDoc, doc, updateDoc, setDoc, collection } from "firebase/firestore"
+import { db } from "@/firebase";
+import { getDoc, doc, setDoc, collection, updateDoc } from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import router from '@/components/Router/index.js'
+import { getStorage, ref, uploadBytesResumable } from "firebase/storage";
+import { query, where, getDocs } from 'firebase/firestore';
+
+// import { firestore } from 'firebase-admin';
 
 export default {
   name: "BeneficiaryFormPage",
   data() {
     return {
-      riceQuantity: 0,
-      cannedFoodQuantity: 0,
-      instantNoodlesQuantity: 0,
+      foodItems: []
     };
   },
 
-  mounted() {
+  async mounted() {
     const auth = getAuth();
-    onAuthStateChanged(auth,(user)=>{
+    onAuthStateChanged(auth, (user) => {
       if (user) {
         this.user = user;
       }
-    })
-  }, 
+    });
+    const foodItemQuery = query(collection(db, 'FoodCollection'));
+    const querySnapshot = await getDocs(foodItemQuery);
+    querySnapshot.forEach((doc) => {
+      const foodItem = doc.data();
+      foodItem.id = doc.id;
+      this.foodItems.push(foodItem);
+    });
+  },
 
   methods: {
     async submitForm() {
-      try {
-      const auth = getAuth(); 
+    try {
+      const auth = getAuth();
+      const storage = getStorage();
       const user = auth.currentUser;
-      // Save data to Firestore
-      // const userId = store.getters['auth/user'].id;
-      const foodItemRef = collection(db, 'RequestedFood');
-      const docRef = doc(foodItemRef); 
-      const docSnap = await getDoc(docRef);
-      const requestedData = {
-        rice: this.riceQuantity,
-        cannedFood: this.cannedFoodQuantity,
-        instantNoodles: this.instantNoodlesQuantity,
-        // timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-        userEmail: user.email
-      };
-      if (docSnap.exists()) {
-        await setDoc(docRef, requestedData, { merge: true });
-      } else {
-        await setDoc(docRef, requestedData);
-      };
 
-      console.log("Form submitted")
-      router.push("/beneficiaryhome")
-    }
-    catch (err) {
-        alert(err.message)
+      const batch = [];
+      const requestData = {};
+      this.foodItems.forEach((foodItem) => {
+        batch.push(updateDoc(doc(db, 'FoodCollection', foodItem.id), {
+          requested: foodItem.requested + (foodItem.requestQuantity ? foodItem.requestQuantity : 0),
+        }));
+      });
+      await Promise.all(batch);
+
+      // Save data to Firestore
+      const foodItemRef = collection(db, "RequestedFood");
+      const docRef = doc(foodItemRef);
+      const docSnap = await getDoc(docRef);
+
+      this.foodItems.forEach((foodItem) => {
+        if (foodItem.requestQuantity && foodItem.requestQuantity > 0) {
+          requestData[foodItem.name] = foodItem.requestQuantity;
+        }
+      });
+
+      requestData.userEmail = user.email;
+
+      if (docSnap.exists()) {
+        await setDoc(docRef, requestData, { merge: true });
+      } else {
+        await setDoc(docRef, requestData);
+      }
+      console.log("Form submitted");
+      router.push("/donorhome");
+    } catch (err) {
+      alert(err.message);
     }
   },
+
   async submitAlert() {
     alert("Request Form is submitted!")
   }
-  }
+}
 }
 </script>
 
@@ -96,8 +108,9 @@ export default {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-repeat: no-repeat;
-  height: 100vh;
+  height: 150vh;
   width: 100vw;
+  display: flex;
   align-items: center;
   justify-content: center;
   background-color: aliceblue;
@@ -152,6 +165,9 @@ input[type="number"] {
   width: 100%;
 }
 
+input[type="file"] {
+  margin-top: 5px;
+}
 
 .submit-button {
   background-color: silver;
