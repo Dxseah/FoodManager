@@ -3,8 +3,9 @@
       <div class="transbox">
         <div class="content">
             <h1 class="newHeader">Food Items</h1><br>
-            <router-link to="/adminform" class="button">Add Food Item</router-link><br><br>
-            <router-link to="/adminnewform" class="button">Add New Food Item</router-link>
+            <router-link to="/adminform" class="button">Edit Food Quantities</router-link><br><br>
+            <router-link to="/adminnewform" class="button">Add New Food Item</router-link><br><br>
+            <button id="deleteBtn">Delete Food Item</button><br><br>
             <h1 class="header"> Track Food Item Progress </h1>
             <div class="food-item-list">
               <div v-for="foodItem in foodItems" :key="foodItem.id">
@@ -16,10 +17,6 @@
                 />
               </div>
             </div>
-        </div>
-        <div class>
-            <button id="saveChangesBtn">Save Changes</button>
-            <button id="deleteBtn">Delete Food Item</button>
         </div>
       </div>
     </div>

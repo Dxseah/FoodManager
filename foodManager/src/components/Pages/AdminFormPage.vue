@@ -5,19 +5,9 @@
           <h1 class="header">Add Food Item</h1>
           <form class="form"  @submit.prevent="submitForm">
             <div class="food-item-list">
-              <div>
-                <table>
-                  <tr>
-                    <th>Name</th>
-                    <th>Requested</th>
-                    <th>Donated</th>
-                  </tr>
-                  <tr v-for="foodItem in foodItems" :key="foodItem.id">
-                    <td>{{ foodItem.name }}</td>
-                    <td>{{ foodItem.requested }}</td>
-                    <td>{{ foodItem.donated }}</td>
-                    </tr>
-                </table>
+              <div v-for="foodItem in foodItems" :key="foodItem.id">
+                  <label for="target-quantity">{{ foodItem.name }} </label>
+                  <input type="number" id="requested-quantity" v-model.number="requestedQuantity" min="0" />
               </div>
             </div>
             <button class="submit-button" v-on:click="submitAlert">Add Food Item</button>
@@ -118,7 +108,6 @@ input[type="number"] {
   margin-bottom: 20px;
   width: 100%;
 }
-
 
 .submit-button {
   background-color: silver;
