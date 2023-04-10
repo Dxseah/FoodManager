@@ -49,8 +49,13 @@ export default {
 
   methods:{
     async submitForm() {
-      if (!/^\d{8}$/.test(this.contact)|| this.contact < 80000000 || this.contact > 99999999) {
           const docRef = doc(db, "User", this.user.displayName);
+                      // Check if contact has exactly 8 digits
+          if (!/^\d{8}$/.test(this.contact)|| this.contact < 80000000 || this.contact > 99999999) {
+              alert('Please enter a valid 8 digit Singapore contact number.');
+              return;
+            }
+
           const docSnap = await setDoc(docRef,
           {
             name: this.user.displayName,
@@ -59,13 +64,10 @@ export default {
             email: this.user.email
           });
           router.push('/donorprofile')
-          window.location.reload()
-    } else {
-      alert('Please enter a valid 8 digit Singapore contact number.');
+          window.location.reload();
+        }
+      }
     }
-  }
-}
-}
     //   const docRef = doc(db,"User",user.value);
     //     await setDoc(docRef, {
     //       userid: userid.value,
