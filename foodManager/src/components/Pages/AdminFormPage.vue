@@ -2,15 +2,15 @@
     <div class="background">
       <div class="transbox">
         <div class="content">
-          <h1 class="header">Add Food Item</h1>
+          <h1 class="header">Update Food Item Quantities</h1>
           <form class="form"  @submit.prevent="submitForm">
               <div v-for="foodItem in foodItems" :key="foodItem.id">
-                  <h2>{{ foodItem.name }} </h2>
+                  <h2>{{ foodItem.name }}</h2>
                   <div class="food-form">
                     <label>Donated Quantity: </label>
-                  <input type="number" id="donated-quantity" v-model.number="foodItem.donated" min="0" :placeholder="[[foodItem.donated]]"/>
-                  <label>Requested Quantity: </label>
-                  <input type="number" id="requested-quantity" v-model.number="foodItem.requested" min="0" :placeholder="[[foodItem.requested]]"/>
+                    <input type="number" id="donated-quantity" v-model.number="foodItem.donated" min="0" :placeholder="[[foodItem.donated]]"/>
+                    <label>Requested Quantity: </label>
+                    <input type="number" id="requested-quantity" v-model.number="foodItem.requested" min="0" :placeholder="[[foodItem.requested]]"/>
                   </div>
             </div>
             <button class="submit-button" v-on:click="submitAlert">Add Food Item</button>
