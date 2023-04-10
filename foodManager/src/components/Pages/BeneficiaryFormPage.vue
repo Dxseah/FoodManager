@@ -59,7 +59,6 @@ export default {
     try {
       const auth = getAuth();
       const user = auth.currentUser;
-      console.log(this.imageFile)
 
       const batch = [];
       const requestData = {};
