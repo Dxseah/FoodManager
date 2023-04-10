@@ -4,24 +4,17 @@
       <div class="content">
         <h1 class="header">Donor Form</h1>
         <form class="form" @submit.prevent="submitForm">
-          <div class="form-group">
-            <label for="rice">Rice</label>
-            <input type="number" id="rice" v-model.number="riceQuantity" min="0" />
-          </div>
-          <div class="form-group">
-            <label for="canned-food">Canned Food</label>
-            <input type="number" id="canned-food" v-model.number="cannedFoodQuantity" min="0" />
-          </div>
-          <div class="form-group">
-            <label for="instant-noodles">Instant Noodles</label>
-            <input type="number" id="instant-noodles" v-model.number="instantNoodlesQuantity" min="0" />
-          </div>
-          <div class="form-group">
-            <label for="image-upload">Upload Image</label>
-            <input type="file" id="image-upload" accept="image/*" @change="handleImageUpload" required />
-          </div>
+          <div v-for="foodItem in foodItems" :key="foodItem.id">
+                  <h2>{{ foodItem.name }}</h2>
+                  <div class="food-form">
+                    <label>Donated Quantity: </label>
+                    <input type="number" id="donated-quantity" v-model.number="foodItem.donatedQuantity" min="0">
+                  </div>
+              </div>
+          <label for="image-upload">Upload Image</label>
+          <input type="file" id="image-upload" accept="image/*" @change="handleImageUpload" required />
           <button class="submit-button" v-on:click="submitAlert">Submit Donation</button>
-        </form>
+        </form> 
       </div>
     </div>
   </div>
@@ -29,10 +22,11 @@
 
 <script>
 import { db } from "@/firebase";
-import { getDoc, doc, setDoc, collection } from "firebase/firestore";
+import { getDoc, doc, setDoc, collection, updateDoc } from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import router from '@/components/Router/index.js'
 import { getStorage, ref, uploadBytesResumable } from "firebase/storage";
+import { query, where, getDocs } from 'firebase/firestore';
 
 // import { firestore } from 'firebase-admin';
 
@@ -40,51 +34,70 @@ export default {
   name: "DonorFormPage",
   data() {
     return {
-      riceQuantity: 0,
-      cannedFoodQuantity: 0,
-      instantNoodlesQuantity: 0,
+      foodItems: [],
       imageFile: null,
     };
   },
 
-  mounted() {
+  async mounted() {
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
       if (user) {
         this.user = user;
       }
     });
+    const foodItemQuery = query(collection(db, 'FoodCollection'));
+    const querySnapshot = await getDocs(foodItemQuery);
+    querySnapshot.forEach((doc) => {
+      const foodItem = doc.data();
+      foodItem.id = doc.id;
+      this.foodItems.push(foodItem);
+    });
   },
 
   methods: {
     async submitForm() {
-      try {
-        const auth = getAuth();
-        const storage = getStorage();
-        const user = auth.currentUser;
-        console.log(this.imageFile)
-        // Save data to Firestore
-        const foodItemRef = collection(db, "DonatedFood");
-        const docRef = doc(foodItemRef);
-        const docSnap = await getDoc(docRef);
-        const donationData = {
-          rice: this.riceQuantity,
-          cannedFood: this.cannedFoodQuantity,
-          instantNoodles: this.instantNoodlesQuantity,
-          // timestamp: firestore.Timestamp.now();
-          userEmail: user.email
-        };
-        if (docSnap.exists()) {
-          await setDoc(docRef, donationData, { merge: true });
-        } else {
-          await setDoc(docRef, donationData);
+    try {
+      const auth = getAuth();
+      const storage = getStorage();
+      const user = auth.currentUser;
+      console.log(this.imageFile)
+
+      const batch = [];
+      const donationData = {};
+      this.foodItems.forEach((foodItem) => {
+        batch.push(updateDoc(doc(db, 'FoodCollection', foodItem.id), {
+          donated: foodItem.donated + (foodItem.donatedQuantity ? foodItem.donatedQuantity : 0),
+        }));
+      });
+      await Promise.all(batch);
+
+      // Save data to Firestore
+      const foodItemRef = collection(db, "DonatedFood");
+      const docRef = doc(foodItemRef);
+      const docSnap = await getDoc(docRef);
+
+      this.foodItems.forEach((foodItem) => {
+        if (foodItem.donatedQuantity && foodItem.donatedQuantity > 0) {
+          donationData[foodItem.name] = foodItem.donatedQuantity;
         }
-        if (!this.imageFile) {
+      });
+
+      donationData.userEmail = user.email;
+
+      if (docSnap.exists()) {
+        await setDoc(docRef, donationData, { merge: true });
+      } else {
+        await setDoc(docRef, donationData);
+      }
+
+      if (!this.imageFile) {
         alert("Please upload an image of your donation.");
         return;
       };
+
       const storageRef = ref(storage, '/donations/'+user.email);
-// 'file' comes from the Blob or File API
+      // 'file' comes from the Blob or File API
       uploadBytesResumable(storageRef, this.imageFile).then(() => {
         console.log('Uploaded a blob or file!');
       });
@@ -94,6 +107,7 @@ export default {
       alert(err.message);
     }
   },
+
   async submitAlert() {
     if (!this.imageFile) {
       alert("Please upload an image of your donation.");
