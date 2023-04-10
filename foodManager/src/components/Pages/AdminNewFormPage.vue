@@ -5,7 +5,7 @@
           <h1 class="header2">Add New Food Item </h1>
           <form class="form2" @submit.prevent="submitForm">
             <div class="form-group">
-              <label for="name">New Food Item</label>
+              <label for="name">New Food Item Name</label>
               <input type="string" id="name" v-model.number="name"/>
             </div>
             <div class="form-group">
