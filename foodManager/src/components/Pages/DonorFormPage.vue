@@ -10,7 +10,7 @@
                     <label>Donated Quantity: </label>
                     <input type="number" id="donated-quantity" v-model.number="foodItem.donatedQuantity" min="0">
                   </div>
-              </div>
+          </div>
           <label for="image-upload">Upload Image</label>
           <input type="file" id="image-upload" accept="image/*" @change="handleImageUpload" required />
           <button class="submit-button" v-on:click="submitAlert">Submit Donation</button>

@@ -5,16 +5,13 @@
         <h1 class="header">Beneficiary Form</h1>
         <form class="form"  @submit.prevent="submitForm">
           <div class="form-group">
-            <label for="rice">Rice</label>
-            <input type="number" id="rice" v-model.number="riceQuantity" min="0" />
-          </div>
-          <div class="form-group">
-            <label for="canned-food">Canned Food</label>
-            <input type="number" id="canned-food" v-model.number="cannedFoodQuantity" min="0" />
-          </div>
-          <div class="form-group">
-            <label for="instant-noodles">Instant Noodles</label>
-            <input type="number" id="instant-noodles" v-model.number="instantNoodlesQuantity" min="0" />
+            <div v-for="foodItem in foodItems" :key="foodItem.id">
+                  <h2>{{ foodItem.name }}</h2>
+                  <div class="food-form">
+                    <label>Requested Quantity: </label>
+                    <input type="number" id="requested-quantity" v-model.number="foodItem.requestedQuantity" min="0">
+                  </div>
+            </div>
           </div>
           <button class="submit-button" v-on:click="submitAlert">Submit Request</button>
         </form>
@@ -31,48 +28,66 @@ import { db } from '@/firebase'
 import { getDoc, doc, updateDoc, setDoc, collection } from "firebase/firestore"
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import router from '@/components/Router/index.js'
+import { query, where, getDocs } from 'firebase/firestore';
 
 export default {
   name: "BeneficiaryFormPage",
   data() {
     return {
-      riceQuantity: 0,
-      cannedFoodQuantity: 0,
-      instantNoodlesQuantity: 0,
+      foodItems: []
     };
   },
 
-  mounted() {
+  async mounted() {
     const auth = getAuth();
-    onAuthStateChanged(auth,(user)=>{
+    onAuthStateChanged(auth, (user) => {
       if (user) {
         this.user = user;
       }
-    })
-  }, 
+    });
+    const foodItemQuery = query(collection(db, 'FoodCollection'));
+    const querySnapshot = await getDocs(foodItemQuery);
+    querySnapshot.forEach((doc) => {
+      const foodItem = doc.data();
+      foodItem.id = doc.id;
+      this.foodItems.push(foodItem);
+    });
+  },
 
   methods: {
     async submitForm() {
-      try {
-      const auth = getAuth(); 
+    try {
+      const auth = getAuth();
       const user = auth.currentUser;
+      console.log(this.imageFile)
+
+      const batch = [];
+      const requestData = {};
+      this.foodItems.forEach((foodItem) => {
+        batch.push(updateDoc(doc(db, 'FoodCollection', foodItem.id), {
+          requested: foodItem.requested + (foodItem.requestedQuantity ? foodItem.requestedQuantity : 0),
+        }));
+      });
+      await Promise.all(batch);
+
       // Save data to Firestore
-      // const userId = store.getters['auth/user'].id;
-      const foodItemRef = collection(db, 'RequestedFood');
-      const docRef = doc(foodItemRef); 
+      const foodItemRef = collection(db, "RequestedFood");
+      const docRef = doc(foodItemRef);
       const docSnap = await getDoc(docRef);
-      const requestedData = {
-        rice: this.riceQuantity,
-        cannedFood: this.cannedFoodQuantity,
-        instantNoodles: this.instantNoodlesQuantity,
-        // timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-        userEmail: user.email
-      };
+
+      this.foodItems.forEach((foodItem) => {
+        if (foodItem.requestedQuantity && foodItem.requestedQuantity > 0) {
+          requestData[foodItem.name] = foodItem.requestedQuantity;
+        }
+      });
+
+      requestData.userEmail = user.email;
+
       if (docSnap.exists()) {
-        await setDoc(docRef, requestedData, { merge: true });
+        await setDoc(docRef, requestData, { merge: true });
       } else {
-        await setDoc(docRef, requestedData);
-      };
+        await setDoc(docRef, requestData);
+      }
 
       console.log("Form submitted")
       router.push("/beneficiaryhome")
