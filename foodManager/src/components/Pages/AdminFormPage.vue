@@ -4,12 +4,14 @@
         <div class="content">
           <h1 class="header">Add Food Item</h1>
           <form class="form"  @submit.prevent="submitForm">
-            <div class="food-item-list">
               <div v-for="foodItem in foodItems" :key="foodItem.id">
-                  <label for="target-quantity">{{ foodItem.name }} </label>
+                  <h2>{{ foodItem.name }} </h2>
+                  <div class="food-form">
+                    <label>Donated Quantity: </label>
                   <input type="number" id="donated-quantity" v-model.number="foodItem.donated" min="0" :placeholder="[[foodItem.donated]]"/>
+                  <label>Requested Quantity: </label>
                   <input type="number" id="requested-quantity" v-model.number="foodItem.requested" min="0" :placeholder="[[foodItem.requested]]"/>
-              </div>
+                  </div>
             </div>
             <button class="submit-button" v-on:click="submitAlert">Add Food Item</button>
           </form>
@@ -67,7 +69,7 @@ export default {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-repeat: no-repeat;
-  height: 150vh;
+  height: 250vh;
   width: 100vw;
   align-items: center;
   justify-content: center;
@@ -93,6 +95,7 @@ export default {
   margin-bottom: 20px;
 }
 
+
 .form {
   display: flex;
   flex-direction: column;
@@ -108,7 +111,9 @@ export default {
   width: 100%;
 }
 
+
 label {
+  margin-right: 250px;
   font-weight: bold;
   font-size: 1.2em;
   margin-bottom: 10px;
