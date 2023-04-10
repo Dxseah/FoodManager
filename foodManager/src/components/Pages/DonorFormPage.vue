@@ -131,7 +131,7 @@ export default {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-repeat: no-repeat;
-  height: 100vh;
+  height: 150vh;
   width: 100vw;
   display: flex;
   align-items: center;
