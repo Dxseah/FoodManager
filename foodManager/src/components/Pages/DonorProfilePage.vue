@@ -31,24 +31,6 @@
       <br>
 
       <div v-if = "account=='Donor'">
-        <!-- <h1 class="header">Donation History</h1>
-        <div v-if="donations.length === 0">You have not made any donations yet!</div>
-        <table v-else>
-          <thead>
-            <tr>
-              <th>Bags of Rice</th>
-              <th>Canned Food</th>
-              <th>Packs of Instant Noodles</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(donation, index) in donations" :key="index">
-              <td>{{ donation.rice }}</td>
-              <td>{{ donation.cannedFood }}</td>
-              <td>{{ donation.instantNoodles }}</td>
-            </tr>
-          </tbody>
-        </table> -->
          <h1 class="header">Food Donation History</h1>
         <div v-if="donations.length === 0">You have not made any donations yet!</div>
         <div v-else>
@@ -80,24 +62,6 @@
   </div>
   <br>
 
-        <!-- <h1 class="header">Food Request History</h1>
-        <div v-if="requests.length === 0">You have not made any requests yet!</div>
-        <table v-else>
-          <thead>
-            <tr>
-              <th>Bags of Rice</th>
-              <th>Canned Food</th>
-              <th>Packs of Instant Noodles</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(request, index) in requests" :key="index">
-              <td>{{ request.rice }}</td>
-              <td>{{ request.cannedFood }}</td>
-              <td>{{ request.instantNoodles }}</td>
-            </tr>
-          </tbody>
-        </table> -->
         
       </div>
       <br>
