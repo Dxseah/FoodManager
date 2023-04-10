@@ -21,8 +21,11 @@
 </template>
 
 <script>
-import { db } from "@/firebase";
-import { getDoc, doc, setDoc, collection, updateDoc } from "firebase/firestore";
+// import { ref } from 'vue'
+// import { useStore } from 'vuex'
+// import router from '@/components/Router/index.js'
+import { db } from '@/firebase'
+import { getDoc, doc, updateDoc, setDoc, collection } from "firebase/firestore"
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import router from '@/components/Router/index.js'
 import { query, where, getDocs } from 'firebase/firestore';
@@ -85,44 +88,17 @@ export default {
         await setDoc(docRef, requestData);
       }
 
-      const batch = [];
-      const requestData = {};
-      this.foodItems.forEach((foodItem) => {
-        batch.push(updateDoc(doc(db, 'FoodCollection', foodItem.id), {
-          requested: foodItem.requested + (foodItem.requestQuantity ? foodItem.requestQuantity : 0),
-        }));
-      });
-      await Promise.all(batch);
-
-      // Save data to Firestore
-      const foodItemRef = collection(db, "RequestedFood");
-      const docRef = doc(foodItemRef);
-      const docSnap = await getDoc(docRef);
-
-      this.foodItems.forEach((foodItem) => {
-        if (foodItem.requestQuantity && foodItem.requestQuantity > 0) {
-          requestData[foodItem.name] = foodItem.requestQuantity;
-        }
-      });
-
-      requestData.userEmail = user.email;
-
-      if (docSnap.exists()) {
-        await setDoc(docRef, requestData, { merge: true });
-      } else {
-        await setDoc(docRef, requestData);
-      }
-      console.log("Form submitted");
-      router.push("/donorhome");
-    } catch (err) {
-      alert(err.message);
+      console.log("Form submitted")
+      router.push("/beneficiaryhome")
+    }
+    catch (err) {
+        alert(err.message)
     }
   },
-
   async submitAlert() {
     alert("Request Form is submitted!")
   }
-}
+  }
 }
 </script>
 
@@ -134,9 +110,8 @@ export default {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-repeat: no-repeat;
-  height: 150vh;
+  height: 100vh;
   width: 100vw;
-  display: flex;
   align-items: center;
   justify-content: center;
   background-color: aliceblue;
@@ -191,9 +166,6 @@ input[type="number"] {
   width: 100%;
 }
 
-input[type="file"] {
-  margin-top: 5px;
-}
 
 .submit-button {
   background-color: silver;
