@@ -49,7 +49,7 @@ export default {
 
   methods:{
     async submitForm() {
-
+      if (/^\d{8}$/.test(this.contact)) {
           const docRef = doc(db, "User", this.user.displayName);
           const docSnap = await setDoc(docRef,
           {
@@ -60,8 +60,11 @@ export default {
           });
           router.push('/donorprofile')
           window.location.reload()
+    } else {
+      alert('Please enter a valid 8 digit Singapore contact number.');
     }
   }
+}
 }
     //   const docRef = doc(db,"User",user.value);
     //     await setDoc(docRef, {
