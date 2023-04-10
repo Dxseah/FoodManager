@@ -3,16 +3,18 @@
     <div class="transbox">
       <div class="content">
         <h1 class="header">Beneficiary Form</h1>
-        <form class="form" @submit.prevent="submitForm">
-          <div v-for="foodItem in foodItems" :key="foodItem.id">
+        <form class="form"  @submit.prevent="submitForm">
+          <div class="form-group">
+            <div v-for="foodItem in foodItems" :key="foodItem.id">
                   <h2>{{ foodItem.name }}</h2>
                   <div class="food-form">
-                    <label>Request Quantity: </label>
-                    <input type="number" id="donated-quantity" v-model.number="foodItem.requestQuantity" min="0">
+                    <label>Requested Quantity: </label>
+                    <input type="number" id="requested-quantity" v-model.number="foodItem.requestedQuantity" min="0">
                   </div>
-              </div>
-          <button class="submit-button" v-on:click="submitAlert">Submit Donation</button>
-        </form> 
+            </div>
+          </div>
+          <button class="submit-button" v-on:click="submitAlert">Submit Request</button>
+        </form>
       </div>
     </div>
   </div>
@@ -23,10 +25,7 @@ import { db } from "@/firebase";
 import { getDoc, doc, setDoc, collection, updateDoc } from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import router from '@/components/Router/index.js'
-import { getStorage, ref, uploadBytesResumable } from "firebase/storage";
 import { query, where, getDocs } from 'firebase/firestore';
-
-// import { firestore } from 'firebase-admin';
 
 export default {
   name: "BeneficiaryFormPage",
@@ -56,8 +55,36 @@ export default {
     async submitForm() {
     try {
       const auth = getAuth();
-      const storage = getStorage();
       const user = auth.currentUser;
+      console.log(this.imageFile)
+
+      const batch = [];
+      const requestData = {};
+      this.foodItems.forEach((foodItem) => {
+        batch.push(updateDoc(doc(db, 'FoodCollection', foodItem.id), {
+          requested: foodItem.requested + (foodItem.requestedQuantity ? foodItem.requestedQuantity : 0),
+        }));
+      });
+      await Promise.all(batch);
+
+      // Save data to Firestore
+      const foodItemRef = collection(db, "RequestedFood");
+      const docRef = doc(foodItemRef);
+      const docSnap = await getDoc(docRef);
+
+      this.foodItems.forEach((foodItem) => {
+        if (foodItem.requestedQuantity && foodItem.requestedQuantity > 0) {
+          requestData[foodItem.name] = foodItem.requestedQuantity;
+        }
+      });
+
+      requestData.userEmail = user.email;
+
+      if (docSnap.exists()) {
+        await setDoc(docRef, requestData, { merge: true });
+      } else {
+        await setDoc(docRef, requestData);
+      }
 
       const batch = [];
       const requestData = {};
