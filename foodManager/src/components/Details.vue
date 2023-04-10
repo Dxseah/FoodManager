@@ -6,8 +6,8 @@
       <br>
       <label for="type">Account Type:</label>
       <select required v-model="type" >
-          <option value="don">Donor</option>
-          <option value="ben">Beneficiary</option>
+          <option value="Donor">Donor</option>
+          <option value="Beneficiary">Beneficiary</option>
       </select>
       <!-- <input type="type" placeholder="Enter Donor/Beneficiary" required v-model="type"> -->
       <br>
