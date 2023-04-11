@@ -1,4 +1,5 @@
 <template>
+  <link rel="icon" type="png" image="../src/assets/icon.png">
 <nav>
   <div v-if="user" id="nav">
     <!-- <p> {{user.data}}</p> -->

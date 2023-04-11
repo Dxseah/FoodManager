@@ -1,5 +1,6 @@
 <template>
   <div class="about">
+    <img :src="'../src/assets/icon.png'" alt="Image description" height="700" width="350">
     <h1>{{ orgName }}</h1>
     <div class="description">
       <p class="lead">{{ orgDescription }}</p>
