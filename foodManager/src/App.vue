@@ -1,5 +1,6 @@
 <template>
-  <link rel="icon" type="png" image="../src/assets/icon.png">
+  <!-- trying to add website icon -->
+  <!-- <link rel="icon" type="png" img :src="'../src/assets/icon.png'"> -->
 <nav>
   <div v-if="user" id="nav">
     <!-- <p> {{user.data}}</p> -->
