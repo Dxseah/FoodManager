@@ -106,7 +106,7 @@ margin-bottom: 16px; /* Add some margin to separate the button from the progress
 .button {
 display: inline-block;
 padding: 12px 24px;
-background-color: #00bfff;
+background-color: #0492C2;
 color: #fff;
 font-size: 24px; /* Increase the font size */
 font-weight: bold;
@@ -119,7 +119,7 @@ transition: all 0.3s ease;
 
 /* Add hover styles */
 .button:hover {
-background-color: #0080ff;
+background-color: #779ECB;
 box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
 }
 
