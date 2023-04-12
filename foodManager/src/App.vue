@@ -25,7 +25,7 @@
   <div v-else id="nav">
     |<router-link to = "/"> Login </router-link>|
     <router-link to = "/about"> About Us </router-link>|
-    <h1 id="displayName">Welcome!</h1>
+    <!-- <h1 id="displayName">Welcome!</h1> -->
   </div>
   <router-view :key="$route.fullPath"/> 
 </nav>
@@ -83,27 +83,29 @@
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+  /* text-align: center; */
+  /* color: #2c3e50; */
   width: 100vw;
 }
 
 #nav {
-  padding: 30px; 
-  background-color: antiquewhite;
+  padding: 30px;
+  /* background-color: antiquewhite; */
 }
 #nav a {
   font-weight: bold;
   color:#2c3e50;
-  font-size: 20px;
+  font-size: 64px;
 }
 #nav a.router-link-exact-active{
   color:chocolate;
-  font-weight: bold;
+  /* font-weight: bold; */
 }
 
 #displayName {
-  font-size: 25px;
+  font-size: 48px;
   font-weight: bold;
+  color: #2c3e50;
+
 }
 </style>

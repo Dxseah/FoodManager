@@ -193,6 +193,8 @@ export default {
     padding: 100px;
     font-family: Avenir, Arial, Helvetica, sans-serif;
     font-size: 20px;
+    color: #2c3e50;
+
   }
 .container2 {
     background-color: aliceblue;

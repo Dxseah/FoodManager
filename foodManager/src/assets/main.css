@@ -17,7 +17,9 @@ a,
 
 @media (hover: hover) {
   a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
+    /* background-color: hsla(160, 100%, 37%, 0.2); */
+    background-color: #5B96A9;
+    
   }
 }
 
@@ -25,6 +27,7 @@ a,
   body {
     display: flex;
     place-items: center;
+    background-color: #f8F3E8;
   }
 
   #app {

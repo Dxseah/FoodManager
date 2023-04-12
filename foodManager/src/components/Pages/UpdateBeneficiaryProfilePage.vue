@@ -85,91 +85,66 @@ export default {
 </script>
 
 <style scoped>
-  .donorCont {
-    background-color: #f9f9f9;
-    width: 100vw;
-    height: 100vh;
-    padding: 100px;
-    font-family: Avenir, Arial, Helvetica, sans-serif;
-    font-size: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
+.donorCont {
+  background-color: aliceblue;
+  color: #2c3e50;
+  width: 100vw;
+  height: 100vh;
+  padding: 100px;
+  font-family: Avenir, Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
-  .title {
-    margin-bottom: 30px;
-    font-size: 32px;
-    font-weight: 600;
-    color: #333;
-    text-align: center;
-  }
+#forms {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
 
-  .form-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 50px;
-  }
+.form {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  width: 400px;
+}
 
-  .form {
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    width: 400px;
-  }
+.formbox {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  width: 100%;
+}
 
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 20px;
-    width: 100%;
-  }
+label {
+  margin-bottom: 10px;
+  font-size: 20px;
+  text-align: left;
+}
 
-  .form-label {
-    margin-bottom: 10px;
-    margin-right: 10px;
-    font-size: 20px;
-    color: #333;
-    text-align: left;
-  }
-
-  .form-input {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    margin-bottom: 20px;
-    width: 100%;
-    font-size: 18px;
-  }
-
-  .btn {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 12px 24px;
-    cursor: pointer;
-    font-size: 20px;
-    transition: all 0.2s ease-in-out;
-  }
-
-  .btn:hover {
-    background-color: #3e8e41;
-  }
-
-  .back-btn {
-    margin-top: 20px;
-    font-size: 18px;
-    background-color: transparent;
-    color: #4CAF50;
-    border: 1px solid #4CAF50;
-  }
-
-  .back-btn:hover {
-    background-color: #4CAF50;
-    color: white;
-  }
+input {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+button {
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+button:hover {
+  background-color: #4CAF50;
+}
 </style>

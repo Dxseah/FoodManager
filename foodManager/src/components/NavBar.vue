@@ -14,7 +14,7 @@
   <div v-else id="nav">
     |<router-link to = "/"> Login </router-link>|
     <router-link to = "/about"> About Us </router-link>|
-    <h1 id="displayName">Welcome!</h1>
+    <!-- <h1 id="displayName">Welcome!</h1> -->
   </div>
   <router-view :key="$route.fullPath"/> 
 </nav>
@@ -74,7 +74,7 @@
 
 #nav {
   padding: 30px; 
-  background-color: antiquewhite;
+  /* background-color: antiquewhite; */
 }
 #nav a {
   font-weight: bold;

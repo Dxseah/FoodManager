@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <img :src="'../src/assets/icon.png'" alt="Image description" height="700" width="350">
+    <img :src="'../src/assets/icon.png'" alt="Image description">
     <h1>{{ orgName }}</h1>
     <div class="description">
       <p class="lead">{{ orgDescription }}</p>
@@ -15,7 +15,7 @@
         <li v-for="(member, index) in team" :key="index">
           <div class="member">
             <div class="member__image">
-              <img :src="member.image" :alt="member.name" />
+              <img :src="member.image" :alt="member.name" height="250"/>
             </div>
             <div class="member__info">
               <h3 class="member__name">{{ member.name }}</h3>
@@ -129,13 +129,13 @@ ul {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
+  align-items: top;
 }
 
 li {
   margin: 20px;
   width: 300px;
-  padding: 20px;
+  padding: 35px;
   border-radius: 8px;
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
   transition: all 0.3s ease-in-out;
@@ -150,9 +150,10 @@ li:hover {
 }
 
 img {
-  width: 80%;
+  /* width: 80%; */
   margin-bottom: 20px;
   border-radius: 50%;
+  
 }
 
 @media (max-width: 768px) {

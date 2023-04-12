@@ -92,6 +92,7 @@ export default {
 <style scoped>
 .donorCont {
   background-color: aliceblue;
+  color: #2c3e50;
   width: 100vw;
   height: 100vh;
   padding: 100px;
