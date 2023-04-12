@@ -65,7 +65,7 @@ export default {
         {
           name: "Lim Yi Han", 
           position: "Developer", 
-          bio: "Yi Han is a skilled developer and with a wealth of experience in web development, he dedicates his utmost effort into his work to help the community. ",
+          bio: "Yi Han is a skilled developer and with a wealth of knowledge and experience in web development, he dedicates his utmost effort into his work to help the community. ",
           image: "../src/assets/yihan.jpg",
         }
       ],
