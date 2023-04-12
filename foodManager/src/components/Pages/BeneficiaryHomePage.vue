@@ -46,8 +46,10 @@ import { query, where, getDocs } from 'firebase/firestore';
     querySnapshot.forEach((doc) => {
       const foodItem = doc.data();
       foodItem.id = doc.id;
+      foodItem.percentDonated = foodItem.donated / foodItem.requested;
       this.foodItems.push(foodItem);
     });
+    this.foodItems.sort((a,b) => a.percentDonated - b.percentDonated);
   }
 }
 </script>
