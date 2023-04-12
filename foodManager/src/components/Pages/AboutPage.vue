@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <img :src="'../src/assets/icon.png'" alt="Image description" height="700" width="350">
+    <img :src="'../src/assets/icon.png'" alt="Image description" height="700" width="200">
     <h1>{{ orgName }}</h1>
     <div class="description">
       <p class="lead">{{ orgDescription }}</p>
@@ -65,7 +65,7 @@ export default {
         {
           name: "Lim Yi Han", 
           position: "Developer", 
-          bio: "Yi Han is a skilled developer and with a wealth of experience in web development, he dedicates his utmost effort into his work to help the community. ",
+          bio: "Yi Han is a skilled developer and with a wealth of knowledge and experience in web development, he dedicates his utmost effort into his work to help the community. ",
           image: "../src/assets/yihan.jpg",
         }
       ],
