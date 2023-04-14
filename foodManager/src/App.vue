@@ -26,7 +26,11 @@
     <h1 id="displayName">Welcome, {{userData.name}}!</h1>
   </div>
   <div v-else id="nav">
-    |<router-link to = "/"> Login </router-link>|
+    <span>
+      <img src="../src/assets/iconwithname.png" alt="Logo" width="150" height="150">
+      |<router-link to = "/"> Login </router-link>|
+    </span>
+    <!-- |<router-link to = "/"> Login </router-link>| -->
     <router-link to = "/about"> About Us </router-link>|
     <!-- <h1 id="displayName">Welcome!</h1> -->
   </div>
@@ -94,11 +98,14 @@
 #nav {
   padding: 30px;
   /* background-color: antiquewhite; */
+  text-align: center;
+  align-items: center;
 }
 #nav a {
   font-weight: bold;
   color:#2c3e50;
-  font-size: 64px;
+  font-size: 20px;
+  /* text-align: center; */
 }
 #nav a.router-link-exact-active{
   color:chocolate;

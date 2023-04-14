@@ -75,15 +75,17 @@
 #nav {
   padding: 30px; 
   /* background-color: antiquewhite; */
+
 }
 #nav a {
   font-weight: bold;
   color:#2c3e50;
-  font-size: 20px;
+  font-size: 15px;
 }
 #nav a.router-link-exact-active{
   color:chocolate;
   font-weight: bold;
+  font-size: 20px;
 }
 
 #displayName {
