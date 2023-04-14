@@ -203,8 +203,8 @@ input[type="file"] {
 }
 
 button:hover {
-  color: #F6C7B3;
-
+    background-color: #F6C7B3;
+    box-shadow: 3px 3px grey;
 }
 
 </style>
