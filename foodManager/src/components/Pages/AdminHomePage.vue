@@ -6,6 +6,7 @@
             <router-link to="/adminform" class="button">Edit Food Quantities</router-link><br><br>
             <router-link to="/adminnewform" class="button">Add New Food Item</router-link><br><br>
             <button id="deleteBtn">Delete Food Item</button><br><br>
+            <router-link to="/adminshowdonations" class="button">Show All Donations</router-link><br><br>
             <h1 class="header"> Track Food Item Progress </h1>
             <div class="food-item-list">
               <div v-for="foodItem in foodItems" :key="foodItem.id">
