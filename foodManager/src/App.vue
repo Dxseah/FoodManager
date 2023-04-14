@@ -5,12 +5,15 @@
   <div v-if="user" id="nav">
     <!-- <p> {{user.data}}</p> -->
     <span v-if="account=='Donor'">
+      <img src="../src/assets/iconwithname.png" alt="Logo" width="250" height="250">
       <router-link to = "/donorhome"> Donor Home </router-link>|
     </span>
     <span v-else-if="account=='Beneficiary'">
+      <img src="../src/assets/iconwithname.png" alt="Logo" width="250" height="250">
       <router-link to = "/beneficiaryhome"> Beneficiary Home </router-link>|
     </span>
     <span v-else-if="account=='Admin'">
+      <img src="../src/assets/iconwithname.png" alt="Logo" width="250" height="250">
       <router-link to = "/adminhome"> Admin Home </router-link> |
     </span>
     <!-- <span v-else>
