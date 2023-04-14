@@ -111,11 +111,11 @@ export default {
   width: 100vw;
   align-items: center;
   justify-content: center;
-  background-color: aliceblue;
+  background-color: #F8F3E8;
 }
 
 .transbox {
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: #E6F8F6;
   border-radius: 10px;
   padding: 20px;
 }
@@ -131,6 +131,8 @@ export default {
 .header {
   font-size: 2rem;
   margin-bottom: 20px;
+  color: black;
+  font-family: Avenir, Arial, Helvetica, sans-serif;
 }
 
 .form {
@@ -138,6 +140,8 @@ export default {
   flex-direction: column;
   align-items: center;
   width: 400px;
+  color: black;
+  font-family: Avenir, Arial, Helvetica, sans-serif;
 }
 
 .form-group {
@@ -152,6 +156,7 @@ label {
   font-weight: bold;
   font-size: 1.2em;
   margin-bottom: 10px;
+  color: black;
 }
 
 input[type="number"] {
@@ -163,9 +168,13 @@ input[type="number"] {
   width: 100%;
 }
 
-
 .submit-button {
-  background-color: silver;
+  background-color:#779ECB;
+}
+
+button:hover {
+  color: #F6C7B3;
+
 }
 
 </style>
