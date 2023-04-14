@@ -188,7 +188,7 @@ export default {
 
 <style scoped>
 .container1 {
-    background-color: aliceblue;
+    background-color: #F8F3E8;
     width: 100vw;
     height: 105vh;
     align-content: center;
@@ -199,7 +199,7 @@ export default {
 
   }
 .container2 {
-    background-color: aliceblue;
+    background-color: #F8F3E8;
     width: 100vw;
     height: 100vh;
     align-content: center;
@@ -226,8 +226,7 @@ export default {
 } 
 
 #btn:hover {
-    color: rgb(243,236,236);
-    background-color: rgb(255,94,0);
+    background-color: #F6C7B3;
     box-shadow: 3px 3px grey;
 }
 
