@@ -157,6 +157,7 @@ export default {
   font-size: 2rem;
   margin-bottom: 20px;
   color: black;
+  font-family: Avenir, Arial, Helvetica, sans-serif;
 }
 
 .form {
@@ -165,6 +166,7 @@ export default {
   align-items: center;
   width: 400px;
   color: black;
+  font-family: Avenir, Arial, Helvetica, sans-serif;
   
 }
 
@@ -197,7 +199,12 @@ input[type="file"] {
 }
 
 .submit-button {
-  background-color: #0492C2;
+  background-color:#779ECB;
+}
+
+button:hover {
+  color: #F6C7B3;
+
 }
 
 </style>
