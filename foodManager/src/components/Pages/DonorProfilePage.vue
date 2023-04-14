@@ -1,6 +1,6 @@
 <template>
   <div class="container1" v-if="user">
-    <div v-if="exists">
+    <div class="cont" v-if="exists">
         <div class="card-body">
           <div class="alert alert-success" role="alert">
             You are logged in!
@@ -30,7 +30,7 @@
 
       <br>
 
-      <div v-if = "account=='Donor'">
+      <div class="donHist" v-if = "account=='Donor'">
          <h1 class="header">Food Donation History</h1>
         <div v-if="donations.length === 0">You have not made any donations yet!</div>
         <div v-else>
@@ -48,15 +48,15 @@
       </div>
       <div v-else>
         <br>
-      <h1 class="header">Food Request History</h1>
-        <div v-if="requests.length === 0">You have not made any requests yet!</div>
+        <h1 class="header">Food Request History</h1>
+        <div class="noReq" v-if="requests.length === 0">You have not made any requests yet!</div>
         <div v-else>
-      <div v-for="(request, index) in requests" :key="index">
-      <div v-for="(value, key) in request" :key="key">
-      <template v-if="key !== 'userEmail'">
-        <p>{{ key }}: {{ value }}</p>
-      </template>
-    </div>
+        <div v-for="(request, index) in requests" :key="index">
+        <div v-for="(value, key) in request" :key="key">
+        <template v-if="key !== 'userEmail'">
+          <p>{{ key }}: {{ value }}</p>
+        </template>
+      </div>
     <hr>
     </div>
   </div>
@@ -65,9 +65,11 @@
         
       </div>
       <br>
+      
       <button id="btn" @click="update()">Update Profile Details </button><br>
       <!-- <button id="btn" @click="signOut()" v-if="user"> Logout </button>  -->
       <Logout/>
+      
     </div>
   
     <div v-else-if = "!exists">
@@ -206,6 +208,10 @@ export default {
     font-size: 20px;
   }
 
+.cont {
+  align-content: center;
+}
+
 #currTable {
   text-align: left;
   width: 100%;
@@ -216,6 +222,7 @@ export default {
 #btn {
     text-align: center;
     margin: auto;
+    align-content: center;
 } 
 
 #btn:hover {
@@ -228,6 +235,18 @@ export default {
   text-align: center;
   font-size: 2rem;
   margin-bottom: 1rem;
+}
+
+.alert {
+  text-align: center;
+}
+
+.donHist {
+  text-align: center;
+}
+
+.noReq {
+  text-align: center;
 }
 
 table {
