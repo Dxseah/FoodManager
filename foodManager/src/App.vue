@@ -96,7 +96,7 @@
 }
 
 #nav {
-  padding: 30px;
+  padding: 20px 0px 10px 0px;
   /* background-color: antiquewhite; */
   text-align: center;
   align-items: center;
@@ -108,7 +108,7 @@
   /* text-align: center; */
 }
 #nav a.router-link-exact-active{
-  color:chocolate;
+  color:#5B96A9;
   /* font-weight: bold; */
 }
 
