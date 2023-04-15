@@ -33,7 +33,17 @@
       <div v-for="(request, index) in requests" :key="index">
       <div v-for="(value, key) in request" :key="key">
       <template v-if="key !== 'userEmail'">
-        <p>{{ key }}: {{ value }}</p>
+        <table class="requestHist">
+          <tr>
+            <th> Items </th>
+            <th> Quantity </th>
+          </tr>
+          <tr>
+            <td>{{ key }}</td>
+            <td> {{ value }} </td>
+          </tr>
+        </table>
+        <!-- <p>{{ key }}: {{ value }}</p> -->
       </template>
     </div>
     <hr>

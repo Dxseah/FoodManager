@@ -40,6 +40,10 @@
       <template v-if="key !== 'userEmail'">
         <table class="requestHist">
           <tr>
+            <th> Items </th>
+            <th> Quantity </th>
+          </tr>
+          <tr>
             <td>{{ key }}</td>
             <td> {{ value }} </td>
           </tr>
