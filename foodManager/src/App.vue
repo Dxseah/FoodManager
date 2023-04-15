@@ -19,7 +19,7 @@
     <!-- <span v-else>
       {{userData}}
     </span> -->
-    <router-link to = "/donorprofile"> Profile </router-link>|
+    <router-link to = "/profile"> Profile </router-link>|
     <!-- <router-link to = "/beneficiaryprofile"> Beneficiary Profile </router-link>| -->
     <router-link to = "/about"> About Us </router-link>|
     <!-- isLoggedIn is buggy, sometimes displayName doesn't load after refreshing page -->

@@ -95,7 +95,7 @@ import { db } from '@/firebase'
 import { query, where, getDocs } from 'firebase/firestore';
 
 export default {
-  name: "DonorProfilePage", 
+  name: "ProfilePage", 
   components: {
     Logout, Details
   }, 
