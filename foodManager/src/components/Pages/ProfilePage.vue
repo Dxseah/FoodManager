@@ -59,16 +59,17 @@
         </template>
       </div>
     <hr>
+
     </div>
   </div>
   <br>
-        
+
       </div>
       <br>
-      <br>
+      <div class="butCont">
       <button class="button-upgrade" role='button' @click="update()"><span class="text">update profile details</span></button>
       <Logout/>
-      
+      </div>
     </div>
   
     <div v-else-if = "!exists">
@@ -213,7 +214,14 @@ export default {
     font-family: Avenir, Arial, Helvetica, sans-serif;
     font-size: 20px;
   }
-
+.butCont{
+  display: flex;
+  align-items: center;
+  position:absolute;
+  left:50%;
+  top: 110%;
+  transform: translate(-50%, -50%);
+}
 .cont {
   align-content: center;
 }
@@ -239,6 +247,8 @@ export default {
     box-shadow: 3px 3px grey;
 }
 .button-upgrade {
+  margin-right: 5px;
+  margin-top: 5px;
   align-items: center;
   background-image: linear-gradient(135deg, #f34079 40%, #fc894d);
   border: 0;
