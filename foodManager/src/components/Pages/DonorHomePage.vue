@@ -64,31 +64,37 @@ div.background {
   background-repeat: no-repeat;
   height: 100vh;
   width: 100vw;
+  background-color: #F8F3E8;
 }
 
 div.transbox {
   margin: 30px;
-  background-color: #ffffff;
+  background-color: #E6F8F6;
   border: 1px solid black;
   opacity: 0.8;
+  font-family: Avenir, Arial, Helvetica, sans-serif;
 }
 
 div.content {
 margin: 5%;
 font-weight: bold;
 color: #000000;
+font-family: Avenir, Arial, Helvetica, sans-serif;
 }
 
 .header {
-  font-family: Marker Felt, Avenir, Arial, Helvetica, sans-serif;
+  font-family: Avenir, Arial, Helvetica, sans-serif;
   font-weight: bold;
   font-size: 3em;
+  color: #2c3e50;
 }
+
 .food {
     text-align: left;
     margin-bottom: 8px;
-    font-weight: bolder;
+    font-weight: bold;
     font-size: 30px;
+    font-family: Avenir, Arial, Helvetica, sans-serif;
 }
 
 .percent {
@@ -96,7 +102,9 @@ color: #000000;
     margin-top: 8px;
     font-weight: bolder;
     font-size: 25px;
+    font-family: Avenir, Arial, Helvetica, sans-serif;
 }
+
 .button-container {
 display: flex;
 justify-content: center;
@@ -104,28 +112,28 @@ margin-bottom: 16px; /* Add some margin to separate the button from the progress
 }
 
 .button {
-display: inline-block;
-padding: 12px 24px;
-background-color: #0492C2;
-color: #fff;
-font-size: 24px; /* Increase the font size */
-font-weight: bold;
-text-decoration: none;
-border: none; /* Remove the border */
-border-radius: 8px;
-cursor: pointer;
-transition: all 0.3s ease;
+  background-color:#779ECB;
+  border-radius: 25px;
+  margin: 40px 0px 20px 0px;
+  display: inline-block;
+  padding: 12px 24px;
+  font-size: 29px; 
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+  font-family: Avenir, Arial, Helvetica, sans-serif;
 }
 
-/* Add hover styles */
 .button:hover {
-background-color: #779ECB;
-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+    background-color: #F6C7B3;
+    box-shadow: 3px 3px grey;
+    color: #2c3e50;
 }
 
-/* Add active styles */
 .button:active {
-transform: translateY(2px);
-box-shadow: none;
+  transform: translateY(2px);
+  box-shadow: none;
 }
 </style>

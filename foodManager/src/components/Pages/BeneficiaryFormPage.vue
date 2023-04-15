@@ -188,6 +188,7 @@ h2 {
   cursor: pointer;
   border: none;
   transition: all 0.3s ease;
+  font-family: Avenir, Arial, Helvetica, sans-serif;
 }
 
 button:hover {
