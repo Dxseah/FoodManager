@@ -143,6 +143,7 @@ li {
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* justify-items: center; */
   background-color: #F8F3E8 ;
 }
 
@@ -155,7 +156,13 @@ img {
   /* width: 80%; */
   margin-bottom: 20px;
   border-radius: 50%;
-  
+  align-items: center;
+  justify-content: center;
+}
+
+.member__image {
+  align-content: center;
+  justify-content: center;
 }
 
 @media (max-width: 768px) {
@@ -179,6 +186,7 @@ img {
     margin: 10px;
     width: 250px;
     padding: 15px;
+    
   }
 }
 </style>
