@@ -68,7 +68,7 @@ div.background {
 
 div.transbox {
   margin: 30px;
-  background-color: #E6F8F6;
+  background-color: #f9fdfd;
   border: 1px solid black;
   opacity: 0.8;
   font-family: Avenir, Arial, Helvetica, sans-serif;
