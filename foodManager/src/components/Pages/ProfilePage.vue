@@ -243,26 +243,26 @@ export default {
   border: 1px solid;
 }
 
-
 #btn {
-  margin:5px;
+  background-color:#779ECB;
+  border-radius: 25px;
+  margin: 5px;
   display: inline-block;
   padding: 12px 24px;
-  background-color: #0492C2;
+  font-size: 20px; 
   color: #fff;
-  font-size: 24px; /* Increase the font size */
   font-weight: bold;
-  text-decoration: none;
-  border: none; /* Remove the border */
-  border-radius: 8px;
   cursor: pointer;
+  border: none;
   transition: all 0.3s ease;
 }
 
- #btn:hover {
-  background-color: #779ECB;
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+#btn:hover {
+    background-color: #F6C7B3;
+    box-shadow: 3px 3px grey;
+    color: #2c3e50;
 }
+
 #btn:active {
   transform: translateY(2px);
   box-shadow: none;
