@@ -219,11 +219,14 @@ export default {
   border: 1px solid;
 }
 
+
 #btn {
-    text-align: center;
-    margin: auto;
-    align-content: center;
-} 
+  text-align: center;
+  margin: auto;
+  align-content: center;
+  background-color:#779ECB;
+  border-radius: 25px;
+}
 
 #btn:hover {
     background-color: #F6C7B3;
