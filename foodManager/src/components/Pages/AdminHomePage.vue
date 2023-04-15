@@ -3,10 +3,12 @@
       <div class="transbox">
         <div class="content">
             <h1 class="newHeader">Food Items</h1><br>
-            <router-link to="/adminform" class="button">Edit Food Quantities</router-link><br><br>
-            <router-link to="/adminnewform" class="button">Add New Food Item</router-link><br><br>
-            <button id="deleteBtn">Delete Food Item</button><br><br>
-            <router-link to="/adminshowdonations" class="button">Show All Donations</router-link><br><br>
+            <div class = "foodCont">
+              <router-link to="/adminform" class="button">Edit Food Quantities</router-link>
+              <router-link to="/adminnewform" class="button">Add New Food Item</router-link>
+              <button class="button">Delete Food Item</button><br><br>
+              <router-link to="/adminshowdonations" class="button">Show All Donations</router-link>
+            </div>
             <h1 class="header"> Track Food Item Progress </h1>
             <div class="food-item-list">
               <div v-for="foodItem in foodItems" :key="foodItem.id">
@@ -64,8 +66,14 @@ div.background {
   background-repeat: no-repeat;
   height: 100vh;
   width: 100vw;
+  
 }
-
+.foodCont {
+  min-height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
 div.transbox {
   margin: 30px;
   background-color: #ffffff;
@@ -97,13 +105,9 @@ color: #000000;
     font-weight: bolder;
     font-size: 25px;
 }
-.button-container {
-display: flex;
-justify-content: center;
-margin-bottom: 16px; /* Add some margin to separate the button from the progress bar */
-}
 
 .button {
+margin:5px;
 display: inline-block;
 padding: 12px 24px;
 background-color: #0492C2;
