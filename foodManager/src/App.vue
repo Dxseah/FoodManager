@@ -89,7 +89,7 @@ img {
   position:absolute;
   left:50%;
   top:140%;
-  transform: translate(-50%, -50%) translateY(80px);
+  transform: translate(-50%, -50%) translateY(40px);
 } 
 
 #welcometag h1 {
@@ -119,7 +119,7 @@ img {
 #nav a {
   font-weight: bold;
   color:#2c3e50;
-  font-size: 20px;
+  font-size: 35px;
   /* text-align: center; */
 }
 #nav a.router-link-exact-active{
