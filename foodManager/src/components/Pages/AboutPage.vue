@@ -76,7 +76,7 @@ export default {
 
 <style scoped>
 .about {
-  background-color: #f6f6f6;
+  background-color: #E6F8F6;
   padding: 100px;
   width: 100vw;
   display: flex;
@@ -88,8 +88,7 @@ export default {
 }
 
 h1 {
-  font-family: "Open Sans", sans-serif;
-  font-size: 48px;
+  font-family: Avenir, Arial, Helvetica, sans-serif;  font-size: 48px;
   font-weight: bold;
   margin-bottom: 20px;
   text-align: center;
@@ -97,7 +96,7 @@ h1 {
 }
 
 h2 {
-  font-family: "Open Sans", sans-serif;
+  font-family: Avenir, Arial, Helvetica, sans-serif;
   font-size: 36px;
   margin-top: 40px;
   margin-bottom: 20px;
@@ -106,17 +105,17 @@ h2 {
 }
 
 h3 {
-  font-family: "Open Sans", sans-serif;
+  font-family: Avenir, Arial, Helvetica, sans-serif;
   font-weight: bold;
   font-size: 24px;
   margin-top: 40px;
-  margin-bottom: 20px;
+  margin-bottom: 0px;
   text-align: center;
   color: #373737;
 }
 
 p {
-  font-family: "Open Sans", sans-serif;
+  font-family: Avenir, Arial, Helvetica, sans-serif;
   font-size: 18px;
   margin-bottom: 20px;
   text-align: center;
@@ -144,6 +143,7 @@ li {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: #F8F3E8 ;
 }
 
 li:hover {
