@@ -84,7 +84,7 @@ export default {
   align-items: center;
   justify-content: center;
   border: 1px solid black;
-
+  text-align: center; /* add this line */
 }
 
 h1 {
@@ -166,19 +166,10 @@ img {
   h1 {
     font-size: 36px;
   }
+}
 
-  h2 {
-    font-size: 28px;
-  }
-
-  h3 {
-    font-size: 20px;
-  }
-
-  li {
-    margin: 10px;
-    width: 250px;
-    padding: 15px;
-  }
+.member__image img {
+  height: 220px;
+  width: 220px;
 }
 </style>
