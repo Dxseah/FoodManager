@@ -5,7 +5,7 @@
             <div class = "foodCont">
               <router-link to="/adminform" class="button">Edit Food Quantities</router-link>
               <router-link to="/adminnewform" class="button">Add New Food Item</router-link>
-              <button class="button">Delete Food Item</button><br><br>
+              <router-link to="/admindelete" class="button">Delete Food Item</router-link>
               <router-link to="/adminshowdonations" class="button">Show All Donations</router-link>
             </div>
             <h1 class="header"> Track Food Item Progress </h1>
