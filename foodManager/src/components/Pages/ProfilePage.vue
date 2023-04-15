@@ -223,7 +223,7 @@ export default {
     padding: 100px;
     border: 1px solid black;
     margin: 30px;
-    background-color: #E6F8F6;
+    background-color: #f9fdfd;
     opacity: 0.8;
 
   }

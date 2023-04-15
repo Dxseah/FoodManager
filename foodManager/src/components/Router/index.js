@@ -17,6 +17,7 @@ import AdminFormPage from '../Pages/AdminFormPage.vue'
 import Details from '@/components/Details.vue'
 import AdminNewFormPage from '../Pages/AdminNewFormPage.vue'
 import AdminShowDonationsPage from '../Pages/AdminShowDonationsPage.vue'
+import AdminDeletePage from '../Pages/AdminDeletePage.vue'
 
 const routes = [
     {
@@ -104,6 +105,11 @@ const routes = [
         path: '/adminshowdonations',
         name: 'AdminShowDonationsPage',
         component: AdminShowDonationsPage
+    },
+    {
+        path: '/admindelete',
+        name: 'AdminDeletePage',
+        component: AdminDeletePage
     }
 
 ]
