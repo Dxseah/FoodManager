@@ -76,7 +76,7 @@ export default {
 
 <style scoped>
 .about {
-  background-color: #E6F8F6;
+  background-color: #f9fdfd;
   padding: 100px;
   width: 100vw;
   display: flex;
