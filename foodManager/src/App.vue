@@ -101,7 +101,7 @@ img {
 }
 
 #nav {
-  margin-top:10px;
+  margin-top: 50px;
   padding: 25px 0px 10px 0px;
   position:absolute;
   left:50%;
