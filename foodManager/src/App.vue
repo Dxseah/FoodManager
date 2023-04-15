@@ -1,47 +1,42 @@
 <template>
   <!-- trying to add website icon -->
   <!-- <link rel="icon" type="png" img :src="'../src/assets/icon.png'"> -->
+
 <nav>
   <div v-if="user" id="nav">
-    <!-- <p> {{user.data}}</p> -->
+
     <span v-if="account=='Donor'">
-      <img src="../src/assets/iconwithname.png" alt="Logo" width="250" height="250">
       <router-link to = "/donorhome"> Donor Home </router-link>|
     </span>
     <span v-else-if="account=='Beneficiary'">
-      <img src="../src/assets/iconwithname.png" alt="Logo" width="250" height="250">
       <router-link to = "/beneficiaryhome"> Beneficiary Home </router-link>|
     </span>
     <span v-else-if="account=='Admin'">
-      <img src="../src/assets/iconwithname.png" alt="Logo" width="250" height="250">
       <router-link to = "/adminhome"> Admin Home </router-link> |
     </span>
-    <!-- <span v-else>
-      {{userData}}
-    </span> -->
+
     <router-link to = "/profile"> Profile </router-link>|
-    <!-- <router-link to = "/beneficiaryprofile"> Beneficiary Profile </router-link>| -->
     <router-link to = "/about"> About Us </router-link>|
-    <!-- isLoggedIn is buggy, sometimes displayName doesn't load after refreshing page -->
-    <h1 id="displayName">Welcome, {{userData.name}}!</h1>
+    <div id='welcometag'>
+      <img src="../src/assets/iconwithname.png" alt="Logo">
+      <h1 id="displayName">Welcome, {{userData.name}}!</h1>
+    </div>
   </div>
   <div v-else id="nav">
     <span>
       <img src="../src/assets/iconwithname.png" alt="Logo" width="150" height="150">
       |<router-link to = "/"> Login </router-link>|
     </span>
-    <!-- |<router-link to = "/"> Login </router-link>| -->
     <router-link to = "/about"> About Us </router-link>|
-    <!-- <h1 id="displayName">Welcome!</h1> -->
   </div>
+  <div id="routerCont">
   <router-view :key="$route.fullPath"/> 
+  </div>
 </nav>
 </template>
 
 <script>
   import router from '@/components/Router/index.js'
-  // import { useStore } from "vuex"
-  // import { computed } from "vue";
   import firebaseApp from '@/firebase.js';
   import { db } from '@/firebase'
   import { getAuth, onAuthStateChanged } from "firebase/auth";
@@ -86,6 +81,18 @@
 </script>
 
 <style>
+img {
+  height: 5em; width: auto; display: inline-block;
+}
+
+#welcometag {
+  display: flex;
+  align-items: center;
+  position:absolute;
+  left:50%;
+  top:140%;
+  transform: translate(-50%, -50%);
+}
 #app {
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -96,7 +103,10 @@
 }
 
 #nav {
-  padding: 20px 0px 10px 0px;
+  padding: 25px 0px 10px 0px;
+  position:absolute;
+  left:50%;
+  transform: translate(-50%, -50%);
   /* background-color: antiquewhite; */
   text-align: center;
   align-items: center;
@@ -111,7 +121,9 @@
   color:#5B96A9;
   /* font-weight: bold; */
 }
-
+#routerCont {
+  margin-top: 10%;
+}
 #displayName {
   font-size: 20px;
   font-weight: bold;

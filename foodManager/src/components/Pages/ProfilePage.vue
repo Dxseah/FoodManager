@@ -188,14 +188,23 @@ export default {
 
 <style scoped>
 .container1 {
-    background-color: #F8F3E8;
+    /* background-color: #F8F3E8;
     width: 100vw;
     height: 105vh;
     align-content: center;
     padding: 100px;
+
+     */
     font-family: Avenir, Arial, Helvetica, sans-serif;
     font-size: 20px;
     color: #2c3e50;
+    width: 100vw;
+    height: 105vh;
+    align-content: center;
+    font-family: Avenir, Arial, Helvetica, sans-serif;
+
+    padding: 100px;
+    border: 1px solid black;
 
   }
 .container2 {

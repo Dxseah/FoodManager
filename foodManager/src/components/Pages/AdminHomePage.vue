@@ -57,7 +57,6 @@ export default {
   
 <style scoped>
 div.background {
-  border: 2px solid black;
   background-size: cover;
   -webkit-background-size: cover;
   -moz-background-size: cover;
