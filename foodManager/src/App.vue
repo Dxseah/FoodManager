@@ -80,7 +80,7 @@
 
 <style>
 img {
-  height: 5em; width: auto; display: inline-block;
+  height: 8em; width: auto; display: inline-block;
 }
 
 #welcometag {
@@ -89,14 +89,13 @@ img {
   position:absolute;
   left:50%;
   top:140%;
-  transform: translate(-50%, -50%);
-  /* padding-top: 120px; */
+  transform: translate(-50%, -50%) translateY(80px);
 } 
 
-/* #welcometag h1 {
+#welcometag h1 {
   white-space: nowrap;
   display: inline-block;
-} */
+}
 
 #app {
   font-family: Arial, Helvetica, sans-serif;
@@ -131,9 +130,8 @@ img {
   margin-top: 10%;
 }
 #displayName {
-  font-size: 20px;
+  font-size: 30px;
   font-weight: bold;
   color: #2c3e50;
-
 }
 </style>
