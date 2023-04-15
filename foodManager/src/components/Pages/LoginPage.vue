@@ -30,7 +30,7 @@ export default {
       ui = new firebaseui.auth.AuthUI(firebase.auth());
     }
     var uiConfig = {
-      signInSuccessUrl: "/donorprofile", //need change this
+      signInSuccessUrl: "/profile", //need change this
       signInOptions:[
         firebase.auth.GoogleAuthProvider.PROVIDER_ID,
         firebase.auth.EmailAuthProvider.PROVIDER_ID
