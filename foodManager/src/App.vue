@@ -90,7 +90,13 @@ img {
   left:50%;
   top:140%;
   transform: translate(-50%, -50%);
+} 
+
+#welcometag h1 {
+  white-space: nowrap;
+  display: inline-block;
 }
+
 #app {
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -124,7 +130,7 @@ img {
   margin-top: 10%;
 }
 #displayName {
-  font-size: 20px;
+  font-size: 30px;
   font-weight: bold;
   color: #2c3e50;
 
