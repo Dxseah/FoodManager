@@ -57,7 +57,7 @@
   <br>
 
       </div>
-      <div v-else>
+      <div v-if = "account=='Beneficiary'">
         <br>
         <h1 class="header">Food Request History</h1>
         <div class="noReq" v-if="requests.length === 0">You have not made any requests yet!</div>
