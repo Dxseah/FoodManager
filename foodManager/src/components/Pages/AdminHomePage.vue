@@ -2,7 +2,6 @@
     <div class='background'>
       <div class="transbox">
         <div class="content">
-            <h1 class="newHeader">Food Items</h1><br>
             <div class = "foodCont">
               <router-link to="/adminform" class="button">Edit Food Quantities</router-link>
               <router-link to="/adminnewform" class="button">Add New Food Item</router-link>
