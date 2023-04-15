@@ -22,7 +22,7 @@
   </div>
   <div v-else id="nav">
     <span>
-      <img src="../src/assets/iconwithname.png" alt="Logo" width="150" height="150">
+      <img src="../src/assets/iconwithname.png" alt="Logo">
       |<router-link to = "/"> Login </router-link>|
     </span>
     <router-link to = "/about"> About Us </router-link>|
@@ -90,7 +90,14 @@ img {
   left:50%;
   top:140%;
   transform: translate(-50%, -50%);
-}
+  /* padding-top: 120px; */
+} 
+
+/* #welcometag h1 {
+  white-space: nowrap;
+  display: inline-block;
+} */
+
 #app {
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
