@@ -38,7 +38,13 @@
       <div v-for="(donation, index) in donations" :key="index">
       <div v-for="(value, key) in donation" :key="key">
       <template v-if="key !== 'userEmail'">
-        <p>{{ key }}: {{ value }}</p>
+        <table class="requestHist">
+          <tr>
+            <td>{{ key }}</td>
+            <td> {{ value }} </td>
+          </tr>
+        </table>
+        <!-- <p>{{ key }}: {{ value }}</p> -->
       </template>
     </div>
     <hr>
