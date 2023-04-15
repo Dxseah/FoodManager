@@ -77,7 +77,7 @@
       </div>
       <br>
       <div class="butCont">
-      <button class="button-upgrade" role='button' @click="update()"><span class="text">update profile details</span></button>
+      <button id="btn" @click="update()">Update Profile Details </button><br>
       <Logout/>
       </div>
     </div>
@@ -245,72 +245,27 @@ export default {
 
 
 #btn {
-  text-align: center;
-  margin: auto;
-  align-content: center;
-  background-color:#779ECB;
-  border-radius: 25px;
+  margin:5px;
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #0492C2;
+  color: #fff;
+  font-size: 24px; /* Increase the font size */
+  font-weight: bold;
+  text-decoration: none;
+  border: none; /* Remove the border */
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
  #btn:hover {
-    background-color: #F6C7B3;
-    box-shadow: 3px 3px grey;
+  background-color: #779ECB;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
 }
-.button-upgrade {
-  margin-right: 5px;
-  margin-top: 5px;
-  align-items: center;
-  background-image: linear-gradient(135deg, #f34079 40%, #fc894d);
-  border: 0;
-  border-radius: 12px;
-  box-sizing: border-box;
-  color: #fff;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  font-family: "Helvetica",sans-serif;
-  font-size: 16px;
-  font-weight: 700;
-  height: 54px;
-  justify-content: center;
-  letter-spacing: .4px;
-  margin-bottom: 5px;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top: 3px;
-  text-decoration: none;
-  text-transform: uppercase;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-}
-
-.button-upgrade:active {
-  outline: 0;
-}
-
-.button-upgrade:hover {
-  outline: 0;
-}
-
-.button-upgrade span {
-  transition: all 250ms;
-}
-
-.button-upgrade:hover span {
-  transform: scale(.9);
-  opacity: .75;
-}
-
-@media screen and (max-width: 991px) {
-  .button-upgrade {
-    font-size: 15px;
-    height: 50px;
-  }
-
-  .button-upgrade span {
-    line-height: 50px;
-  }
+#btn:active {
+  transform: translateY(2px);
+  box-shadow: none;
 }
 
 .header {

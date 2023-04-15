@@ -1,5 +1,5 @@
 <template>
-    <button class="button-upgrade" role="button" @click = "signOut()" v-if="user"> <span class="text">Sign Out</span> </button>
+       <button id='btn' @click = "signOut()" v-if="user"> Logout </button>
 </template>
 
 <script>
@@ -35,69 +35,33 @@ export default {
 </script>
 
 <style scoped>
+
 #btn {
-    text-align: center;
-    margin: auto;
-} 
+margin:5px;
+display: inline-block;
+padding: 12px 24px;
+background-color: #0492C2;
+color: #fff;
+font-size: 24px; /* Increase the font size */
+font-weight: bold;
+text-decoration: none;
+border: none; /* Remove the border */
+border-radius: 8px;
+cursor: pointer;
+transition: all 0.3s ease;
+}
 
+/* Add hover styles */
 #btn:hover {
-    color: rgb(243,236,236);
-    background-color: rgb(255,94,0);
-    box-shadow: 3px 3px grey;
-}
-.button-upgrade {
-  align-items: center;
-  background-image: linear-gradient(135deg, #f34079 40%, #fc894d);
-  border: 0;
-  border-radius: 12px;
-  box-sizing: border-box;
-  color: #fff;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  font-family: "Helvetica",sans-serif;
-  font-size: 16px;
-  font-weight: 700;
-  height: 54px;
-  justify-content: center;
-  letter-spacing: .4px;
-  padding-left: 20px;
-  margin-bottom: 5px;
-  padding-right: 20px;
-  padding-top: 3px;
-  text-decoration: none;
-  text-transform: uppercase;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
+background-color: #779ECB;
+box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
 }
 
-.button-upgrade:active {
-  outline: 0;
+/* Add active styles */
+#btn:active {
+transform: translateY(2px);
+box-shadow: none;
 }
 
-.button-upgrade:hover {
-  outline: 0;
-}
-
-.button-upgrade span {
-  transition: all 250ms;
-}
-
-.button-upgrade:hover span {
-  transform: scale(.9);
-  opacity: .75;
-}
-
-@media screen and (max-width: 991px) {
-  .button-upgrade {
-    font-size: 15px;
-    height: 50px;
-  }
-
-  .button-upgrade span {
-    line-height: 50px;
-  }
-}
 
 </style>
