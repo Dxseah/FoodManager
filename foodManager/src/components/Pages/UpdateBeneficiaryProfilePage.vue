@@ -12,11 +12,12 @@
           <label for="contact" class="form-label">Contact</label>
           <input type="string" id="contact" required class="form-input" v-model="contact" />
         </div>
-        <button class="btn" type="submit"> Update Profile Details </button>
+        <button class="btn-back-button" role="button"> Update Profile Details </button>
+        <button class="btn-back-button" role="button" @click="back()"> Back to Profile </button>
+
       </form>
     </div>
 
-    <button class="btn back-btn" @click="back()"> Back to Profile </button>
   </div>
 </template>
 
@@ -77,7 +78,7 @@ export default {
     },
 
     back() {
-      router.push('/beneficiaryprofile')
+      router.push('/profile')
     }
   }
 }
@@ -90,7 +91,7 @@ export default {
   color: #2c3e50;
   width: 100vw;
   height: 100vh;
-  padding: 100px;
+  padding: 5%;
   font-family: Avenir, Arial, Helvetica, sans-serif;
   font-size: 20px;
   display: flex;
@@ -117,12 +118,12 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   width: 100%;
 }
 
 label {
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   font-size: 20px;
   text-align: left;
 }
@@ -134,7 +135,7 @@ input {
   margin-bottom: 20px;
   width: 100%;
 }
-button {
+/* button {
   padding: 10px;
   background-color: #4CAF50;
   color: white;
@@ -146,5 +147,52 @@ button {
 }
 button:hover {
   background-color: #4CAF50;
+} */
+.btn-back-button {
+  padding: 10px;
+  margin: 5px;
+  appearance: none;
+  backface-visibility: hidden;
+  background-color: #27ae60;
+  border-radius: 8px;
+  border:0;
+  box-shadow: rgba(39, 174, 96, .15) 0 4px 9px;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  font-family: Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: normal;
+  height: 40px;
+  outline: none;
+  overflow: hidden;
+  padding: 10px;
+  text-align: center;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: top;
+  white-space: nowrap;
+
+  justify-content: center;
+  letter-spacing: .4px;
+  margin-bottom: 2px;
 }
+
+.btn-back-button:hover {
+  background-color: #1e8449;
+  opacity: 1;
+  transition-duration: 250ms;
+}
+
+.btn-back-button:active {
+  transition-duration: 250ms;
+}
+
+.btn-back-button:hover {
+  box-shadow: rgba(39, 174, 96, .2) 0 6px 12px;
+}
+
 </style>

@@ -5,6 +5,7 @@
           <div class="alert alert-success" role="alert">
             You are logged in!
             <!-- <Logout/> -->
+            <!-- HTML !-->
           </div>
         </div>
 
@@ -64,18 +65,17 @@
         </template>
       </div>
     <hr>
+
     </div>
   </div>
   <br>
 
-        
       </div>
       <br>
-      
-      <button id="btn" @click="update()">Update Profile Details </button><br>
-      <!-- <button id="btn" @click="signOut()" v-if="user"> Logout </button>  -->
+      <div class="butCont">
+      <button class="button-upgrade" role='button' @click="update()"><span class="text">update profile details</span></button>
       <Logout/>
-      
+      </div>
     </div>
   
     <div v-else-if = "!exists">
@@ -101,7 +101,7 @@ import { db } from '@/firebase'
 import { query, where, getDocs } from 'firebase/firestore';
 
 export default {
-  name: "DonorProfilePage", 
+  name: "ProfilePage", 
   components: {
     Logout, Details
   }, 
@@ -194,14 +194,21 @@ export default {
 
 <style scoped>
 .container1 {
-    background-color: #F8F3E8;
+    /* background-color: #F8F3E8;
     width: 100vw;
     height: 105vh;
     align-content: center;
     padding: 100px;
+     */
     font-family: Avenir, Arial, Helvetica, sans-serif;
     font-size: 20px;
     color: #2c3e50;
+    width: 100vw;
+    height: 105vh;
+    align-content: center;
+    font-family: Avenir, Arial, Helvetica, sans-serif;
+    padding: 100px;
+    border: 1px solid black;
 
   }
 .container2 {
@@ -213,7 +220,14 @@ export default {
     font-family: Avenir, Arial, Helvetica, sans-serif;
     font-size: 20px;
   }
-
+.butCont{
+  display: flex;
+  align-items: center;
+  position:absolute;
+  left:50%;
+  top: 110%;
+  transform: translate(-50%, -50%);
+}
 .cont {
   align-content: center;
 }
@@ -234,9 +248,65 @@ export default {
   border-radius: 25px;
 }
 
-#btn:hover {
+ #btn:hover {
     background-color: #F6C7B3;
     box-shadow: 3px 3px grey;
+}
+.button-upgrade {
+  margin-right: 5px;
+  margin-top: 5px;
+  align-items: center;
+  background-image: linear-gradient(135deg, #f34079 40%, #fc894d);
+  border: 0;
+  border-radius: 12px;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  font-family: "Helvetica",sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  height: 54px;
+  justify-content: center;
+  letter-spacing: .4px;
+  margin-bottom: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 3px;
+  text-decoration: none;
+  text-transform: uppercase;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-upgrade:active {
+  outline: 0;
+}
+
+.button-upgrade:hover {
+  outline: 0;
+}
+
+.button-upgrade span {
+  transition: all 250ms;
+}
+
+.button-upgrade:hover span {
+  transform: scale(.9);
+  opacity: .75;
+}
+
+@media screen and (max-width: 991px) {
+  .button-upgrade {
+    font-size: 15px;
+    height: 50px;
+  }
+
+  .button-upgrade span {
+    line-height: 50px;
+  }
 }
 
 .header {

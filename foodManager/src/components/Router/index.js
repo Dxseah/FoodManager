@@ -2,7 +2,7 @@ import { createRouter,createWebHistory } from 'vue-router'
 import LoginPage from '../Pages/LoginPage.vue'
 import AboutPage from '../Pages/AboutPage.vue'
 import BeneficiarySignUpPage from '../Pages/BeneficiarySignUpPage.vue'
-import DonorProfilePage from '../Pages/DonorProfilePage.vue'
+import ProfilePage from '../Pages/ProfilePage.vue'
 import BeneficiaryProfilePage from '../Pages/BeneficiaryProfilePage.vue'
 import DonorSignUpPage from '../Pages/DonorSignUpPage.vue'
 import ForgetPasswordPage from '../Pages/ForgetPasswordPage.vue'
@@ -17,6 +17,7 @@ import AdminFormPage from '../Pages/AdminFormPage.vue'
 import Details from '@/components/Details.vue'
 import AdminNewFormPage from '../Pages/AdminNewFormPage.vue'
 import AdminShowDonationsPage from '../Pages/AdminShowDonationsPage.vue'
+
 const routes = [
     {
         path: '/',
@@ -35,9 +36,9 @@ const routes = [
         component: BeneficiarySignUpPage
     },
     {
-        path: '/donorprofile',
-        name: 'DonorProfilePage',
-        component: DonorProfilePage
+        path: '/profile',
+        name: 'ProfilePage',
+        component: ProfilePage
     },
     {
         path: '/beneficiaryprofile',
