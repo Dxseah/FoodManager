@@ -222,8 +222,12 @@ export default {
     font-family: Avenir, Arial, Helvetica, sans-serif;
     padding: 100px;
     border: 1px solid black;
+    margin: 30px;
+    background-color: #E6F8F6;
+    opacity: 0.8;
 
   }
+
 .container2 {
     background-color: #F8F3E8;
     width: 100vw;
@@ -233,6 +237,7 @@ export default {
     font-family: Avenir, Arial, Helvetica, sans-serif;
     font-size: 20px;
   }
+
 .butCont{
   display: flex;
   align-items: center;
@@ -285,6 +290,8 @@ export default {
 
 .alert {
   text-align: center;
+  margin-bottom: 10px;
+  font-weight: bold;
 }
 
 .donHist {
@@ -308,7 +315,8 @@ th, td {
 }
 
 th {
-  background-color: #f2f2f2;
+  background-color: #CDE8E6 ;
+  font-weight: bold;
 }
 
 .requestHist {
