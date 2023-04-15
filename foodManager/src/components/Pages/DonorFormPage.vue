@@ -125,12 +125,12 @@ export default {
 
 <style scoped>
 .background {
-  background: url(https://images.unsplash.com/photo-1588772351739-cd328260e2b2);
+  /* background: url(https://images.unsplash.com/photo-1588772351739-cd328260e2b2);
   background-size: cover;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
   height: 150vh;
   width: 100vw;
   display: flex;
@@ -141,8 +141,9 @@ export default {
 
 .transbox {
   background-color: #E6F8F6;
-  border-radius: 10px;
-  padding: 20px;
+  border-radius: 20px;
+  padding: 10px;
+  
 }
 
 .content {
@@ -150,14 +151,16 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 50px;
+  margin-top: 40px;
+  margin-bottom: 30px;
 }
 
 .header {
   font-size: 2rem;
   margin-bottom: 20px;
-  color: black;
+  color: #2c3e50;
   font-family: Avenir, Arial, Helvetica, sans-serif;
+  font-weight: bold;
 }
 
 .form {
@@ -165,7 +168,7 @@ export default {
   flex-direction: column;
   align-items: center;
   width: 400px;
-  color: black;
+  color: #2c3e50;
   font-family: Avenir, Arial, Helvetica, sans-serif;
   
 }
@@ -179,10 +182,10 @@ export default {
 }
 
 label {
-  font-weight: bold;
+  /* font-weight: bold; */
   font-size: 1.2em;
   margin-bottom: 10px;
-  color: black;
+  color: #2c3e50;
 }
 
 input[type="number"] {
@@ -198,13 +201,34 @@ input[type="file"] {
   margin-top: 5px;
 }
 
+h2 {
+  color: #2c3e50;
+  font-weight: bold;
+}
+
 .submit-button {
   background-color:#779ECB;
+  border-radius: 25px;
+  margin: 40px 0px 20px 0px;
+  display: inline-block;
+  padding: 12px 24px;
+  font-size: 20px; 
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
 }
 
 button:hover {
     background-color: #F6C7B3;
     box-shadow: 3px 3px grey;
+    color: #2c3e50;
+}
+
+button:active {
+  transform: translateY(2px);
+  box-shadow: none;
 }
 
 </style>

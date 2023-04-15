@@ -182,14 +182,28 @@ export default {
 }
 
 #btn {
-    text-align: center;
-    margin: auto;
-} 
+  background-color:#779ECB;
+  border-radius: 25px;
+  margin: 5px;
+  display: inline-block;
+  padding: 12px 24px;
+  font-size: 20px; 
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+}
 
 #btn:hover {
-    color: rgb(243,236,236);
-    background-color: rgb(255,94,0);
+    background-color: #F6C7B3;
     box-shadow: 3px 3px grey;
+    color: #2c3e50;
+}
+
+#btn:active {
+  transform: translateY(2px);
+  box-shadow: none;
 }
 
 .header {
