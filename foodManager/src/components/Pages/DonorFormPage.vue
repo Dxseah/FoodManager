@@ -140,7 +140,7 @@ export default {
 }
 
 .transbox {
-  background-color: #E6F8F6;
+  background-color: #f9fdfd;
   border-radius: 20px;
   padding: 10px;
   

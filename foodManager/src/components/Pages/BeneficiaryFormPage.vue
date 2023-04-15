@@ -101,12 +101,6 @@ export default {
 
 <style scoped>
 .background {
-  /* background: url(https://images.unsplash.com/photo-1588772351739-cd328260e2b2); */
-  /* background-size: cover;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover; */
-  /* background-repeat: no-repeat; */
   height: 150vh;
   width: 100vw;
   display: flex;
@@ -116,7 +110,7 @@ export default {
 }
 
 .transbox {
-  background-color: #E6F8F6;
+  background-color: #f9fdfd;
   border-radius: 20px;
   padding: 10px 20px 10px 20px;
 }
