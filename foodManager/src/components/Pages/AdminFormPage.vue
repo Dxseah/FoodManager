@@ -16,11 +16,11 @@
             <button class="submit-button" v-on:click="submitAlert">Add Food Item</button>
           </form>
             <br>
-            <router-link to="/adminhome">Back to Home Page</router-link>
+            <router-link to="/adminhome" class="routerbutton">Back to Home Page</router-link>
         </div>
       </div>
     </div>
-  </template>
+</template>
 
 <script>
 import { getDoc, doc, updateDoc, setDoc, collection } from "firebase/firestore"
@@ -63,61 +63,60 @@ export default {
 
 <style scoped>
 .background {
-  background: url(https://images.unsplash.com/photo-1588772351739-cd328260e2b2);
-  background-size: cover;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-repeat: no-repeat;
-  height: 250vh;
+  height: 150vh;
   width: 100vw;
+  display: flex;
   align-items: center;
   justify-content: center;
-  background-color: aliceblue;
+  background-color: #F8F3E8;
 }
 
 .transbox {
-  background-color: rgba(255, 255, 255, 0.7);
-  border-radius: 10px;
-  padding: 20px;
+  background-color: #f9fdfd;
+  border-radius: 20px;
+  padding: 10px 20px 10px 20px;
 }
 
 .content {
-  color: #2c3e50;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 50px;
+  margin-top: 40px;
+  margin-bottom: 30px;
 }
 
 .header {
   font-size: 2rem;
   margin-bottom: 20px;
+  color: #2c3e50;
+  font-family: Avenir, Arial, Helvetica, sans-serif;
+  font-weight: bold;
 }
-
 
 .form {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 400px;
+  color: #2c3e50;
+  font-family: Avenir, Arial, Helvetica, sans-serif;
 }
 
-.form-group {
+/* .form-group {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   margin-bottom: 20px;
   width: 100%;
-}
+} */
 
 
 label {
-  margin-right: 250px;
-  font-weight: bold;
+  /* font-weight: bold; */
   font-size: 1.2em;
   margin-bottom: 10px;
+  color: #2c3e50;
 }
 
 input[type="number"] {
@@ -129,8 +128,61 @@ input[type="number"] {
   width: 100%;
 }
 
+h2 {
+  color: #2c3e50;
+  font-weight: bold;
+}
+
 .submit-button {
-  background-color: silver;
+  background-color:#779ECB;
+  border-radius: 25px;
+  margin: 40px 0px 20px 0px;
+  display: inline-block;
+  padding: 12px 24px;
+  font-size: 20px; 
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+  font-family: Avenir, Arial, Helvetica, sans-serif;
+}
+
+button:hover {
+    background-color: #F6C7B3;
+    box-shadow: 3px 3px grey;
+    color: #2c3e50;
+}
+
+button:active {
+  transform: translateY(2px);
+  box-shadow: none;
+}
+
+.routerbutton {
+  background-color:#779ECB;
+  border-radius: 25px;
+  margin: 0px 0px 20px 0px;
+  display: inline-block;
+  padding: 12px 24px;
+  font-size: 18px; 
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+  font-family: Avenir, Arial, Helvetica, sans-serif;
+}
+
+.routerbutton:hover {
+    background-color: #F6C7B3;
+    box-shadow: 3px 3px grey;
+    color: #2c3e50;
+}
+
+.routerbutton:active {
+  transform: translateY(2px);
+  box-shadow: none;
 }
 
 </style>
