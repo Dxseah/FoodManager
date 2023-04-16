@@ -125,7 +125,7 @@ export default {
 
 <style scoped>
 .background {
-  height: 150vh;
+  height: auto;
   width: 100vw;
   display: flex;
   align-items: center;
