@@ -14,7 +14,7 @@ import Details from '@/components/Details.vue'
 import AdminNewFormPage from '../Pages/AdminNewFormPage.vue'
 import AdminShowDonationsPage from '../Pages/AdminShowDonationsPage.vue'
 import AdminDeletePage from '../Pages/AdminDeletePage.vue'
-
+import UpdateAdminProfile from '../Pages/UpdateAdminProfile.vue'
 const routes = [
     {
         path: '/',
@@ -61,6 +61,12 @@ const routes = [
         name: 'UpdateBeneficiaryProfilePage',
         component: UpdateBeneficiaryProfilePage
     },
+    {
+        path: '/updateadminprofile',
+        name: 'UpdateAdminProfile',
+        component: UpdateAdminProfile
+    },
+
     {
         path: '/adminhome',
         name: 'AdminHomePage',

@@ -190,8 +190,10 @@ export default {
       const user = auth.currentUser;
       if (this.userData.type == "Donor") {
         router.push('/updatedonorprofile')
-      } else {
+      } else if (this.userData.type == "Beneficiary") {
         router.push('/updatebeneficiaryprofile')
+      } else {
+        router.push('/updateadminprofile')
       }
       
     },
