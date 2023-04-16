@@ -160,7 +160,7 @@ export default {
     border: 1px solid gray;
   }
 
-.submit-button {
+#submit-button {
   background-color:#779ECB;
   border-radius: 25px;
   margin: 40px 0px 20px 0px;
