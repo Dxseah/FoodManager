@@ -53,38 +53,34 @@ export default {
           const docRef = doc(userRef, curr);
 
           // Check for empty fields
-            if (this.name == " " || this.contact == " ") {
+          if (this.name == " " || this.contact == " ") {
             alert('Please fill in all fields');
             return;
-          }
+          } else{
 
           // Check if contact has exactly 8 digits
           if (!/^\d{8}$/.test(this.contact)|| this.contact < 80000000 || this.contact > 99999999) {
             alert('Please enter a valid 8 digit Singapore contact number.');
             return;
             }
-
+          }
           const requestedData = {
             "name": this.name, 
 
             "contact": this.contact,
           }; 
           await updateDoc(docRef, requestedData);
-
-
           window.location.reload(); 
-
     },
-
     back() {
       router.push('/profile')
     }
   }
 }
-
 </script>
 
 <style scoped>
+
 .background {
   height: auto;
   width: 100vw;
