@@ -4,7 +4,6 @@
       <div class="content">
       <!-- <LoginInput/> <br> -->
       <div id ="firebaseui-auth-container"></div>
-      <!-- <LoginSignUp/> <br><br> -->
       <LoginFindOutMore/>
       </div>
     </div>
@@ -21,7 +20,7 @@ import 'firebaseui/dist/firebaseui.css'
 export default { 
   name: "LoginPage",
   components:{
-          LoginSignUp,LoginFindOutMore
+          LoginFindOutMore
       },
   mounted() {
     var ui = firebaseui.auth.AuthUI.getInstance();
