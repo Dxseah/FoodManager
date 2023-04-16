@@ -10,7 +10,7 @@
               <label for="contact">Contact</label>
               <input type="string" id="contact" required v-model="contact"/>
             
-            <button role="button" class="submit-button" @click="submitForm()"> Update Profile Details </button><br>
+            <button role="button" class="submit-button" > Update Profile Details </button><br>
             <button role="button" class="btn-back-button" @click="back()"> Back to Profile </button> 
           </form>
         </div>
@@ -53,40 +53,35 @@ export default {
           const docRef = doc(userRef, curr);
 
           // Check for empty fields
-            if (this.name == " " || this.contact == " ") {
+          if (this.name == " " || this.contact == " ") {
             alert('Please fill in all fields');
             return;
-          }
+          } else{
 
             // Check if contact has exactly 8 digits
             if (!/^\d{8}$/.test(this.contact)|| this.contact < 80000000 || this.contact > 99999999) {
               alert('Please enter a valid 8 digit Singapore contact number.');
               return;
             }
-
+          }
           const requestedData = {
             "name": this.name, 
 
             "contact": this.contact,
           }; 
           await updateDoc(docRef, requestedData);
-
-
           window.location.reload(); 
-
     },
-
     back() {
       router.push('/profile')
     }
   }
 }
-
 </script>
 
 <style scoped>
+
 .background {
-  height: 150vh;
   width: 100vw;
   display: flex;
   align-items: center;
@@ -98,6 +93,7 @@ export default {
   background-color: #f9fdfd;
   border-radius: 25px;
   padding: 10px;
+  width: 
 }
 
 .content {
@@ -105,10 +101,6 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 40px;
-  margin-bottom: 30px;
-  margin-left: 10px;
-  margin-right: 10px;
 }
 
 .header {
