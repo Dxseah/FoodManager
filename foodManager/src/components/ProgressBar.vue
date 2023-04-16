@@ -5,9 +5,9 @@
     </div>
     <div class="raised">{{ value }} / {{ max }} raised</div>
     <div class="percent"> {{ percentage }}% completed</div>
-  </template>
+</template>
   
-  <script>
+<script>
   export default {
     props: {
       label: String,

@@ -15,10 +15,6 @@
             <td> {{userData.name}} </td>
           </tr>
           <tr>
-            <th>User ID</th>
-            <td> {{user.uid}} </td>
-          </tr>
-          <tr>
             <th>Email</th>
             <td> {{user.email}} </td>
           </tr>
@@ -213,7 +209,6 @@ export default {
     align-content: center;
     padding: 100px;
      */
-    font-family: Avenir, Arial, Helvetica, sans-serif;
     font-size: 20px;
     color: #2c3e50;
     width: 100vw;
