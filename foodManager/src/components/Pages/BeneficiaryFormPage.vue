@@ -9,7 +9,7 @@
                   <h2>{{ foodItem.name }}</h2>
                   <div class="food-form">
                     <label>Requested Quantity: </label>
-                    <input type="number" id="requested-quantity" v-model.number="foodItem.requestedQuantity" min="0">
+                    <input type="number" id="requested-quantity" v-model.number="foodItem.requestedQuantity" min="0" required>
                   </div>
             </div>
           </div>
@@ -78,6 +78,15 @@ export default {
       });
 
       requestData.userEmail = user.email;
+      const form = document.querySelector('form');
+      const formInputs = form.querySelectorAll('input, select, textarea');
+
+      let isFormValid = true;
+      formInputs.forEach(input => {
+      if (!input.value) {
+        isFormValid = false;
+      }
+      });
 
       if (docSnap.exists()) {
         await setDoc(docRef, requestData, { merge: true });
@@ -92,16 +101,24 @@ export default {
         alert(err.message)
     }
   },
-  async submitAlert() {
-    alert("Request Form is submitted!")
-  }
+
+async submitAlert() {
+    if (!isFormValid) {
+  alert("Please fill out all form fields.");
+  return;
+    } else {
+      alert("Request Form is submitted!")
   }
 }
+  }
+}
+
+
 </script>
 
 <style scoped>
 .background {
-  height: 150vh;
+  height: auto;
   width: 100vw;
   display: flex;
   align-items: center;
@@ -113,6 +130,7 @@ export default {
   background-color: #f9fdfd;
   border-radius: 25px;
   padding: 10px 20px 10px 20px;
+  width: 30%;
 }
 
 .content {

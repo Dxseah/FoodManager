@@ -8,7 +8,7 @@
                   <h2>{{ foodItem.name }}</h2>
                   <div class="food-form">
                     <label>Donated Quantity: </label>
-                    <input type="number" id="donated-quantity" v-model.number="foodItem.donatedQuantity" min="0">
+                    <input type="number" id="donated-quantity" v-model.number="foodItem.donatedQuantity" min="0" required>
                   </div>
           </div>
           <label for="image-upload">Upload Image</label>
@@ -90,7 +90,16 @@ export default {
       } else {
         await setDoc(docRef, donationData);
       }
+      
+      const form = document.querySelector('form');
+      const formInputs = form.querySelectorAll('input, select, textarea');
 
+      let isFormValid = true;
+      formInputs.forEach(input => {
+        if (!input.value) {
+          isFormValid = false;
+        }
+      });
       if (!this.imageFile) {
         alert("Please upload an image of your donation.");
         return;
@@ -108,24 +117,25 @@ export default {
     }
   },
 
+
   async submitAlert() {
-    if (!this.imageFile) {
-      alert("Please upload an image of your donation.");
+    if (!this.imageFile || !isFormValid) {
+      alert("Please fill out all form fields and upload an image of your donation.");
       return;
-    }
+    };
     alert("Donation Form is submitted!")
-  },
-  handleImageUpload(event) {
-    console.log(event.target.files)
-    this.imageFile = event.target.files[0];
-  }
-}
+    },
+      handleImageUpload(event) {
+        console.log(event.target.files)
+        this.imageFile = event.target.files[0];
+      }
+    }
 }
 </script>
 
 <style scoped>
 .background {
-  height: 150vh;
+  height: auto;
   width: 100vw;
   display: flex;
   align-items: center;
@@ -137,6 +147,7 @@ export default {
   background-color: #f9fdfd;
   border-radius: 25px;
   padding: 10px;
+  width: 30%;
 }
 
 .content {
