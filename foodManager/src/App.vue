@@ -136,7 +136,7 @@ img {
   /* font-weight: bold; */
 }
 #routerCont {
-  margin-top: 5%;
+  margin-top: 1%;
 }
 #displayName {
   font-size: 30px;
