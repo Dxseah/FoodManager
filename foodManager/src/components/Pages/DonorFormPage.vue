@@ -112,6 +112,7 @@ export default {
       });
       console.log("Form submitted");
       router.push("/donorhome");
+      alert("Donation Form is submitted!")
     } catch (err) {
       alert(err.message);
     }
@@ -123,7 +124,6 @@ export default {
       alert("Please fill out all form fields and upload an image of your donation.");
       return;
     };
-    alert("Donation Form is submitted!")
     },
       handleImageUpload(event) {
         console.log(event.target.files)

@@ -96,6 +96,7 @@ export default {
 
       console.log("Form submitted")
       router.push("/beneficiaryhome")
+      alert("Request Form is submitted!")
     }
     catch (err) {
         alert(err.message)
@@ -106,11 +107,9 @@ async submitAlert() {
     if (!isFormValid) {
   alert("Please fill out all form fields.");
   return;
-    } else {
-      alert("Request Form is submitted!")
+    }
   }
 }
-  }
 }
 
 
