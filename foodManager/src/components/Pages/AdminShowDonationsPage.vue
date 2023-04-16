@@ -161,6 +161,7 @@ div.background {
 
 div.transbox {
   margin: 30px;
+  border-radius: 25px;
   background-color: #ffffff;
   border: 1px solid black;
   opacity: 0.8;
