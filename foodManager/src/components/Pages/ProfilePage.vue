@@ -15,10 +15,6 @@
             <td> {{userData.name}} </td>
           </tr>
           <tr>
-            <th>User ID</th>
-            <td> {{user.uid}} </td>
-          </tr>
-          <tr>
             <th>Email</th>
             <td> {{user.email}} </td>
           </tr>
