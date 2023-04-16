@@ -27,7 +27,7 @@ a:hover {
 .button {
   background-color:#779ECB;
   border-radius: 25px;
-  margin: 40px 50px 20px 0px;
+  margin: 40px 0px 0px 0px;
   display: inline-block;
   padding: 12px 24px;
   font-size: 22px; 
