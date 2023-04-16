@@ -70,7 +70,7 @@ export default {
   
 <style scoped>
 .background {
-  height: 100vh;
+  height: auto;
   width: 100vw;
   display: flex;
   align-items: center;
@@ -82,6 +82,7 @@ export default {
   background-color: #f9fdfd;
   border-radius: 25px;
   padding: 10px 20px 10px 20px;
+  width: 30%;
 }
 
 .content {

@@ -13,7 +13,7 @@
                     <input type="number" id="requested-quantity" v-model.number="foodItem.requested" min="0" :placeholder="[[foodItem.requested]]"/>
                   </div>
             </div>
-            <button class="submit-button" v-on:click="submitAlert">Add Food Item</button>
+            <button class="submit-button" v-on:click="submitAlert">Update Food Items</button>
           </form>
             <br>
             <router-link to="/adminhome" class="routerbutton">Back to Home Page</router-link>
@@ -40,8 +40,8 @@ export default {
       const batch = [];
       this.foodItems.forEach((foodItem) => {
       batch.push(updateDoc(doc(db, 'FoodCollection', foodItem.id), {
-        donated: foodItem.donated,
-        requested: foodItem.requested
+        donated: foodItem.donated ? foodItem.donated :0,
+        requested: foodItem.requested ? foodItem.requested:0
       }));
   });
     await Promise.all(batch);
@@ -63,7 +63,7 @@ export default {
 
 <style scoped>
 .background {
-  height: 150vh;
+  height: auto;
   width: 100vw;
   display: flex;
   align-items: center;
@@ -75,6 +75,7 @@ export default {
   background-color: #f9fdfd;
   border-radius: 25px;
   padding: 10px 20px 10px 20px;
+  width: 30%;
 }
 
 .content {
