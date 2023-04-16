@@ -1,7 +1,7 @@
 <template>
     <div class="findOutMoreCont">
-        <h1>Find out more about FoodManager</h1>
-        <router-link to="/about" class="button">HERE</router-link>
+        <!-- <h1>Find out more about FoodManager</h1> -->
+        <router-link to="/about" class="button">Find out more about FoodManager</router-link>
     </div>
 </template>
 
@@ -37,6 +37,7 @@ a:hover {
   border: none;
   transition: all 0.3s ease;
   font-family: Avenir, Arial, Helvetica, sans-serif;
+  white-space: nowrap;
 }
 
 .button:hover {
