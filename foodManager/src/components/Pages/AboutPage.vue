@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <img :src="'../src/assets/icon.png'" alt="Image description">
+    <img :src="image" alt="Image description">
     <h1>{{ orgName }}</h1>
     <div class="mission">
       <h2>Our Mission</h2>
@@ -31,41 +31,54 @@
 </template>
 
 <script>
+import image from "@/assets/icon.png"
+import nf from "@/assets/nanfang.jpg"
+import dx from "@/assets/dingxuan.jpg"
+import demi from "@/assets/demi.jpg"
+import brian from "@/assets/brian.jpg"
+import yihan from "@/assets/yihan.jpg"
+
 export default {
   data() {
     return {
+      image:image,
+      nf:nf,
+      dx:dx,
+      demi:demi,
+      brian:brian,
+      yihan:yihan,
       orgName: "FoodManager",
       team: [
         {
           name: "Brian Liew",
           position: "Product Owner",
           bio: "Brian has over 5 years of experience in managing inventory items through donations and is committed to making a difference in the community.",
-          image: "../src/assets/brian.jpg",
+          image: brian,
         },
         {
           name: "Mi Nanfang",
           position: "Scrum Master",
           bio: "Nanfang has a knack for task management and is dedicated to making a difference in the community through her expertise.",
-          image: "../src/assets/nanfang.jpg",
+          image: nf,
           
         },
         {
           name: "Demi Tan",
           position: "Developer",
           bio: "Demi has accumulated many years of experience in developing websites and management systems with the team and is passionate in creating an impact in the society.",
-          image: "../src/assets/demi.jpg",
+          image: demi,
         },
         {
           name: "Seah Ding Xuan", 
           position: "Developer", 
           bio: "Ding Xuan has a proven track record of creating websites and developing an inventory management system for many organizations and is dedicated to supporting our mission.",
-          image: "../src/assets/dingxuan.jpg",
+          image: dx,
         }, 
         {
           name: "Lim Yi Han", 
           position: "Developer", 
           bio: "Yi Han is a skilled developer and with a wealth of knowledge and experience in web development, he dedicates his utmost effort into his work to help the community. ",
-          image: "../src/assets/yihan.jpg",
+          image: yihan,
         }
       ],
     };

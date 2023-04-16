@@ -18,6 +18,7 @@
     <Logout/>
     <div id='welcometag'>
       <img src="../src/assets/iconwithname.png" alt="Logo">
+
       <h1 id="displayName">Welcome {{userData.name}}!</h1>
       <img src="../src/assets/iconwithname.png" alt="Logo">
     </div>
