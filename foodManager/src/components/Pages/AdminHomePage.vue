@@ -125,6 +125,7 @@ font-family: Avenir, Arial, Helvetica, sans-serif;
   border: none;
   transition: all 0.3s ease;
   font-family: Avenir, Arial, Helvetica, sans-serif;
+  opacity: 0.8;
 }
 
 .button:hover {

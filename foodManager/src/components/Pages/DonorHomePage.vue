@@ -65,6 +65,7 @@ div.background {
   height: 100vh;
   width: 100vw;
   background-color: #F8F3E8;
+  opacity: 0.8;
 }
 
 div.transbox {

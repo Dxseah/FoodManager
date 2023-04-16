@@ -85,6 +85,7 @@ export default {
   justify-content: center;
   border: 1px solid black;
   text-align: center; /* add this line */
+  opacity: 0.8;
 }
 
 h1 {
