@@ -40,6 +40,7 @@ export default {
 </script>
 
 <style scoped>
+
   div.background {
     background-size: cover;
     -webkit-background-size: cover;

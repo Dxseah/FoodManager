@@ -83,10 +83,10 @@
 img {
   height: 8em; width: auto; display: inline-block;
 }
-
+/* 
 .router-view {
   margin-top: 100px;
-}
+} */
 #welcometag {
   display: flex;
   align-items: center;
@@ -136,7 +136,7 @@ img {
   /* font-weight: bold; */
 }
 #routerCont {
-  margin-top: 10%;
+  margin-top: 5%;
 }
 #displayName {
   font-size: 30px;
