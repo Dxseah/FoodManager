@@ -2,12 +2,13 @@
   <div class="about">
     <img :src="'../src/assets/icon.png'" alt="Image description">
     <h1>{{ orgName }}</h1>
-    <div class="description">
-      <p class="lead">{{ orgDescription }}</p>
-    </div>
     <div class="mission">
       <h2>Our Mission</h2>
-      <p>{{ orgMission }}</p>
+      <p>Our mission is to help non-profit organizations in Singapore achieve zero food waste by offering an inventory and donation management solution. With our innovative system, we can track food donations from start to finish, ensuring that every donation is utilized effectively, and reducing the amount of food that ends up in landfills. We believe that creating a zero food wastage system is crucial for Singapore's sustainable future and work closely with non-profit organizations to tailor our services to their specific needs. Let's work together to make a positive impact on those in need and create a better future by managing food donations effectively.</p>
+    </div>
+    <div class="description">
+      <h2>Our Key Values</h2>
+      <p> <h3>Compassion:</h3> <p>We prioritize empathy and concern for those who are food insecure or in need.</p> <br> <h3>Sustainability:</h3> <p>We promote environmentally sustainable practices, such as reducing food waste and promoting composting.</p> <br> <h3>Equality:</h3> <p>We value the fair and equitable distribution of food to those in need, regardless of their race, religion, or social status.</p> <br> <h3>Transparency:</h3> <p>We value transparency in their operations, including reporting on the impact of their efforts and being open about their processes and decision-making.</p> </p>
     </div>
     <div class="team">
       <h2>Our Team</h2>
@@ -34,8 +35,6 @@ export default {
   data() {
     return {
       orgName: "FoodManager",
-      orgDescription: "We aim to help non-profit organisations with their inventory system and donation management.",
-      orgMission: "Our mission is to work towards a zero wastage system for donations through non-profit organisations.",
       team: [
         {
           name: "Brian Liew",
@@ -101,10 +100,12 @@ h1 {
 h2 {
   font-family: Avenir, Arial, Helvetica, sans-serif;
   font-size: 36px;
+  font-size: 42px;
   margin-top: 40px;
   margin-bottom: 20px;
   text-align: center;
   color: #373737;
+  font-style: oblique;
 }
 
 h3 {
@@ -119,8 +120,7 @@ h3 {
 
 p {
   font-family: Avenir, Arial, Helvetica, sans-serif;
-  font-size: 18px;
-  margin-bottom: 20px;
+  font-size: 24px;
   text-align: center;
   color: #555555;
   line-height: 1.5;

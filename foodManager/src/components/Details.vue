@@ -1,21 +1,25 @@
 <template>
   <div class="donorCont">
-    <h2>Hi, we noticed that you're new! Do fill this up to continue!</h2>
-    <form @submit.prevent="submitForm">
-      <h3>Personal Details:</h3>
-      <br>
-      <label for="type">Account Type:</label>
-      <select required v-model="type" >
-          <option value="Donor">Donor</option>
-          <option value="Beneficiary">Beneficiary</option>
-      </select>
-      <!-- <input type="type" placeholder="Enter Donor/Beneficiary" required v-model="type"> -->
-      <br>
-      <label for="contact">Contact Number:</label>
-      <input type="contact" placeholder="Enter Contact Number" required v-model="contact">
-      <br>
-      <button id="btn" type="submit"> Submit </button>
-    </form>
+    <div class="transbox">
+      <div class="content">
+        <h2 class="header">Hi, we noticed that you're new! Do fill this up to continue!</h2>
+        <form @submit.prevent="submitForm" class="form">
+        <h3>Personal Details:</h3>
+        <br>
+        <label for="type">Account Type:</label>
+        <select required v-model="type" >
+            <option value="Donor">Donor</option>
+            <option value="Beneficiary">Beneficiary</option>
+        </select>
+        <!-- <input type="type" placeholder="Enter Donor/Beneficiary" required v-model="type"> -->
+        <br>
+        <label for="contact">Contact Number:</label>
+        <input type="contact" placeholder="Enter Contact Number" required v-model="contact">
+        <br>
+        <button id="submit-button" type="submit"> Submit </button>
+        </form>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -98,18 +102,38 @@ export default {
 
 <style scoped>
   .donorCont {
-    background-color: aliceblue;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100vw;
+    background-color: #F8F3E8;
   }
+
+.transbox {
+  background-color: #f9fdfd;
+  border-radius: 25px;
+  padding: 10px 20px 10px 20px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+  margin-bottom: 30px;
+}
+
 
   h2 {
     font-family: Avenir, Arial, Helvetica, sans-serif;
     font-weight: bold;
     font-size: 2em;
     margin-bottom: 20px;
+    color: #2c3e50;
   }
 
   form {
@@ -120,13 +144,11 @@ export default {
   }
 
   label {
-    display: block;
-    width: 100%;
-    text-align: left;
-    font-family: Avenir, Arial, Helvetica, sans-serif;
-    font-weight: bold;
-    padding-bottom: 5px;
-  }
+  /* font-weight: bold; */
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  color: #2c3e50;
+}
 
   input,
   select {
@@ -138,13 +160,13 @@ export default {
     border: 1px solid gray;
   }
 
-  #btn {
+#submit-button {
   background-color:#779ECB;
   border-radius: 25px;
   margin: 40px 0px 20px 0px;
   display: inline-block;
   padding: 12px 24px;
-  font-size: 29px; 
+  font-size: 20px; 
   color: #fff;
   font-weight: bold;
   cursor: pointer;
@@ -153,13 +175,13 @@ export default {
   font-family: Avenir, Arial, Helvetica, sans-serif;
 }
 
-  #btn:hover {
+button:hover {
     background-color: #F6C7B3;
     box-shadow: 3px 3px grey;
     color: #2c3e50;
 }
 
-  #btn:active {
+button:active {
   transform: translateY(2px);
   box-shadow: none;
 }

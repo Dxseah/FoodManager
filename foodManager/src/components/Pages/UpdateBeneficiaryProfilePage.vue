@@ -10,7 +10,7 @@
               <label for="contact">Contact</label>
               <input type="string" id="contact" required v-model="contact"/>
             
-            <button role="button" class="submit-button" @click="submitForm()"> Update Profile Details </button><br>
+              <button role="button" class="submit-button"> Update Profile Details </button><br>
             <button role="button" class="btn-back-button" @click="back()"> Back to Profile </button> 
           </form>
         </div>
@@ -96,6 +96,7 @@ export default {
   background-color: #f9fdfd;
   border-radius: 25px;
   padding: 10px;
+  width: 30%;
 }
 
 .content {
@@ -103,10 +104,6 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 40px;
-  margin-bottom: 30px;
-  margin-left: 10px;
-  margin-right: 10px;
 }
 
 .header {
