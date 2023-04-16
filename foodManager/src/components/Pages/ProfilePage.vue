@@ -22,8 +22,7 @@
             <th>Contact</th>
             <td> {{userData.contact}} </td>   
           </tr>
-
-      </table>
+        </table>
 
       <br>
 
@@ -203,51 +202,38 @@ export default {
 
 <style scoped>
 .container1 {
-    /* background-color: #F8F3E8;
-    width: 100vw;
-    height: 105vh;
-    align-content: center;
-    padding: 100px;
-     */
-    font-size: 20px;
-    color: #2c3e50;
-    width: 100vw;
-    height: 105vh;
-    align-content: center;
-    font-family: Avenir, Arial, Helvetica, sans-serif;
-    padding: 100px;
+
     border: 1px solid black;
-    margin: 30px;
+    text-align: center; 
+    padding-top: 10px;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100vw;
     background-color: #f9fdfd;
     opacity: 0.8;
-
-  }
-
-.container2 {
-    background-color: #F8F3E8;
-    width: 100vw;
-    height: 100vh;
-    align-content: center;
-    padding: 100px;
-    font-family: Avenir, Arial, Helvetica, sans-serif;
     font-size: 20px;
+    color: #2c3e50;
+    align-content: center;
+    font-family: Avenir, Arial, Helvetica, sans-serif;  
   }
 
 .butCont{
-  display: flex;
   align-items: center;
-  position:absolute;
-  left:50%;
-  top: 110%;
-  transform: translate(-50%, -50%);
+  justify-content: center;
+
 }
-.cont {
+/* .cont {
   align-content: center;
-}
+} */
 
 #currTable {
-  text-align: left;
-  width: 100%;
+  text-align: center;
+  margin:auto;
+  width: 80%;
   border-collapse: collapse;
   border: 1px solid;
 }
