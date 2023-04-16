@@ -6,22 +6,26 @@
         <br>
         <div class="gallery">
           <div v-bind:key="item" class="gallery-panel" v-for="(item, index) in this.donations">
-            <img :src="item" alt="No Image" title="Check" class="img" @click="showImage(index)">
+            <img :src="item" alt="No Image" class="img" @click="showImage(index)">
+            <p >{{extractValue(item)}}</p>
           </div>
         </div>
         <router-link to="/adminhome" class="routerbutton">Back to Home Page</router-link>
       </div>
       <div class="modal" v-if="modalOpen" @click="closeModal">
         <img :src="selectedImage" alt="Enlarged Image" class="modal-content">
+        <span class="modalcont">
+        <p class = "modal-text">{{extractValue(selectedImage)}}</p>
+        <router-link to="/adminform" class="routerbutton">Edit Food Quantities</router-link>
+        </span>
+
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { getDoc, doc, updateDoc, setDoc, collection } from "firebase/firestore"
-import { db } from '@/firebase'
-import { query, where, getDocs } from 'firebase/firestore';
+
 import { getStorage, ref ,listAll,getDownloadURL} from "firebase/storage";
 
 export default {
@@ -30,7 +34,8 @@ export default {
     return {
       donations: [],
       modalOpen: false,
-      selectedImage: null
+      selectedImage: null,
+      imageTitle: ""
     };
   },
 
@@ -39,12 +44,7 @@ export default {
       const Ref = ref(storage,'donations/');
       console.log('test')
       listAll(Ref).then((res)=>{
-          //console.log('here')
-        //   res.prefixes.forEach((folderRef) => {
-        //     //console.log(folderRef)
-        //     console.log('here')
 
-        //   });
           res.items.forEach((itemRef) => {
             getDownloadURL(itemRef).then(
                 (url)=> {
@@ -62,17 +62,33 @@ export default {
     showImage(index) {
       this.selectedImage = this.donations[index];
       this.modalOpen = true;
+      // Use the 'split' method to split the 'item' value using the regular expression pattern
     },
 
     closeModal() {
       this.modalOpen = false;
       this.selectedImage = null;
+    },
+    extractValue(url) {
+      // Regular expression pattern to extract the value
+      const regex = /\/donations%2F([^?]+)/;
+      // Use the 'split' method to split the 'item' value using the regular expression pattern
+      console.log(url.match(regex)[1].replace(/%40/g, '@'))
+      return url.match(regex)[1].replace(/%40/g, '@')
     }
   }
 }
 </script>
 
 <style>
+.modalcont{
+    display: flex;
+    flex-direction: column;
+}
+.modal-text{
+    color: white;
+    margin: 5px
+}
 .image {
   max-width: 20%;
   height: 20%;
@@ -108,9 +124,11 @@ export default {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.modal-image {
-  max-width: 90%;
+.modal-content {
+  max-width: 60%;
   max-height: 90%;
+  min-width: 50%;
+  min-height: 50%;
   object-fit: contain;
 }
 
@@ -125,6 +143,59 @@ export default {
 
 .modal-close:hover {
   color: #aaa;
+}
+content{
+    margin-top:10px
+}
+
+div.background {
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100vw;
+  
+}
+
+div.transbox {
+  margin: 30px;
+  background-color: #ffffff;
+  border: 1px solid black;
+  opacity: 0.8;
+}
+
+div.content {
+margin: 5%;
+font-weight: bold;
+color: #000000;
+}
+
+.header {
+  font-family: Marker Felt, Avenir, Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 3em;
+}
+
+.routerbutton {
+  background-color:#779ECB;
+  border-radius: 25px;
+  margin: 0px 0px 20px 0px;
+  display: inline-block;
+  padding: 12px 24px;
+  font-size: 18px; 
+  color: #fff;
+
+}
+.routerbutton:hover {
+    background-color: #F6C7B3;
+    box-shadow: 3px 3px grey;
+    color: #2c3e50;
+}
+.routerbutton:active {
+  transform: translateY(2px);
+  box-shadow: none;
 }
 
 </style>
