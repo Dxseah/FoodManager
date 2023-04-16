@@ -98,7 +98,7 @@ img {
 }
 
 #app {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Avenir, Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /* text-align: center; */
@@ -122,6 +122,13 @@ img {
   font-size: 35px;
   /* text-align: center; */
 }
+
+#nav a:hover {
+  background-color: #F6C7B3;
+  box-shadow: 3px 3px grey;
+  color: #2c3e50;
+}
+
 #nav a.router-link-exact-active{
   color:#5B96A9;
   /* font-weight: bold; */
