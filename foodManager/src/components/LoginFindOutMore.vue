@@ -19,11 +19,17 @@ h1 {
 }
 
 a {
-    color:chocolate;
+    color:#779ECB;
     text-decoration: none;
     font-size: 1.5em;
     font-style: italic;
     text-decoration-line: underline;
+}
+
+a:hover {
+    background-color: #F6C7B3;
+    box-shadow: 3px 3px grey;
+    color: #2c3e50;
 }
 
 router-link {
