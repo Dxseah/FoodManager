@@ -125,12 +125,6 @@ export default {
 
 <style scoped>
 .background {
-  /* background: url(https://images.unsplash.com/photo-1588772351739-cd328260e2b2);
-  background-size: cover;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-repeat: no-repeat; */
   height: 150vh;
   width: 100vw;
   display: flex;
@@ -143,7 +137,6 @@ export default {
   background-color: #f9fdfd;
   border-radius: 20px;
   padding: 10px;
-  
 }
 
 .content {
@@ -170,16 +163,15 @@ export default {
   width: 400px;
   color: #2c3e50;
   font-family: Avenir, Arial, Helvetica, sans-serif;
-  
 }
 
-.form-group {
+/* .form-group {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   margin-bottom: 20px;
   width: 100%;
-}
+} */
 
 label {
   /* font-weight: bold; */
