@@ -12,7 +12,6 @@
 </template>
 
 <script>
-import LoginSignUp from '@/components/LoginSignUp.vue'
 import LoginFindOutMore from '@/components/LoginFindOutMore.vue'
 import firebase from '@/uifire.js'
 import 'firebase/compat/auth';

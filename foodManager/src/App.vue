@@ -1,6 +1,6 @@
 <template>
 
-<nav>
+<nav class="appCont">
   <div v-if="user" id="nav">
 
     <span v-if="account=='Donor'">
@@ -29,7 +29,7 @@
     <router-link to = "/about"> About Us </router-link>|
   </div>
   <div id="routerCont">
-  <router-view :key="$route.fullPath"/> 
+  <router-view class="router-view" :key="$route.fullPath"/> 
   </div>
 </nav>
 </template>
@@ -84,13 +84,14 @@ img {
   height: 8em; width: auto; display: inline-block;
 }
 
+.router-view {
+  margin-top: 100px;
+}
 #welcometag {
   display: flex;
   align-items: center;
-  position:absolute;
-  left:50%;
-  top:140%;
-  transform: translate(-50%, -50%) translateY(40px);
+  justify-content: center;
+
 } 
 
 #welcometag h1 {
@@ -106,13 +107,13 @@ img {
   /* color: #2c3e50; */
   width: 100vw;
 }
-
+#appCont{
+  display: flex;
+  flex-direction: column;
+}
 #nav {
-  margin-top: 50px;
   padding: 25px 0px 10px 0px;
-  position:absolute;
-  left:50%;
-  transform: translate(-50%, -50%);
+  transform: scale();
   /* background-color: antiquewhite; */
   text-align: center;
   align-items: center;
