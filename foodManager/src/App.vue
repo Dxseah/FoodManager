@@ -15,6 +15,7 @@
 
     <router-link to = "/profile"> Profile </router-link>|
     <router-link to = "/about"> About Us </router-link>|
+    <Logout/>
     <div id='welcometag'>
       <img src="../src/assets/iconwithname.png" alt="Logo">
       <h1 id="displayName">Welcome {{userData.name}}!</h1>
@@ -41,6 +42,7 @@
 <script>
   import router from '@/components/Router/index.js'
   import firebaseApp from '@/firebase.js';
+  import Logout from '@/components/Logout.vue';
   import { db } from '@/firebase'
   import { getAuth, onAuthStateChanged } from "firebase/auth";
   import { getDoc, doc, updateDoc, setDoc, collection } from "firebase/firestore"
@@ -53,7 +55,9 @@
         userData:false
       }
     }, 
-
+    components: {
+        Logout
+      },
     mounted() {
       const auth = getAuth();
       onAuthStateChanged(auth,(user)=>{

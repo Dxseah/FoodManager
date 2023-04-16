@@ -37,30 +37,28 @@ export default {
 <style scoped>
 
 #btn {
-margin:5px;
-display: inline-block;
-padding: 12px 24px;
-background-color: #0492C2;
-color: #fff;
-font-size: 24px; /* Increase the font size */
-font-weight: bold;
-text-decoration: none;
-border: none; /* Remove the border */
-border-radius: 8px;
-cursor: pointer;
-transition: all 0.3s ease;
+  background-color:#779ECB;
+  border-radius: 25px;
+  margin: 5px;
+  display: inline-block;
+  padding: 12px 24px;
+  font-size: 20px; 
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
 }
 
-/* Add hover styles */
 #btn:hover {
-background-color: #779ECB;
-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+    background-color: #F6C7B3;
+    box-shadow: 3px 3px grey;
+    color: #2c3e50;
 }
 
-/* Add active styles */
 #btn:active {
-transform: translateY(2px);
-box-shadow: none;
+  transform: translateY(2px);
+  box-shadow: none;
 }
 
 
