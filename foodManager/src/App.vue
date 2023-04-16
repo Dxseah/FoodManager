@@ -22,11 +22,15 @@
     </div>
   </div>
   <div v-else id="nav">
-    <span>
+    <span id='welcometag'>
       <img src="../src/assets/iconwithname.png" alt="Logo">
-      |<router-link to = "/"> Login </router-link>|
+      |<router-link to = "/"> Login </router-link> 
+      <h1 id='here'> &nbsp;&nbsp; </h1>
+      <router-link to = "/about"> About Us </router-link>|
+      <img src="../src/assets/iconwithname.png" alt="Logo">
+
     </span>
-    <router-link to = "/about"> About Us </router-link>|
+
   </div>
   <div id="routerCont">
   <router-view class="router-view" :key="$route.fullPath"/> 
@@ -80,6 +84,7 @@
 </script>
 
 <style>
+
 img {
   height: 8em; width: auto; display: inline-block;
 }
@@ -93,7 +98,12 @@ img {
   justify-content: center;
 
 } 
+#here {
+  color:#2c3e50;
+  font-size: 35px;
+  font-weight: bold;
 
+}
 #welcometag h1 {
   white-space: nowrap;
   display: inline-block;
