@@ -4,11 +4,14 @@
         <div class="content">
           <h1 class="header">Check Donated items here</h1>
           <br>
-          <div v-bind:key="item" v-for="item in this.donations">
-            <img :src="item" alt="No Image" title="Check" />
+          <div class="gallery">
+          <div v-bind:key="item" class="gallery-panel" v-for="item in this.donations">
+            <img :src="item" alt="No Image" title="Check" class="img"/>
           </div>
+                  </div>
           <router-link to="/adminhome" class="routerbutton">Back to Home Page</router-link>
         </div>
+
     </div>
   </div>
 </template>
@@ -53,6 +56,62 @@ export default {
 </script>
 
 <style>
+.image{
+  max-width: 20%;
+  height: 20%;
+}
+.gallery{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    grid-gap: 1rem;
+    max-width: 80rem;
+    margin: 5rem auto;
+    padding: 0 5rem;
+}
+.gallery-panel img {
+    width: 100%;
+    height: 22vw;
+    object-fit: cover;
+    border-radius: 0.75rem;
+}
+.imgCont{
+  background-color: aqua;
+  display: flex;
+  flex-direction: row;
+
+}
+.content{
+    margin-top:10px
+}
+div.background {
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100vw;
+  
+}
+
+div.transbox {
+  margin: 30px;
+  background-color: #ffffff;
+  border: 1px solid black;
+  opacity: 0.8;
+}
+
+div.content {
+margin: 5%;
+font-weight: bold;
+color: #000000;
+}
+
+.header {
+  font-family: Marker Felt, Avenir, Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 3em;
+}
 .routerbutton {
   background-color:#779ECB;
   border-radius: 25px;
