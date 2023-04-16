@@ -139,21 +139,29 @@ export default {
   }
 
   #btn {
-    display: inline-block;
-    text-align: center;
-    margin-top: 20px;
-    padding: 10px 20px;
-    border-radius: 5px;
-    border: none;
-    background-color: #4CAF50;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
+  background-color:#779ECB;
+  border-radius: 25px;
+  margin: 40px 0px 20px 0px;
+  display: inline-block;
+  padding: 12px 24px;
+  font-size: 29px; 
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+  font-family: Avenir, Arial, Helvetica, sans-serif;
+}
 
   #btn:hover {
-    background-color: #2e8b57;
-  }
+    background-color: #F6C7B3;
+    box-shadow: 3px 3px grey;
+    color: #2c3e50;
+}
+
+  #btn:active {
+  transform: translateY(2px);
+  box-shadow: none;
+}
 
 </style>
