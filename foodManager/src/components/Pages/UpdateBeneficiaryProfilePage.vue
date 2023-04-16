@@ -1,24 +1,21 @@
 <template>
-  <div class="donorCont">
-    <h2 class="title">Update Beneficiary Profile Details</h2>
-    <div class="form-container">
-      <form class="form" @submit.prevent="submitForm">
-        <div class="form-group">
-          <label for="name" class="form-label">Name</label>
-          <input type="string" id="name" required class="form-input" v-model="name" />
+    <div class="background">
+      <div class="transbox">
+        <div class="content">
+          <h1 class="header">Update Beneficiary Profile Details</h1>
+          <h3>Personal Details</h3>
+          <form class="form" @submit.prevent="submitForm">
+              <label for="name">Name</label>
+              <input type="string" id="name" required v-model="name"/>
+              <label for="contact">Contact</label>
+              <input type="string" id="contact" required v-model="contact"/>
+            
+            <button role="button" class="submit-button" @click="submitForm()"> Update Profile Details </button><br>
+            <button role="button" class="btn-back-button" @click="back()"> Back to Profile </button> 
+          </form>
         </div>
-
-        <div class="form-group">
-          <label for="contact" class="form-label">Contact</label>
-          <input type="string" id="contact" required class="form-input" v-model="contact" />
-        </div>
-        <button class="btn-back-button" role="button"> Update Profile Details </button>
-        <button class="btn-back-button" role="button" @click="back()"> Back to Profile </button>
-
-      </form>
+      </div>
     </div>
-
-  </div>
 </template>
 
 <script>
@@ -86,113 +83,121 @@ export default {
 </script>
 
 <style scoped>
-.donorCont {
-  background-color: aliceblue;
-  color: #2c3e50;
+.background {
+  height: 150vh;
   width: 100vw;
-  height: 100vh;
-  padding: 5%;
-  font-family: Avenir, Arial, Helvetica, sans-serif;
-  font-size: 20px;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  background-color: #F8F3E8;
 }
 
-#forms {
+.transbox {
+  background-color: #f9fdfd;
+  border-radius: 20px;
+  padding: 10px;
+}
+
+.content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 50px;
+  justify-content: center;
+  margin-top: 40px;
+  margin-bottom: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.header {
+  font-size: 2rem;
+  margin-bottom: 0px;
+  color: #2c3e50;
+  font-family: Avenir, Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
+
+h3 {
+  color: #2c3e50;
+  font-family: Avenir, Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  margin-bottom: 20px;
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  align-content: center;
+  align-items: center;
   width: 400px;
-}
-
-.formbox {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-bottom: 10px;
-  width: 100%;
+  color: #2c3e50;
+  font-family: Avenir, Arial, Helvetica, sans-serif;
 }
 
 label {
-  margin-bottom: 5px;
-  font-size: 20px;
-  text-align: left;
+  /* font-weight: bold; */
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  color: #2c3e50;
 }
 
 input {
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 10px;
+  font-size: 1.2em;
   margin-bottom: 20px;
   width: 100%;
 }
-/* button {
-  padding: 10px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  font-size: 18px;
-  cursor: pointer;
-  margin-top: 20px;
-}
-button:hover {
-  background-color: #4CAF50;
-} */
-.btn-back-button {
-  padding: 10px;
-  margin: 5px;
-  appearance: none;
-  backface-visibility: hidden;
-  background-color: #27ae60;
-  border-radius: 8px;
-  border:0;
-  box-shadow: rgba(39, 174, 96, .15) 0 4px 9px;
-  box-sizing: border-box;
-  color: #fff;
-  cursor: pointer;
-  font-family: Helvetica,Arial,sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  letter-spacing: normal;
-  height: 40px;
-  outline: none;
-  overflow: hidden;
-  padding: 10px;
-  text-align: center;
-  transition: all 250ms;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  vertical-align: top;
-  white-space: nowrap;
 
-  justify-content: center;
-  letter-spacing: .4px;
-  margin-bottom: 2px;
+.submit-button {
+  background-color:#779ECB;
+  border-radius: 25px;
+  margin: 20px 0px 0px 0px;
+  display: inline-block;
+  padding: 12px 24px;
+  font-size: 20px; 
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+  font-family: Avenir, Arial, Helvetica, sans-serif;
+}
+
+.submit-button:hover {
+  background-color: #F6C7B3;
+  box-shadow: 3px 3px grey;
+  color: #2c3e50;
+}
+
+.submit-button:active {
+  transform: translateY(2px);
+  box-shadow: none;
+}
+
+.btn-back-button {
+  background-color:#779ECB;
+  border-radius: 25px;
+  margin: 0px 0px 10px 0px;
+  display: inline-block;
+  padding: 12px 24px;
+  font-size: 20px; 
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+  font-family: Avenir, Arial, Helvetica, sans-serif;
 }
 
 .btn-back-button:hover {
-  background-color: #1e8449;
-  opacity: 1;
-  transition-duration: 250ms;
+  background-color: #F6C7B3;
+  box-shadow: 3px 3px grey;
+  color: #2c3e50;
 }
 
 .btn-back-button:active {
-  transition-duration: 250ms;
+  transform: translateY(2px);
+  box-shadow: none;
 }
-
-.btn-back-button:hover {
-  box-shadow: rgba(39, 174, 96, .2) 0 6px 12px;
-}
-
 </style>

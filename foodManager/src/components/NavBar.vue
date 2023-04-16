@@ -64,7 +64,7 @@
 
 <style>
 #app {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Avenir, Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -82,11 +82,18 @@
   color:#2c3e50;
   font-size: 15px;
 }
-#nav a.router-link-exact-active{
-  color:chocolate;
+
+#nav a:hover {
+  background-color: #F6C7B3;
+  box-shadow: 3px 3px grey;
+  color: #2c3e50;
+}
+
+/* #nav a.router-link-exact-active{
+  color:#F6C7B3;
   font-weight: bold;
   font-size: 20px;
-}
+} */
 
 #displayName {
   font-size: 25px;

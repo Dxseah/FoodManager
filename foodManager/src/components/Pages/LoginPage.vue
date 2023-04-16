@@ -43,7 +43,6 @@ export default {
 
 <style scoped>
   div.background {
-    /* border: 2px solid black; */
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -51,18 +50,20 @@ export default {
     background-repeat: no-repeat;
     height: 100vh;
     width: 100vw;
+    background-color: #F8F3E8;
   }
 
   div.transbox {
     margin: 30px;
-    background-color: #ffffff;
-    border: 1px solid white;
+    background-color: #f9fdfd;
+    border: 1px solid black;
     text-align: center;
+    border-radius: 25px;
   }
 
   div.content {
   margin: 5%;
   font-weight: bold;
-  color: #000000;
+  color: #2c3e50;
 }
 </style>
