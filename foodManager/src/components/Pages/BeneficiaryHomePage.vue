@@ -93,6 +93,7 @@ font-family: Avenir, Arial, Helvetica, sans-serif;
     font-weight: bold;
     font-size: 30px;
     font-family: Avenir, Arial, Helvetica, sans-serif;
+    opacity: 0.8; 
 }
 
 .percent {

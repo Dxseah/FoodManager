@@ -86,6 +86,7 @@ export default {
   border: 1px solid black;
   text-align: center; /* add this line */
   border-radius: 25px;
+  opacity: 0.8;
 }
 
 h1 {
