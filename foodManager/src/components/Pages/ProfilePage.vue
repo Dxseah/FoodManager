@@ -219,6 +219,7 @@ export default {
     color: #2c3e50;
     align-content: center;
     font-family: Avenir, Arial, Helvetica, sans-serif;  
+    border-radius: 25px;
   }
 
 .butCont{
