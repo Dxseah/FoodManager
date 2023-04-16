@@ -1,7 +1,7 @@
 <template>
     <div class="findOutMoreCont">
-        <h1>Find out more about FoodManager</h1>
-        <router-link to="/about" class="button">HERE</router-link>
+        <!-- <h1>Find out more about FoodManager</h1> -->
+        <router-link to="/about" class="button">Find out more about FoodManager</router-link>
     </div>
 </template>
 
@@ -27,7 +27,7 @@ a:hover {
 .button {
   background-color:#779ECB;
   border-radius: 25px;
-  margin: 40px 50px 20px 0px;
+  margin: 40px 0px 0px 0px;
   display: inline-block;
   padding: 12px 24px;
   font-size: 22px; 
@@ -37,6 +37,7 @@ a:hover {
   border: none;
   transition: all 0.3s ease;
   font-family: Avenir, Arial, Helvetica, sans-serif;
+  white-space: nowrap;
 }
 
 .button:hover {
