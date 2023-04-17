@@ -213,7 +213,7 @@ export default {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-repeat: no-repeat;
-    height: 100vh;
+    height: auto;
     width: 100vw;
     background-color: #f9fdfd;
     opacity: 0.8;
