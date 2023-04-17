@@ -62,6 +62,7 @@ export default {
             // Check if contact has exactly 8 digits
             if (!/^\d{8}$/.test(this.contact)|| this.contact < 80000000 || this.contact > 99999999) {
               alert('Please enter a valid 8 digit Singapore contact number.');
+            //   alert(this.contact);
               return;
             }
 
@@ -70,8 +71,7 @@ export default {
             "contact": this.contact,
           }; 
           await updateDoc(docRef, requestedData);
-
-          window.location.reload(); 
+          router.push('/profile')
     },
 
     back() {

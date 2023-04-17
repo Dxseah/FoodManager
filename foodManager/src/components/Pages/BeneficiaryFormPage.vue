@@ -14,6 +14,8 @@
             </div>
           </div>
           <button class="submit-button" v-on:click="submitAlert">Submit Request</button>
+          <router-link to="/beneficiaryhome" class="submit-button">Back to Home Page</router-link>
+
         </form>
       </div>
     </div>
@@ -158,14 +160,6 @@ async submitAlert() {
   font-family: Avenir, Arial, Helvetica, sans-serif;
 }
 
-/* .form-group {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-bottom: 20px;
-  width: 100%;
-} */
-
 label {
   /* font-weight: bold; */
   font-size: 1.2em;
@@ -202,13 +196,13 @@ h2 {
   font-family: Avenir, Arial, Helvetica, sans-serif;
 }
 
-button:hover {
+.submit-button:hover {
     background-color: #F6C7B3;
     box-shadow: 3px 3px grey;
     color: #2c3e50;
 }
 
-button:active {
+.submit-button:active {
   transform: translateY(2px);
   box-shadow: none;
 }

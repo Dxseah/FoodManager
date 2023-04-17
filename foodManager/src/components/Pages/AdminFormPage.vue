@@ -26,6 +26,7 @@
 import { getDoc, doc, updateDoc, setDoc, collection } from "firebase/firestore"
 import { db } from '@/firebase'
 import { query, where, getDocs } from 'firebase/firestore';
+import router from '@/components/Router/index.js'
 
 export default {
   name: "AdminFormPage",
@@ -46,6 +47,7 @@ export default {
   });
     await Promise.all(batch);
     alert('Food items have been added!');
+    router.push('/adminhome')
 }},
 
   async mounted() {

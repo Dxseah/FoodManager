@@ -25,6 +25,7 @@ import { db } from "@/firebase";
 import { getDoc, doc, setDoc, collection, deleteDoc } from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { query, onSnapshot } from "firebase/firestore";
+import router from '@/components/Router/index.js'
 
   
 export default {
@@ -54,6 +55,7 @@ export default {
     methods: {
       async submitForm() {
         // Handle form submission
+        router.push('/adminhome')
       },
       async deleteFoodItem(foodItemId) {
         try {

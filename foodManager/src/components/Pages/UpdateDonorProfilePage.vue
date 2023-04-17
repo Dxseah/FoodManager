@@ -70,7 +70,7 @@ export default {
             "contact": this.contact,
           }; 
           await updateDoc(docRef, requestedData);
-          window.location.reload(); 
+          router.push('/profile')
     },
     back() {
       router.push('/profile')

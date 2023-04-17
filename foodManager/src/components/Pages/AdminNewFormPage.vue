@@ -12,7 +12,7 @@
               <label for="target-quantity">Target Quantity </label>
               <input type="number" id="target-quantity" v-model.number="targetQuantity" min="0" />
             </div>
-            <button class="add-button" v-on:click="addAlert">Add New Food Item</button>
+            <button class="add-button" >Add New Food Item</button>
             <br>
             <router-link to="/adminhome" class="routerbutton">Back to Home Page</router-link>
           </form>
@@ -25,6 +25,7 @@
 import { db } from "@/firebase";
 import { getDoc, doc, setDoc, collection } from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import router from '@/components/Router/index.js'
 
 export default {
   name: "AdminNewFormPage",
@@ -62,6 +63,8 @@ export default {
           await setDoc(doc(db, 'FoodCollection', this.name), requestedData);
         };
         console.log("Form submitted");
+        alert("New food item is added!");
+        router.push("/adminhome");
     }
     catch (err) {
         alert(err.message)
@@ -69,6 +72,7 @@ export default {
   },
   async addAlert() {
     alert("New food item is added!")
+    router.push("/adminhome")
   }
   }
 }

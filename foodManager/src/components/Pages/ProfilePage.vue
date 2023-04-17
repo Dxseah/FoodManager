@@ -84,11 +84,12 @@
       <button id="btn" @click="update()">Update Profile Details </button><br>
       <Logout/>
       </div>
+
     </div>
-  
-    <div v-else-if = "!exists">
+    <span v-else-if = "!exists">
         <Details/>
-    </div>
+    </span>
+    
   </div>
 
   <div v-else class = "container2"> 

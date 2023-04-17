@@ -14,6 +14,8 @@
           <label for="image-upload">Upload Image</label>
           <input type="file" id="image-upload" accept="image/*" @change="handleImageUpload" required />
           <button class="submit-button" v-on:click="submitAlert">Submit Donation</button>
+          <router-link to="/donorhome" class="submit-button">Back to Home Page</router-link>
+
         </form> 
       </div>
     </div>
@@ -224,13 +226,13 @@ h2 {
   font-family: Avenir, Arial, Helvetica, sans-serif;
 }
 
-button:hover {
+.submit-button:hover {
     background-color: #F6C7B3;
     box-shadow: 3px 3px grey;
     color: #2c3e50;
 }
 
-button:active {
+.submit-button:active {
   transform: translateY(2px);
   box-shadow: none;
 }

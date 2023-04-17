@@ -72,61 +72,9 @@ export default {
         }
       }
     }
-    //   const docRef = doc(db,"User",user.value);
-    //     await setDoc(docRef, {
-    //       userid: userid.value,
-    //       email: email.value,
-    //       name: name.value,
-    //       contact: contact.value,
-    //       organisation: '',
-    //       accountType: 2, //1 for beneficiary, 2 for donor
-    //     })
-      // Save data to Firestore
-    //   const docRef = doc(db,"User",);
-    //   const docSnap = await getDoc(docRef);
-    //   const userData = {
-    //     user:this.user,
-    //     name: this.name,
-    //     type: this.type,
-    //     contact: this.contact
-    //   };
-    //   if (docSnap.exists()) {
-    //     await setDoc(docRef, userData, { merge: true });
-    //   } else {
-    //     await setDoc(docRef, donationData);
-    //   }
-
-
-
 </script>
 
 <style scoped>
-  .donorCont {
-    background-size: cover;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-repeat: no-repeat;
-    height: 100vh;
-    width: 100vw;
-    background-color: #F8F3E8;
-  }
-
-.transbox {
-  background-color: #f9fdfd;
-  border-radius: 25px;
-  padding: 10px 20px 10px 20px;
-}
-
-.content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-top: 40px;
-  margin-bottom: 30px;
-}
-
 
   h2 {
     font-family: Avenir, Arial, Helvetica, sans-serif;
